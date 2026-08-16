@@ -24866,3 +24866,11 @@ NameError: name 'RECORDING_ENABLED_DEFAULT' is not defined
 2026-08-15 16:05:46,004 | INFO | F5 테스트 클릭 / 850,260 / 유지 80ms
 2026-08-15 16:05:47,084 | INFO | F5 테스트 클릭 / 938,243 / 유지 80ms
 2026-08-15 16:05:48,057 | INFO | F5 테스트 클릭 / 1245,226 / 유지 80ms
+2026-08-15 16:24:21,623 | WARNING | BitBlt 화면 캡처 실패 (1/3): Windows graphics function failed (no error provided): BitBlt
+2026-08-15 16:24:21,924 | WARNING | BitBlt 화면 캡처 실패 (2/3): Windows graphics function failed: BitBlt: 액세스가 거부되었습니다.
+2026-08-15 16:24:22,225 | WARNING | BitBlt 화면 캡처 실패 (3/3): Windows graphics function failed: BitBlt: 액세스가 거부되었습니다.
+2026-08-15 16:24:22,526 | ERROR | 화면 캡처가 계속 실패하여 이번 검색을 건너뜁니다: BitBlt 화면 캡처를 3회 재시도했지만 실패했습니다.
+2026-08-15 16:24:24,227 | WARNING | BitBlt 화면 캡처 실패 (1/3): Windows graphics function failed (no error provided): BitBlt
+2026-08-15 16:25:14,187 | INFO | UI 종료 요청 감지
+2026-08-15 16:25:14,188 | INFO | 좌표 복사 / 테스트 클릭 전역 단축키 해제
+2026-08-15 16:25:14,227 | INFO | Tkinter 메인 루프 종료

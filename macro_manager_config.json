@@ -1,0 +1,658 @@
+{
+  "threshold": 0.82,
+  "return_wait_seconds": 20.0,
+  "pre_death_steps": [
+    {
+      "id": "potion_10",
+      "name": "사망 전 물약 10개 감지",
+      "image": "",
+      "timeout": 0.0,
+      "pre_click_delay": 0.0
+    },
+    {
+      "id": "back_button",
+      "name": "사망 전 뒤로가기",
+      "image": "",
+      "timeout": 15.0,
+      "pre_click_delay": 0.5
+    },
+    {
+      "id": "home_icon",
+      "name": "사망 전 집으로",
+      "image": "",
+      "timeout": 15.0,
+      "pre_click_delay": 0.5
+    }
+  ],
+  "entry_steps": [
+    {
+      "id": "001_dyied",
+      "name": "001 사망 화면",
+      "image": "images/001_dyied.png",
+      "timeout": 10.0,
+      "pre_click_delay": 0.5
+    },
+    {
+      "id": "002_sandtimer",
+      "name": "002 모래시계",
+      "image": "images/002_sandtimer.png",
+      "timeout": 15.0,
+      "pre_click_delay": 0.5
+    }
+  ],
+  "steps": [],
+  "targets": {
+    "m1q1": {
+      "enabled": true,
+      "overrides": {
+        "11_potion": "images/quadrant_1/11_potion.png",
+        "16_region": "images/quadrant_1/16_region.png",
+        "17_hunting_ground": "images/quadrant_1/17_hunting_ground.png",
+        "18_monster": "images/quadrant_1/18_monster.png"
+      },
+      "fallbacks": {
+        "15_world_map": [
+          140,
+          170
+        ]
+      },
+      "post_routine_id": "default_hunting",
+      "routine_settings": {
+        "routine_1786798529717159800": {
+          "overrides": {
+            "11_potion": "images/quadrant_1/11_potion.png"
+          },
+          "fallbacks": {}
+        },
+        "routine_1786800800481836700": {
+          "overrides": {
+            "11_potion": "images/quadrant_1/11_potion.png"
+          },
+          "fallbacks": {}
+        }
+      }
+    },
+    "m1q2": {
+      "enabled": true,
+      "overrides": {
+        "11_potion": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_1/quadrant_2/m1q2_11 물약 선택_20260815_170141.png",
+        "16_region": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_1/quadrant_2/m1q2_16 이동할 지역_20260815_170309.png",
+        "17_hunting_ground": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_1/quadrant_2/m1q2_17 이동할 사냥터_20260815_170326.png",
+        "18_monster": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_1/quadrant_2/m1q2_18 몬스터_20260815_170346.png"
+      },
+      "fallbacks": {
+        "15_world_map": [
+          148,
+          177
+        ]
+      },
+      "post_routine_id": "default_hunting",
+      "routine_settings": {
+        "routine_1786798529717159800": {
+          "overrides": {
+            "11_potion": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_1/quadrant_2/m1q2_11 물약 선택_20260815_170141.png"
+          },
+          "fallbacks": {}
+        },
+        "routine_1786800800481836700": {
+          "overrides": {
+            "11_potion": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_1/quadrant_2/m1q2_11 물약 선택_20260815_170141.png"
+          },
+          "fallbacks": {}
+        }
+      }
+    },
+    "m1q3": {
+      "enabled": true,
+      "overrides": {
+        "001_dyied": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_1/quadrant_3/m1q3_001 사망 화면_20260815_173709.png",
+        "002_sandtimer": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_1/quadrant_3/m1q3_002 모래시계_20260815_173721.png",
+        "07_touch_empty_space": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_1/quadrant_3/07_touch_empty_space.png",
+        "11_potion": "images/quadrant_3/11_potion.png",
+        "16_region": "images/quadrant_3/16_region.png",
+        "17_hunting_ground": "images/quadrant_3/17_hunting_ground.png",
+        "18_monster": "images/quadrant_3/18_monster.png",
+        "21_auto": "images/quadrant_3/21_auto.png"
+      },
+      "fallbacks": {
+        "15_world_map": [
+          153,
+          149
+        ]
+      },
+      "post_routine_id": "default_hunting",
+      "routine_settings": {
+        "routine_1786798529717159800": {
+          "overrides": {
+            "07_touch_empty_space": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_1/quadrant_3/07_touch_empty_space.png",
+            "11_potion": "images/quadrant_3/11_potion.png",
+            "21_auto": "images/quadrant_3/21_auto.png"
+          },
+          "fallbacks": {}
+        },
+        "routine_1786800800481836700": {
+          "overrides": {
+            "07_touch_empty_space": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_1/quadrant_3/07_touch_empty_space.png",
+            "11_potion": "images/quadrant_3/11_potion.png",
+            "21_auto": "images/quadrant_3/21_auto.png"
+          },
+          "fallbacks": {}
+        }
+      }
+    },
+    "m1q4": {
+      "enabled": true,
+      "overrides": {
+        "11_potion": "images/quadrant_4/11_potion.png",
+        "16_region": "images/quadrant_4/16_region.png",
+        "17_hunting_ground": "images/quadrant_4/17_hunting_ground.png",
+        "18_monster": "images/quadrant_4/18_monster.png"
+      },
+      "fallbacks": {
+        "15_world_map": [
+          149,
+          141
+        ]
+      },
+      "post_routine_id": "default_hunting",
+      "routine_settings": {
+        "routine_1786798529717159800": {
+          "overrides": {
+            "11_potion": "images/quadrant_4/11_potion.png"
+          },
+          "fallbacks": {}
+        },
+        "routine_1786800800481836700": {
+          "overrides": {
+            "11_potion": "images/quadrant_4/11_potion.png"
+          },
+          "fallbacks": {}
+        }
+      }
+    },
+    "m2q1": {
+      "enabled": true,
+      "overrides": {
+        "01_revive": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/01_revive.png",
+        "02_menu": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/02_menu.png",
+        "03_equip_workshop": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/03_equip_workshop.png",
+        "04_dismantle_menu": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/04_dismantle_menu.png",
+        "05_auto_register": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/05_auto_register.png",
+        "06_dismantle_execute": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/06_dismantle_execute.png",
+        "07_touch_empty_space": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/07_touch_empty_space.png",
+        "08_close_appraisal": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/08_close_appraisal.png",
+        "09_close_menu": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/09_close_menu.png",
+        "10_general_store": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/10_general_store.png",
+        "11_potion": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_1/11_potion.png",
+        "12_100_percent": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/12_100_percent.png",
+        "13_buy": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/13_buy.png",
+        "14_close_shop": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/14_close_shop.png",
+        "16_region": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_1/16_region.png",
+        "17_hunting_ground": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_1/17_hunting_ground.png",
+        "18_monster": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_1/18_monster.png",
+        "19_quick_move": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/19_quick_move.png",
+        "20_confirm": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/20_confirm.png",
+        "21_auto": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/21_auto.png"
+      },
+      "fallbacks": {
+        "15_world_map": [
+          213,
+          310
+        ]
+      },
+      "post_routine_id": "routine_1786798529717159800",
+      "routine_settings": {
+        "routine_1786798529717159800": {
+          "overrides": {
+            "01_revive": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/01_revive.png",
+            "02_menu": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/02_menu.png",
+            "03_equip_workshop": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/03_equip_workshop.png",
+            "04_dismantle_menu": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/04_dismantle_menu.png",
+            "05_auto_register": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/05_auto_register.png",
+            "06_dismantle_execute": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/06_dismantle_execute.png",
+            "07_touch_empty_space": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/07_touch_empty_space.png",
+            "08_close_appraisal": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/08_close_appraisal.png",
+            "09_close_menu": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/09_close_menu.png",
+            "10_general_store": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/10_general_store.png",
+            "11_potion": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_1/11_potion.png",
+            "12_100_percent": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/12_100_percent.png",
+            "13_buy": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/13_buy.png",
+            "14_close_shop": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/14_close_shop.png",
+            "21_auto": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/21_auto.png"
+          },
+          "fallbacks": {}
+        },
+        "routine_1786800800481836700": {
+          "overrides": {
+            "01_revive": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/01_revive.png",
+            "02_menu": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/02_menu.png",
+            "03_equip_workshop": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/03_equip_workshop.png",
+            "04_dismantle_menu": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/04_dismantle_menu.png",
+            "05_auto_register": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/05_auto_register.png",
+            "06_dismantle_execute": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/06_dismantle_execute.png",
+            "07_touch_empty_space": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/07_touch_empty_space.png",
+            "08_close_appraisal": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/08_close_appraisal.png",
+            "09_close_menu": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/09_close_menu.png",
+            "10_general_store": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/10_general_store.png",
+            "11_potion": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_1/11_potion.png",
+            "12_100_percent": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/12_100_percent.png",
+            "13_buy": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/13_buy.png",
+            "14_close_shop": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/14_close_shop.png",
+            "21_auto": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/21_auto.png"
+          },
+          "fallbacks": {}
+        }
+      }
+    },
+    "m2q2": {
+      "enabled": true,
+      "overrides": {
+        "01_revive": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/01_revive.png",
+        "02_menu": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/02_menu.png",
+        "03_equip_workshop": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/03_equip_workshop.png",
+        "04_dismantle_menu": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/04_dismantle_menu.png",
+        "05_auto_register": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/05_auto_register.png",
+        "06_dismantle_execute": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/06_dismantle_execute.png",
+        "07_touch_empty_space": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/07_touch_empty_space.png",
+        "08_close_appraisal": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/08_close_appraisal.png",
+        "09_close_menu": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/09_close_menu.png",
+        "10_general_store": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/10_general_store.png",
+        "11_potion": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/11_potion.png",
+        "12_100_percent": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/12_100_percent.png",
+        "13_buy": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/13_buy.png",
+        "14_close_shop": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/14_close_shop.png",
+        "16_region": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/16_region.png",
+        "17_hunting_ground": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/17_hunting_ground.png",
+        "18_monster": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/18_monster.png",
+        "19_quick_move": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/19_quick_move.png",
+        "20_confirm": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/20_confirm.png",
+        "21_auto": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/21_auto.png"
+      },
+      "fallbacks": {
+        "15_world_map": [
+          224,
+          269
+        ]
+      },
+      "post_routine_id": "default_hunting",
+      "routine_settings": {
+        "routine_1786798529717159800": {
+          "overrides": {
+            "01_revive": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/01_revive.png",
+            "02_menu": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/02_menu.png",
+            "03_equip_workshop": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/03_equip_workshop.png",
+            "04_dismantle_menu": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/04_dismantle_menu.png",
+            "05_auto_register": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/05_auto_register.png",
+            "06_dismantle_execute": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/06_dismantle_execute.png",
+            "07_touch_empty_space": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/07_touch_empty_space.png",
+            "08_close_appraisal": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/08_close_appraisal.png",
+            "09_close_menu": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/09_close_menu.png",
+            "10_general_store": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/10_general_store.png",
+            "11_potion": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/11_potion.png",
+            "12_100_percent": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/12_100_percent.png",
+            "13_buy": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/13_buy.png",
+            "14_close_shop": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/14_close_shop.png",
+            "21_auto": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/21_auto.png"
+          },
+          "fallbacks": {}
+        },
+        "routine_1786800800481836700": {
+          "overrides": {
+            "01_revive": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/01_revive.png",
+            "02_menu": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/02_menu.png",
+            "03_equip_workshop": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/03_equip_workshop.png",
+            "04_dismantle_menu": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/04_dismantle_menu.png",
+            "05_auto_register": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/05_auto_register.png",
+            "06_dismantle_execute": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/06_dismantle_execute.png",
+            "07_touch_empty_space": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/07_touch_empty_space.png",
+            "08_close_appraisal": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/08_close_appraisal.png",
+            "09_close_menu": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/09_close_menu.png",
+            "10_general_store": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/10_general_store.png",
+            "11_potion": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/11_potion.png",
+            "12_100_percent": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/12_100_percent.png",
+            "13_buy": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/13_buy.png",
+            "14_close_shop": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/14_close_shop.png",
+            "21_auto": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/21_auto.png"
+          },
+          "fallbacks": {}
+        }
+      }
+    },
+    "m2q3": {
+      "enabled": false,
+      "overrides": {},
+      "fallbacks": {},
+      "post_routine_id": "default_hunting",
+      "routine_settings": {
+        "routine_1786798529717159800": {
+          "overrides": {},
+          "fallbacks": {}
+        },
+        "routine_1786800800481836700": {
+          "overrides": {},
+          "fallbacks": {}
+        }
+      }
+    },
+    "m2q4": {
+      "enabled": false,
+      "overrides": {},
+      "fallbacks": {},
+      "post_routine_id": "default_hunting",
+      "routine_settings": {
+        "routine_1786798529717159800": {
+          "overrides": {},
+          "fallbacks": {}
+        },
+        "routine_1786800800481836700": {
+          "overrides": {},
+          "fallbacks": {}
+        }
+      }
+    }
+  },
+  "post_routines": {
+    "default_hunting": {
+      "name": "기본 전체 루틴",
+      "steps": [
+        {
+          "id": "01_revive",
+          "name": "01 부활하기",
+          "image": "images/01_revive.png",
+          "timeout": 30.0,
+          "pre_click_delay": 0.5,
+          "after_click_delay": 1.5
+        },
+        {
+          "id": "02_menu",
+          "name": "02 메뉴",
+          "image": "images/02_menu.png",
+          "timeout": 60.0,
+          "pre_click_delay": 1.0
+        },
+        {
+          "id": "03_equip_workshop",
+          "name": "03 장비공방",
+          "image": "images/03_equip_workshop.png",
+          "timeout": 15.0,
+          "pre_click_delay": 1.0
+        },
+        {
+          "id": "04_dismantle_menu",
+          "name": "04 분해 메뉴",
+          "image": "images/04_dismantle_menu.png",
+          "timeout": 15.0,
+          "pre_click_delay": 0.5
+        },
+        {
+          "id": "05_auto_register",
+          "name": "05 자동 등록",
+          "image": "images/05_auto_register.png",
+          "timeout": 15.0,
+          "pre_click_delay": 0.5
+        },
+        {
+          "id": "06_dismantle_execute",
+          "name": "06 분해 실행",
+          "image": "images/06_dismantle_execute.png",
+          "timeout": 5.0,
+          "on_timeout": "skip",
+          "skip_count": 3,
+          "pre_click_delay": 0.5
+        },
+        {
+          "id": "07_touch_empty_space",
+          "name": "07 빈 공간 터치",
+          "image": "images/07_touch_empty_space.png",
+          "timeout": 5.0,
+          "on_timeout": "click_current",
+          "pre_click_delay": 0.5
+        },
+        {
+          "id": "08_close_appraisal",
+          "name": "08 감정 창 닫기",
+          "image": "images/08_close_appraisal.png",
+          "timeout": 15.0,
+          "pre_click_delay": 0.5
+        },
+        {
+          "id": "09_close_menu",
+          "name": "09 메뉴 창 닫기",
+          "image": "images/09_close_menu.png",
+          "timeout": 15.0,
+          "pre_click_delay": 0.5
+        },
+        {
+          "id": "10_general_store",
+          "name": "10 잡화 상인",
+          "image": "images/10_general_store.png",
+          "timeout": 20.0,
+          "pre_click_delay": 0.5
+        },
+        {
+          "id": "11_potion",
+          "name": "11 물약 선택",
+          "image": "",
+          "timeout": 15.0,
+          "pre_click_delay": 0.5
+        },
+        {
+          "id": "12_100_percent",
+          "name": "12 100% 수량",
+          "image": "images/12_100_percent.png",
+          "timeout": 15.0,
+          "pre_click_delay": 0.5
+        },
+        {
+          "id": "13_buy",
+          "name": "13 구매",
+          "image": "images/13_buy.png",
+          "timeout": 15.0,
+          "pre_click_delay": 0.5
+        },
+        {
+          "id": "14_close_shop",
+          "name": "14 상점 나가기",
+          "image": "images/14_close_shop.png",
+          "timeout": 15.0,
+          "pre_click_delay": 0.5
+        },
+        {
+          "id": "15_world_map",
+          "name": "15 월드맵 고정좌표",
+          "image": "",
+          "timeout": 0.1,
+          "pre_click_delay": 0.5,
+          "coordinate_from_target": true
+        },
+        {
+          "id": "16_region",
+          "name": "16 이동할 지역",
+          "image": "",
+          "timeout": 20.0,
+          "pre_click_delay": 0.5
+        },
+        {
+          "id": "17_hunting_ground",
+          "name": "17 이동할 사냥터",
+          "image": "",
+          "timeout": 20.0,
+          "pre_click_delay": 0.5
+        },
+        {
+          "id": "18_monster",
+          "name": "18 몬스터",
+          "image": "",
+          "timeout": 20.0,
+          "pre_click_delay": 0.5
+        },
+        {
+          "id": "19_quick_move",
+          "name": "19 빠른 이동",
+          "image": "images/19_quick_move.png",
+          "timeout": 15.0,
+          "pre_click_delay": 0.5
+        },
+        {
+          "id": "20_confirm",
+          "name": "20 빠른 이동 확인",
+          "image": "images/20_confirm.png",
+          "timeout": 15.0,
+          "pre_click_delay": 0.5
+        },
+        {
+          "id": "21_auto",
+          "name": "21 AUTO",
+          "image": "images/21_auto.png",
+          "timeout": 30.0,
+          "delay_before": 20,
+          "pre_click_delay": 0.5
+        }
+      ]
+    },
+    "routine_1786798529717159800": {
+      "name": "새 전체 자동화 루틴",
+      "steps": [
+        {
+          "id": "01_revive",
+          "name": "01 부활하기",
+          "image": "images/01_revive.png",
+          "timeout": 30.0,
+          "pre_click_delay": 0.5,
+          "after_click_delay": 1.5
+        },
+        {
+          "id": "02_menu",
+          "name": "02 메뉴",
+          "image": "images/02_menu.png",
+          "timeout": 60.0,
+          "pre_click_delay": 1.0
+        },
+        {
+          "id": "03_equip_workshop",
+          "name": "03 장비공방",
+          "image": "images/03_equip_workshop.png",
+          "timeout": 15.0,
+          "pre_click_delay": 1.0
+        },
+        {
+          "id": "04_dismantle_menu",
+          "name": "04 분해 메뉴",
+          "image": "images/04_dismantle_menu.png",
+          "timeout": 15.0,
+          "pre_click_delay": 0.5
+        },
+        {
+          "id": "05_auto_register",
+          "name": "05 자동 등록",
+          "image": "images/05_auto_register.png",
+          "timeout": 15.0,
+          "pre_click_delay": 0.5
+        },
+        {
+          "id": "06_dismantle_execute",
+          "name": "06 분해 실행",
+          "image": "images/06_dismantle_execute.png",
+          "timeout": 5.0,
+          "on_timeout": "skip",
+          "skip_count": 3,
+          "pre_click_delay": 0.5
+        },
+        {
+          "id": "07_touch_empty_space",
+          "name": "07 빈 공간 터치",
+          "image": "images/07_touch_empty_space.png",
+          "timeout": 5.0,
+          "on_timeout": "click_current",
+          "pre_click_delay": 0.5
+        },
+        {
+          "id": "08_close_appraisal",
+          "name": "08 감정 창 닫기",
+          "image": "images/08_close_appraisal.png",
+          "timeout": 15.0,
+          "pre_click_delay": 0.5
+        },
+        {
+          "id": "09_close_menu",
+          "name": "09 메뉴 창 닫기",
+          "image": "images/09_close_menu.png",
+          "timeout": 15.0,
+          "pre_click_delay": 0.5
+        },
+        {
+          "id": "10_general_store",
+          "name": "10 잡화 상인",
+          "image": "images/10_general_store.png",
+          "timeout": 20.0,
+          "pre_click_delay": 0.5
+        },
+        {
+          "id": "11_potion",
+          "name": "11 물약 선택",
+          "image": "",
+          "timeout": 15.0,
+          "pre_click_delay": 0.5
+        },
+        {
+          "id": "12_100_percent",
+          "name": "12 100% 수량",
+          "image": "images/12_100_percent.png",
+          "timeout": 15.0,
+          "pre_click_delay": 0.5
+        },
+        {
+          "id": "13_buy",
+          "name": "13 구매",
+          "image": "images/13_buy.png",
+          "timeout": 15.0,
+          "pre_click_delay": 0.5
+        },
+        {
+          "id": "14_close_shop",
+          "name": "14 상점 나가기",
+          "image": "images/14_close_shop.png",
+          "timeout": 15.0,
+          "pre_click_delay": 0.5
+        },
+        {
+          "id": "15_world_map",
+          "name": "15 던전 아이템",
+          "image": "C:/Users/Jongseo Won/Desktop/auto/macro_images/common_routines/routine_1786798529717159800/15_던전_아이템.png",
+          "timeout": 0.1,
+          "pre_click_delay": 0.5
+        },
+        {
+          "id": "16_region",
+          "name": "16 던전 이동처 선택",
+          "image": "C:/Users/Jongseo Won/Desktop/auto/macro_images/common_routines/routine_1786798529717159800/16_던전_이동처_선택.png",
+          "timeout": 20.0,
+          "pre_click_delay": 0.5
+        },
+        {
+          "id": "17_hunting_ground",
+          "name": "17 빠른 이동",
+          "image": "C:/Users/Jongseo Won/Desktop/auto/macro_images/common_routines/routine_1786798529717159800/17_빠른_이동.png",
+          "timeout": 20.0,
+          "pre_click_delay": 0.5
+        },
+        {
+          "id": "18_monster",
+          "name": "18 빠른 이동 확인",
+          "image": "C:/Users/Jongseo Won/Desktop/auto/macro_images/common_routines/routine_1786798529717159800/18_빠른_이동_확인.png",
+          "timeout": 20.0,
+          "pre_click_delay": 0.5
+        },
+        {
+          "id": "21_auto",
+          "name": "21 AUTO",
+          "image": "images/21_auto.png",
+          "timeout": 20.0,
+          "delay_before": 20,
+          "pre_click_delay": 0.5
+        }
+      ]
+    }
+  },
+  "full_routines_v2": true
+}
