@@ -70,7 +70,8 @@
           },
           "fallbacks": {}
         }
-      }
+      },
+      "click_offsets": {}
     },
     "m1q2": {
       "enabled": true,
@@ -112,7 +113,8 @@
         "16_region": "images/quadrant_3/16_region.png",
         "17_hunting_ground": "images/quadrant_3/17_hunting_ground.png",
         "18_monster": "images/quadrant_3/18_monster.png",
-        "21_auto": "images/quadrant_3/21_auto.png"
+        "21_auto": "images/quadrant_3/21_auto.png",
+        "16_world": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_1/quadrant_3/16_world.png"
       },
       "fallbacks": {
         "15_world_map": [
@@ -138,7 +140,8 @@
           },
           "fallbacks": {}
         }
-      }
+      },
+      "click_offsets": {}
     },
     "m1q4": {
       "enabled": true,
@@ -146,7 +149,8 @@
         "11_potion": "images/quadrant_4/11_potion.png",
         "16_region": "images/quadrant_4/16_region.png",
         "17_hunting_ground": "images/quadrant_4/17_hunting_ground.png",
-        "18_monster": "images/quadrant_4/18_monster.png"
+        "18_monster": "images/quadrant_4/18_monster.png",
+        "16_world": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_1/quadrant_4/16_world.png"
       },
       "fallbacks": {
         "15_world_map": [
@@ -168,7 +172,8 @@
           },
           "fallbacks": {}
         }
-      }
+      },
+      "click_offsets": {}
     },
     "m2q1": {
       "enabled": true,
@@ -192,7 +197,8 @@
         "18_monster": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_1/18_monster.png",
         "19_quick_move": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/19_quick_move.png",
         "20_confirm": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/20_confirm.png",
-        "21_auto": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/21_auto.png"
+        "21_auto": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/21_auto.png",
+        "16_world": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_1/16_world.png"
       },
       "fallbacks": {
         "15_world_map": [
@@ -200,7 +206,7 @@
           310
         ]
       },
-      "post_routine_id": "routine_1786798529717159800",
+      "post_routine_id": "default_hunting",
       "routine_settings": {
         "routine_1786798529717159800": {
           "overrides": {
@@ -220,7 +226,8 @@
             "14_close_shop": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/14_close_shop.png",
             "21_auto": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/21_auto.png"
           },
-          "fallbacks": {}
+          "fallbacks": {},
+          "click_offsets": {}
         },
         "routine_1786800800481836700": {
           "overrides": {
@@ -242,7 +249,8 @@
           },
           "fallbacks": {}
         }
-      }
+      },
+      "click_offsets": {}
     },
     "m2q2": {
       "enabled": true,
@@ -521,7 +529,7 @@
       ]
     },
     "routine_1786798529717159800": {
-      "name": "새 전체 자동화 루틴",
+      "name": "모니터2 티리오사 무덤 이동석1 루틴",
       "steps": [
         {
           "id": "01_revive",
