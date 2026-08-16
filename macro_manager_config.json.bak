@@ -466,53 +466,43 @@
           "coordinate_from_target": true
         },
         {
-          "id": "16_world",
-          "name": "16 이동할 월드",
-          "image": "",
-          "timeout": 5.0,
-          "on_timeout": "skip",
-          "skip_count": 1,
-          "skip_if_no_image": true,
-          "pre_click_delay": 0.5
-        },
-        {
           "id": "16_region",
-          "name": "17 이동할 지역",
+          "name": "16 이동할 지역",
           "image": "",
           "timeout": 20.0,
           "pre_click_delay": 0.5
         },
         {
           "id": "17_hunting_ground",
-          "name": "18 이동할 사냥터",
+          "name": "17 이동할 사냥터",
           "image": "",
           "timeout": 20.0,
           "pre_click_delay": 0.5
         },
         {
           "id": "18_monster",
-          "name": "19 몬스터",
+          "name": "18 몬스터",
           "image": "",
           "timeout": 20.0,
           "pre_click_delay": 0.5
         },
         {
           "id": "19_quick_move",
-          "name": "20 빠른 이동",
+          "name": "19 빠른 이동",
           "image": "images/19_quick_move.png",
           "timeout": 15.0,
           "pre_click_delay": 0.5
         },
         {
           "id": "20_confirm",
-          "name": "21 빠른 이동 확인",
+          "name": "20 빠른 이동 확인",
           "image": "images/20_confirm.png",
           "timeout": 15.0,
           "pre_click_delay": 0.5
         },
         {
           "id": "21_auto",
-          "name": "22 AUTO",
+          "name": "21 AUTO",
           "image": "images/21_auto.png",
           "timeout": 30.0,
           "delay_before": 20,
@@ -664,6 +654,5 @@
       ]
     }
   },
-  "full_routines_v2": true,
-  "default_hunting_v3": true
+  "full_routines_v2": true
 }
