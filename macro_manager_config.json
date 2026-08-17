@@ -1,6 +1,6 @@
 {
   "threshold": 0.82,
-  "return_wait_seconds": 20.0,
+  "return_wait_seconds": 10.0,
   "pre_death_steps": [
     {
       "id": "potion_10",
@@ -36,7 +36,7 @@
       "id": "002_sandtimer",
       "name": "002 모래시계",
       "image": "images/002_sandtimer.png",
-      "timeout": 15.0,
+      "timeout": 3.0,
       "pre_click_delay": 0.5
     }
   ],
@@ -48,7 +48,9 @@
         "11_potion": "images/quadrant_1/11_potion.png",
         "16_region": "images/quadrant_1/16_region.png",
         "17_hunting_ground": "images/quadrant_1/17_hunting_ground.png",
-        "18_monster": "images/quadrant_1/18_monster.png"
+        "18_monster": "images/quadrant_1/18_monster.png",
+        "potion_10": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_1/quadrant_1/potion_10.png",
+        "home_icon": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_1/quadrant_1/home_icon.png"
       },
       "fallbacks": {
         "15_world_map": [
@@ -71,7 +73,8 @@
           "fallbacks": {}
         }
       },
-      "click_offsets": {}
+      "click_offsets": {},
+      "legacy_click_offsets": {}
     },
     "m1q2": {
       "enabled": true,
@@ -102,7 +105,8 @@
           "fallbacks": {}
         }
       },
-      "click_offsets": {}
+      "click_offsets": {},
+      "legacy_click_offsets": {}
     },
     "m1q3": {
       "enabled": true,
@@ -142,7 +146,8 @@
           "fallbacks": {}
         }
       },
-      "click_offsets": {}
+      "click_offsets": {},
+      "legacy_click_offsets": {}
     },
     "m1q4": {
       "enabled": true,
@@ -174,7 +179,8 @@
           "fallbacks": {}
         }
       },
-      "click_offsets": {}
+      "click_offsets": {},
+      "legacy_click_offsets": {}
     },
     "m2q1": {
       "enabled": true,
@@ -253,7 +259,8 @@
           "fallbacks": {}
         }
       },
-      "click_offsets": {}
+      "click_offsets": {},
+      "legacy_click_offsets": {}
     },
     "m2q2": {
       "enabled": true,
@@ -328,7 +335,8 @@
           "fallbacks": {}
         }
       },
-      "click_offsets": {}
+      "click_offsets": {},
+      "legacy_click_offsets": {}
     },
     "m2q3": {
       "enabled": false,
@@ -344,7 +352,8 @@
           "overrides": {},
           "fallbacks": {}
         }
-      }
+      },
+      "legacy_click_offsets": {}
     },
     "m2q4": {
       "enabled": false,
@@ -360,7 +369,8 @@
           "overrides": {},
           "fallbacks": {}
         }
-      }
+      },
+      "legacy_click_offsets": {}
     }
   },
   "post_routines": {

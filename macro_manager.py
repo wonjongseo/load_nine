@@ -459,6 +459,11 @@ def target_step_settings(target: dict, routine_id: str) -> tuple[dict, dict]:
     )
 
 
+def target_legacy_click_offsets(target: dict) -> dict:
+    # 사망 전/사망 후 진입 단계의 분면별 클릭 보정값
+    return target.setdefault("legacy_click_offsets", {})
+
+
 def target_click_offsets(target: dict, routine_id: str) -> dict:
     if routine_id == "default_hunting":
         return target.setdefault("click_offsets", {})
@@ -546,6 +551,8 @@ class MacroEngine:
         self.entry_stages: dict[str, str] = {}
         self.entry_deadlines: dict[str, float] = {}
         self.pre_death_stages: dict[str, str] = {}
+        # 물약 10개 감지 후 모래시계를 일정 시간 기다리기 위한 deadline입니다.
+        self.pre_death_deadlines: dict[str, float] = {}
         self.return_deadlines: dict[str, float] = {}
         # 한 분면에서 루틴을 시작하면 마지막 단계까지 다른 분면의
         # 클릭 루틴이 끼어들지 못하도록 현재 작업 대상을 잠급니다.
@@ -570,6 +577,7 @@ class MacroEngine:
         self.entry_stages.pop(key, None)
         self.entry_deadlines.pop(key, None)
         self.pre_death_stages.pop(key, None)
+        self.pre_death_deadlines.pop(key, None)
         self.return_deadlines.pop(key, None)
 
     def template(self, path: str) -> np.ndarray | None:
@@ -669,6 +677,7 @@ class MacroEngine:
                             target,
                             routine_id,
                         )
+                        legacy_click_offsets = target_legacy_click_offsets(target)
                         index = self.step_indexes.get(key, 0) % len(steps)
                         step = steps[index]
                         step_id = step["id"]
@@ -717,7 +726,90 @@ class MacroEngine:
                                 item["id"]: item
                                 for item in config.get("pre_death_steps", [])
                             }
+                            entry_steps = {
+                                item["id"]: item
+                                for item in config.get("entry_steps", [])
+                            }
                             pre_death_stage = self.pre_death_stages.get(key)
+                            if pre_death_stage == "sandtimer_wait":
+                                sandtimer = entry_steps.get("002_sandtimer")
+                                if not sandtimer:
+                                    self.pre_death_stages[key] = "home_icon"
+                                    self.pre_death_deadlines.pop(key, None)
+                                    self.app.set_row_status(
+                                        key,
+                                        "모래시계 설정 없음 → 집 아이콘 대기",
+                                    )
+                                    continue
+
+                                sandtimer_override = (
+                                    target.get("overrides", {}).get(
+                                        "002_sandtimer"
+                                    )
+                                    or ""
+                                )
+                                sandtimer_path = (
+                                    sandtimer_override
+                                    or sandtimer.get("image", "")
+                                )
+                                sandtimer_match = self.find(
+                                    gray,
+                                    sandtimer_path,
+                                    rect,
+                                ) if sandtimer_path else None
+
+                                if sandtimer_match:
+                                    time.sleep(
+                                        float(
+                                            sandtimer.get(
+                                                "pre_click_delay",
+                                                PRE_CLICK_DELAY,
+                                            )
+                                        )
+                                    )
+                                    click_x, click_y = self.configured_image_click_point(
+                                        sandtimer_match,
+                                        sandtimer_path,
+                                        {
+                                            **sandtimer,
+                                            "image_click_offset": legacy_click_offsets.get(
+                                                "002_sandtimer",
+                                                [0, 0],
+                                            ),
+                                        },
+                                    )
+                                    held_left_click(click_x, click_y)
+                                    self.pre_death_stages[key] = "back_button"
+                                    self.pre_death_deadlines.pop(key, None)
+                                    self.app.set_row_status(
+                                        key,
+                                        f"사망 전 모래시계 클릭 {click_x},{click_y} → 뒤로가기 대기",
+                                    )
+                                    continue
+
+                                if time.monotonic() >= self.pre_death_deadlines.get(
+                                    key,
+                                    0.0,
+                                ):
+                                    self.pre_death_stages[key] = "home_icon"
+                                    self.pre_death_deadlines.pop(key, None)
+                                    self.app.set_row_status(
+                                        key,
+                                        "사망 전 모래시계 미감지(timeout) → 뒤로가기 생략 → 집 아이콘 대기",
+                                    )
+                                    continue
+
+                                remaining = max(
+                                    0.0,
+                                    self.pre_death_deadlines.get(key, 0.0)
+                                    - time.monotonic(),
+                                )
+                                self.app.set_row_status(
+                                    key,
+                                    f"사망 전 모래시계 대기 {remaining:.1f}초",
+                                )
+                                continue
+
                             if pre_death_stage == "return_wait":
                                 remaining = self.return_deadlines.get(key, 0.0) - time.monotonic()
                                 if remaining > 0:
@@ -774,15 +866,23 @@ class MacroEngine:
                                             )
                                         )
                                     )
-                                    held_left_click(
-                                        action_match[0],
-                                        action_match[1],
+                                    click_x, click_y = self.configured_image_click_point(
+                                        action_match,
+                                        action_path,
+                                        {
+                                            **action_step,
+                                            "image_click_offset": legacy_click_offsets.get(
+                                                pre_death_stage,
+                                                [0, 0],
+                                            ),
+                                        },
                                     )
+                                    held_left_click(click_x, click_y)
                                     if pre_death_stage == "back_button":
                                         self.pre_death_stages[key] = "home_icon"
                                         self.app.set_row_status(
                                             key,
-                                            "뒤로가기 클릭 → 집 아이콘 대기",
+                                            f"뒤로가기 클릭 {click_x},{click_y} → 집 아이콘 대기",
                                         )
                                     else:
                                         wait_seconds = float(
@@ -797,7 +897,7 @@ class MacroEngine:
                                         )
                                         self.app.set_row_status(
                                             key,
-                                            f"집 아이콘 클릭 → {wait_seconds:g}초 대기",
+                                            f"집 아이콘 클릭 {click_x},{click_y} → {wait_seconds:g}초 대기",
                                         )
                                 else:
                                     self.app.set_row_status(
@@ -964,60 +1064,27 @@ class MacroEngine:
                                     ) if potion_path else None
                                     if potion_match:
                                         logging.info("%s 사망 전 귀환 루틴 시작", key)
-                                        entry_steps = {
-                                            item["id"]: item
-                                            for item in config.get(
-                                                "entry_steps",
-                                                [],
-                                            )
-                                        }
                                         sandtimer = entry_steps.get(
                                             "002_sandtimer",
                                             {},
                                         )
-                                        sandtimer_override = (
-                                            target.get("overrides", {}).get(
-                                                "002_sandtimer"
-                                            )
-                                            or ""
-                                        )
-                                        sandtimer_path = (
-                                            sandtimer_override
-                                            or sandtimer.get("image", "")
-                                        )
-                                        sandtimer_match = self.find(
-                                            gray,
-                                            sandtimer_path,
-                                            rect,
-                                        ) if sandtimer_path else None
-                                        if sandtimer_match:
-                                            time.sleep(
-                                                float(
-                                                    sandtimer.get(
-                                                        "pre_click_delay",
-                                                        PRE_CLICK_DELAY,
-                                                    )
+                                        timeout = max(
+                                            0.0,
+                                            float(
+                                                sandtimer.get(
+                                                    "timeout",
+                                                    3.0,
                                                 )
-                                            )
-                                            held_left_click(
-                                                sandtimer_match[0],
-                                                sandtimer_match[1],
-                                            )
-                                            self.pre_death_stages[key] = (
-                                                "back_button"
-                                            )
-                                            self.app.set_row_status(
-                                                key,
-                                                "물약 10개 + 002 감지 → 뒤로가기 대기",
-                                            )
-                                        else:
-                                            self.pre_death_stages[key] = (
-                                                "home_icon"
-                                            )
-                                            self.app.set_row_status(
-                                                key,
-                                                "물약 10개 감지 → 집 아이콘 대기",
-                                            )
+                                            ),
+                                        )
+                                        self.pre_death_stages[key] = "sandtimer_wait"
+                                        self.pre_death_deadlines[key] = (
+                                            time.monotonic() + timeout
+                                        )
+                                        self.app.set_row_status(
+                                            key,
+                                            f"물약 10개 감지 → 사망 전 모래시계 {timeout:g}초 대기",
+                                        )
                                         continue
                             if match:
                                 confirmed_match = self.confirm_after_delay(
@@ -1336,6 +1403,7 @@ class TargetEditor(tk.Toplevel):
             target,
             selected_routine_id,
         )
+        legacy_click_offsets = target_legacy_click_offsets(target)
         display_steps = [
             *((step, "legacy") for step in app.config.get("pre_death_steps", [])),
             *((step, "legacy") for step in app.config.get("entry_steps", [])),
@@ -1357,13 +1425,17 @@ class TargetEditor(tk.Toplevel):
             )
             point = fallbacks.get(sid) or ["", ""] if coordinate_step else ["", ""]
             x_var, y_var = tk.StringVar(value=str(point[0])), tk.StringVar(value=str(point[1]))
-            click_offset = routine_click_offsets.get(sid, [0, 0])
+            click_offsets = (
+                legacy_click_offsets
+                if scope == "legacy"
+                else routine_click_offsets
+            )
+            click_offset = click_offsets.get(sid, [0, 0])
             click_x_var = tk.StringVar(value=str(click_offset[0]))
             click_y_var = tk.StringVar(value=str(click_offset[1]))
-            # 사망 전/진입(legacy) 단계도 분면별 전용 이미지를 수정할 수 있어야 합니다.
-            # 클릭 보정은 기존처럼 전체 루틴 단계에서만 사용합니다.
+            # 이미지 기반 단계는 사망 전/진입 단계까지 모두 클릭 보정을 설정할 수 있습니다.
             image_editable = not coordinate_step
-            click_enabled = scope == "routine" and not coordinate_step
+            click_enabled = not coordinate_step
             stage_label = ttk.Label(
                 self.body,
                 text=f"{row_index}. {step['name']}",
@@ -1403,7 +1475,7 @@ class TargetEditor(tk.Toplevel):
                 self.body,
                 textvariable=click_y_var,
                 width=8,
-                state="disabled" if coordinate_step else "normal",
+                state="normal" if click_enabled else "disabled",
             ).grid(row=row_index, column=4)
             ttk.Entry(
                 self.body,
@@ -1553,6 +1625,9 @@ class TargetEditor(tk.Toplevel):
         routine_click_offsets = dict(
             target_click_offsets(target, routine_id)
         )
+        legacy_click_offsets = dict(
+            target_legacy_click_offsets(target)
+        )
         current_overrides, current_fallbacks = target_step_settings(
             target,
             routine_id,
@@ -1588,10 +1663,15 @@ class TargetEditor(tk.Toplevel):
                     click_y_text = row["click_y"].get().strip() or "0"
                     click_x = int(float(click_x_text))
                     click_y = int(float(click_y_text))
+                    click_offsets = (
+                        legacy_click_offsets
+                        if row["scope"] == "legacy"
+                        else routine_click_offsets
+                    )
                     if click_x or click_y:
-                        routine_click_offsets[row["id"]] = [click_x, click_y]
+                        click_offsets[row["id"]] = [click_x, click_y]
                     else:
-                        routine_click_offsets.pop(row["id"], None)
+                        click_offsets.pop(row["id"], None)
         except ValueError:
             messagebox.showerror("좌표 오류", "X와 Y에는 정수를 입력하세요.", parent=self)
             return
@@ -1599,6 +1679,7 @@ class TargetEditor(tk.Toplevel):
             legacy_overrides,
             legacy_fallbacks,
         )
+        target["legacy_click_offsets"] = legacy_click_offsets
         if routine_id == "default_hunting":
             target["overrides"], target["fallbacks"] = (
                 routine_overrides,

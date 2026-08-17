@@ -1,125 +1,58 @@
-from pathlib import Path
+from __future__ import annotations
+
+import json
 import shutil
 import sys
+from pathlib import Path
 
-def replace_once(text: str, old: str, new: str, label: str) -> str:
-    count = text.count(old)
-    if count != 1:
-        raise RuntimeError(f"{label}: 예상한 코드가 정확히 1개가 아닙니다. found={count}")
-    return text.replace(old, new, 1)
 
-def main():
+def main() -> None:
     repo = Path(sys.argv[1]).resolve() if len(sys.argv) > 1 else Path.cwd()
-    path = repo / "macro_manager.py"
+    config_file = repo / "macro_manager_config.json"
+    py_file = repo / "macro_manager.py"
 
-    if not path.exists():
+    if not config_file.exists():
         raise SystemExit(
-            "macro_manager.py가 있는 폴더에서 실행하거나 레포 경로를 지정하세요.\n"
-            '예: py update_target_editor_ui.py "C:\\\\Users\\\\Jongseo Won\\\\Desktop\\\\load_nine"'
+            "macro_manager_config.json이 있는 레포 폴더에서 실행하세요.\n"
+            '예: py set_return_wait_10s.py "C:\\\\Users\\\\Jongseo Won\\\\Desktop\\\\load_nine"'
         )
 
-    backup = path.with_suffix(".py.bak")
-    shutil.copy2(path, backup)
-    print(f"[BACKUP] {backup}")
+    shutil.copy2(config_file, config_file.with_suffix(".json.bak"))
 
-    text = path.read_text(encoding="utf-8")
+    data = json.loads(config_file.read_text(encoding="utf-8"))
+    data["return_wait_seconds"] = 10.0
 
-    old_headers = '''        headers = (
-            "단계 (클릭=캡처)",
-            "공용 이미지",
-            "현재 적용 이미지 (변경 시 분면 전용)",
-            "클릭 보정 X",
-            "Y",
-            "분면별 좌표 X (좌표 클릭만)",
-            "Y",
-            "",
-        )
-'''
-    new_headers = '''        headers = (
-            "단계 (클릭=캡처)",
-            "공용 이미지",
-            "현재 적용 이미지 (변경 시 분면 전용)",
-            "클릭 보정 X",
-            "Y",
-            "좌표 X",
-            "Y",
-            "",
-        )
-'''
-    text = replace_once(text, old_headers, new_headers, "좌표 헤더 축소")
+    config_file.write_text(
+        json.dumps(data, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
 
-    old_flags = '''            click_enabled = scope == "routine" and not coordinate_step
-'''
-    new_flags = '''            # 사망 전/진입(legacy) 단계도 분면별 전용 이미지를 수정할 수 있어야 합니다.
-            # 클릭 보정은 기존처럼 전체 루틴 단계에서만 사용합니다.
-            image_editable = not coordinate_step
-            click_enabled = scope == "routine" and not coordinate_step
-'''
-    text = replace_once(text, old_flags, new_flags, "legacy 이미지 편집 활성화")
+    # macro_manager.py에 20초 fallback이 하드코딩돼 있으면 10초로 맞춤
+    if py_file.exists():
+        text = py_file.read_text(encoding="utf-8")
+        changed = False
 
-    old_entry = '''            override_entry = ttk.Entry(
-                self.body,
-                textvariable=override_var,
-                width=75,
-                state="normal" if click_enabled else "disabled",
-            )
-'''
-    new_entry = '''            override_entry = ttk.Entry(
-                self.body,
-                textvariable=override_var,
-                width=75,
-                state="normal" if image_editable else "disabled",
-            )
-'''
-    text = replace_once(text, old_entry, new_entry, "이미지 Entry 활성화")
+        candidates = [
+            ('config.get("return_wait_seconds", 20.0)', 'config.get("return_wait_seconds", 10.0)'),
+            ("config.get('return_wait_seconds', 20.0)", "config.get('return_wait_seconds', 10.0)"),
+        ]
 
-    old_x = '''            ttk.Entry(
-                self.body,
-                textvariable=x_var,
-                width=8,
-                state="normal" if coordinate_step else "disabled",
-            ).grid(row=row_index, column=5)
-'''
-    new_x = '''            ttk.Entry(
-                self.body,
-                textvariable=x_var,
-                width=6,
-                state="normal" if coordinate_step else "disabled",
-            ).grid(row=row_index, column=5, padx=2)
-'''
-    text = replace_once(text, old_x, new_x, "좌표 X 폭 축소")
+        for old, new in candidates:
+            if old in text:
+                text = text.replace(old, new)
+                changed = True
 
-    old_y = '''            ttk.Entry(
-                self.body,
-                textvariable=y_var,
-                width=8,
-                state="normal" if coordinate_step else "disabled",
-            ).grid(row=row_index, column=6)
-'''
-    new_y = '''            ttk.Entry(
-                self.body,
-                textvariable=y_var,
-                width=6,
-                state="normal" if coordinate_step else "disabled",
-            ).grid(row=row_index, column=6, padx=2)
-'''
-    text = replace_once(text, old_y, new_y, "좌표 Y 폭 축소")
+        if changed:
+            shutil.copy2(py_file, py_file.with_suffix(".py.bak"))
+            compile(text, str(py_file), "exec")
+            py_file.write_text(text, encoding="utf-8")
 
-    old_button_state = '''            image_button_state = "disabled" if coordinate_step else "normal"
-'''
-    new_button_state = '''            image_button_state = "normal" if image_editable else "disabled"
-'''
-    text = replace_once(text, old_button_state, new_button_state, "이미지 버튼 활성화")
+    # JSON 유효성 재확인
+    json.loads(config_file.read_text(encoding="utf-8"))
 
-    compile(text, str(path), "exec")
-    path.write_text(text, encoding="utf-8")
+    print("[OK] 사망 전 집으로 클릭 후 대기시간 = 10초")
+    print("흐름: 집으로 클릭 -> 10초 대기 -> 02 메뉴")
 
-    print(f"[OK] {path} 수정 완료")
-    print("- 사망 전 물약 10개 감지 / 뒤로가기 / 집으로: 분면별 이미지 수정 가능")
-    print("- 분면별 좌표 헤더 축소")
-    print("- 좌표 입력칸 width 8 -> 6")
-    print("- macro_manager_config.json 변경 없음")
-    print("- Python syntax 검사 통과")
 
 if __name__ == "__main__":
     main()
