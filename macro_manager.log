@@ -374,3 +374,2531 @@ TypeError: cannot unpack non-iterable NoneType object
 2026-08-16 17:09:42,730 | INFO | m1q2 루틴 완료
 2026-08-16 17:09:43,535 | INFO | m2q2 루틴 진행 시작
 2026-08-16 17:09:43,697 | INFO | m2q2 루틴 완료
+2026-08-16 18:35:00,758 | INFO | m1q1 사망 진입 루틴 시작
+2026-08-16 18:35:03,130 | INFO | m1q1 사망 진입 루틴 시작
+2026-08-16 18:35:04,816 | INFO | m1q1 루틴 진행 시작
+2026-08-16 18:35:09,966 | INFO | m1q1 루틴 진행 시작
+2026-08-16 18:35:11,657 | INFO | m1q1 루틴 진행 시작
+2026-08-16 18:35:13,326 | INFO | m1q1 루틴 진행 시작
+2026-08-16 18:35:14,501 | INFO | m1q1 루틴 진행 시작
+2026-08-16 18:35:15,661 | INFO | m1q1 루틴 진행 시작
+2026-08-16 18:35:17,330 | INFO | m1q1 루틴 진행 시작
+2026-08-16 18:35:18,498 | INFO | m1q1 루틴 진행 시작
+2026-08-16 18:35:19,693 | INFO | m1q1 루틴 진행 시작
+2026-08-16 18:35:20,893 | INFO | m1q1 루틴 진행 시작
+2026-08-16 18:35:28,333 | INFO | m1q1 루틴 진행 시작
+2026-08-16 18:35:29,444 | INFO | m1q1 루틴 진행 시작
+2026-08-16 18:35:30,580 | INFO | m1q1 루틴 진행 시작
+2026-08-16 18:35:31,732 | INFO | m1q1 루틴 진행 시작
+2026-08-16 18:35:35,391 | INFO | m1q1 루틴 진행 시작
+2026-08-16 18:35:36,569 | INFO | m1q1 루틴 진행 시작
+2026-08-16 18:35:37,731 | INFO | m1q1 루틴 진행 시작
+2026-08-16 18:35:38,898 | INFO | m1q1 루틴 진행 시작
+2026-08-16 18:35:40,077 | INFO | m1q1 루틴 진행 시작
+2026-08-16 18:36:01,438 | INFO | m1q1 루틴 진행 시작
+2026-08-16 18:36:01,602 | INFO | m1q1 루틴 완료
+2026-08-16 19:03:41,953 | INFO | m1q3 사망 진입 루틴 시작
+2026-08-16 19:03:44,215 | INFO | m1q3 사망 진입 루틴 시작
+2026-08-16 19:03:45,849 | INFO | m1q3 루틴 진행 시작
+2026-08-16 19:03:53,274 | INFO | m1q3 루틴 진행 시작
+2026-08-16 19:03:54,946 | INFO | m1q3 루틴 진행 시작
+2026-08-16 19:03:57,481 | INFO | m1q3 루틴 진행 시작
+2026-08-16 19:03:58,625 | INFO | m1q3 루틴 진행 시작
+2026-08-16 19:03:59,813 | INFO | m1q3 루틴 진행 시작
+2026-08-16 19:04:01,415 | INFO | m1q3 루틴 진행 시작
+2026-08-16 19:04:02,563 | INFO | m1q3 루틴 진행 시작
+2026-08-16 19:04:03,749 | INFO | m1q3 루틴 진행 시작
+2026-08-16 19:04:04,908 | INFO | m1q3 루틴 진행 시작
+2026-08-16 19:04:11,461 | INFO | m1q3 루틴 진행 시작
+2026-08-16 19:04:12,614 | INFO | m1q3 루틴 진행 시작
+2026-08-16 19:04:13,729 | INFO | m1q3 루틴 진행 시작
+2026-08-16 19:04:14,877 | INFO | m1q3 루틴 진행 시작
+2026-08-16 19:04:18,543 | INFO | m1q3 루틴 진행 시작
+2026-08-16 19:04:19,717 | INFO | m1q3 루틴 진행 시작
+2026-08-16 19:04:20,880 | INFO | m1q3 루틴 진행 시작
+2026-08-16 19:04:22,050 | INFO | m1q3 루틴 진행 시작
+2026-08-16 19:04:23,173 | INFO | m1q3 루틴 진행 시작
+2026-08-16 19:04:24,307 | INFO | m1q3 루틴 진행 시작
+2026-08-16 19:04:45,577 | INFO | m1q3 루틴 진행 시작
+2026-08-16 19:04:45,740 | INFO | m1q3 루틴 완료
+2026-08-16 19:12:08,561 | INFO | m2q1 루틴 진행 시작
+2026-08-16 19:12:13,472 | INFO | m2q1 루틴 진행 시작
+2026-08-16 19:12:15,148 | INFO | m2q1 루틴 진행 시작
+2026-08-16 19:12:16,763 | INFO | m2q1 루틴 진행 시작
+2026-08-16 19:12:17,934 | INFO | m2q1 루틴 진행 시작
+2026-08-16 19:12:19,120 | INFO | m2q1 루틴 진행 시작
+2026-08-16 19:12:20,741 | INFO | m2q1 루틴 진행 시작
+2026-08-16 19:12:21,900 | INFO | m2q1 루틴 진행 시작
+2026-08-16 19:12:23,056 | INFO | m2q1 루틴 진행 시작
+2026-08-16 19:12:24,234 | INFO | m2q1 루틴 진행 시작
+2026-08-16 19:12:34,455 | INFO | m2q1 루틴 진행 시작
+2026-08-16 19:12:35,657 | INFO | m2q1 루틴 진행 시작
+2026-08-16 19:12:36,848 | INFO | m2q1 루틴 진행 시작
+2026-08-16 19:12:38,058 | INFO | m2q1 루틴 진행 시작
+2026-08-16 19:12:41,237 | INFO | m2q1 루틴 진행 시작
+2026-08-16 19:12:42,420 | INFO | m2q1 루틴 진행 시작
+2026-08-16 19:12:43,612 | INFO | m2q1 루틴 진행 시작
+2026-08-16 19:12:44,786 | INFO | m2q1 루틴 진행 시작
+2026-08-16 19:12:45,947 | INFO | m2q1 루틴 진행 시작
+2026-08-16 19:12:47,132 | INFO | m2q1 루틴 진행 시작
+2026-08-16 19:13:08,340 | INFO | m2q1 루틴 진행 시작
+2026-08-16 19:13:08,504 | INFO | m2q1 루틴 완료
+2026-08-16 19:46:50,079 | INFO | m1q3 사망 진입 루틴 시작
+2026-08-16 19:46:52,300 | INFO | m1q3 사망 진입 루틴 시작
+2026-08-16 19:46:53,982 | INFO | m1q3 루틴 진행 시작
+2026-08-16 19:47:01,313 | INFO | m1q3 루틴 진행 시작
+2026-08-16 19:47:02,948 | INFO | m1q3 루틴 진행 시작
+2026-08-16 19:47:04,962 | INFO | m1q3 루틴 진행 시작
+2026-08-16 19:47:06,114 | INFO | m1q3 루틴 진행 시작
+2026-08-16 19:47:07,249 | INFO | m1q3 루틴 진행 시작
+2026-08-16 19:47:09,298 | INFO | m1q3 루틴 진행 시작
+2026-08-16 19:47:10,472 | INFO | m1q3 루틴 진행 시작
+2026-08-16 19:47:11,646 | INFO | m1q3 루틴 진행 시작
+2026-08-16 19:47:12,811 | INFO | m1q3 루틴 진행 시작
+2026-08-16 19:47:18,149 | INFO | m1q3 루틴 진행 시작
+2026-08-16 19:47:19,280 | INFO | m1q3 루틴 진행 시작
+2026-08-16 19:47:20,392 | INFO | m1q3 루틴 진행 시작
+2026-08-16 19:47:21,528 | INFO | m1q3 루틴 진행 시작
+2026-08-16 19:47:25,030 | INFO | m1q3 루틴 진행 시작
+2026-08-16 19:47:26,199 | INFO | m1q3 루틴 진행 시작
+2026-08-16 19:47:28,274 | INFO | m1q3 루틴 진행 시작
+2026-08-16 19:47:29,438 | INFO | m1q3 루틴 진행 시작
+2026-08-16 19:47:30,613 | INFO | m1q3 루틴 진행 시작
+2026-08-16 19:47:31,778 | INFO | m1q3 루틴 진행 시작
+2026-08-16 19:47:53,044 | INFO | m1q3 루틴 진행 시작
+2026-08-16 19:47:53,215 | INFO | m1q3 루틴 완료
+2026-08-16 19:55:09,297 | INFO | m2q2 루틴 진행 시작
+2026-08-16 19:55:14,147 | INFO | m2q2 루틴 진행 시작
+2026-08-16 19:55:15,819 | INFO | m2q2 루틴 진행 시작
+2026-08-16 19:55:17,416 | INFO | m2q2 루틴 진행 시작
+2026-08-16 19:55:18,588 | INFO | m2q2 루틴 진행 시작
+2026-08-16 19:55:19,756 | INFO | m2q2 루틴 진행 시작
+2026-08-16 19:55:21,359 | INFO | m2q2 루틴 진행 시작
+2026-08-16 19:55:22,520 | INFO | m2q2 루틴 진행 시작
+2026-08-16 19:55:23,664 | INFO | m2q2 루틴 진행 시작
+2026-08-16 19:55:24,825 | INFO | m2q2 루틴 진행 시작
+2026-08-16 19:55:32,560 | INFO | m2q2 루틴 진행 시작
+2026-08-16 19:55:33,758 | INFO | m2q2 루틴 진행 시작
+2026-08-16 19:55:34,923 | INFO | m2q2 루틴 진행 시작
+2026-08-16 19:55:36,113 | INFO | m2q2 루틴 진행 시작
+2026-08-16 19:55:39,186 | INFO | m2q2 루틴 진행 시작
+2026-08-16 19:55:40,382 | INFO | m2q2 루틴 진행 시작
+2026-08-16 19:55:41,565 | INFO | m2q2 루틴 진행 시작
+2026-08-16 19:55:42,753 | INFO | m2q2 루틴 진행 시작
+2026-08-16 19:55:43,925 | INFO | m2q2 루틴 진행 시작
+2026-08-16 19:56:05,248 | INFO | m2q2 루틴 진행 시작
+2026-08-16 19:56:05,419 | INFO | m2q2 루틴 완료
+2026-08-16 20:28:05,957 | INFO | m2q1 사망 진입 루틴 시작
+2026-08-16 20:28:08,210 | INFO | m2q1 사망 진입 루틴 시작
+2026-08-16 20:28:10,400 | INFO | m2q1 루틴 진행 시작
+2026-08-16 20:28:15,785 | INFO | m2q1 루틴 진행 시작
+2026-08-16 20:28:17,454 | INFO | m2q1 루틴 진행 시작
+2026-08-16 20:28:19,044 | INFO | m2q1 루틴 진행 시작
+2026-08-16 20:28:20,228 | INFO | m2q1 루틴 진행 시작
+2026-08-16 20:28:21,399 | INFO | m2q1 루틴 진행 시작
+2026-08-16 20:28:23,436 | INFO | m2q1 루틴 진행 시작
+2026-08-16 20:28:24,601 | INFO | m2q1 루틴 진행 시작
+2026-08-16 20:28:25,768 | INFO | m2q1 루틴 진행 시작
+2026-08-16 20:28:26,937 | INFO | m2q1 루틴 진행 시작
+2026-08-16 20:28:33,066 | INFO | m2q1 루틴 진행 시작
+2026-08-16 20:28:34,241 | INFO | m2q1 루틴 진행 시작
+2026-08-16 20:28:35,408 | INFO | m2q1 루틴 진행 시작
+2026-08-16 20:28:36,583 | INFO | m2q1 루틴 진행 시작
+2026-08-16 20:28:39,658 | INFO | m2q1 루틴 진행 시작
+2026-08-16 20:28:40,833 | INFO | m2q1 루틴 진행 시작
+2026-08-16 20:28:42,022 | INFO | m2q1 루틴 진행 시작
+2026-08-16 20:28:43,207 | INFO | m2q1 루틴 진행 시작
+2026-08-16 20:28:44,361 | INFO | m2q1 루틴 진행 시작
+2026-08-16 20:28:45,525 | INFO | m2q1 루틴 진행 시작
+2026-08-16 20:29:06,904 | INFO | m2q1 루틴 진행 시작
+2026-08-16 20:29:07,076 | INFO | m2q1 루틴 완료
+2026-08-16 20:32:32,340 | INFO | m1q1 루틴 진행 시작
+2026-08-16 20:32:37,761 | INFO | m1q1 루틴 진행 시작
+2026-08-16 20:32:39,430 | INFO | m1q1 루틴 진행 시작
+2026-08-16 20:32:41,065 | INFO | m1q1 루틴 진행 시작
+2026-08-16 20:32:42,234 | INFO | m1q1 루틴 진행 시작
+2026-08-16 20:32:43,420 | INFO | m1q1 루틴 진행 시작
+2026-08-16 20:32:45,058 | INFO | m1q1 루틴 진행 시작
+2026-08-16 20:32:46,240 | INFO | m1q1 루틴 진행 시작
+2026-08-16 20:32:47,408 | INFO | m1q1 루틴 진행 시작
+2026-08-16 20:32:48,577 | INFO | m1q1 루틴 진행 시작
+2026-08-16 20:32:56,732 | INFO | m1q1 루틴 진행 시작
+2026-08-16 20:32:57,899 | INFO | m1q1 루틴 진행 시작
+2026-08-16 20:32:59,090 | INFO | m1q1 루틴 진행 시작
+2026-08-16 20:33:00,254 | INFO | m1q1 루틴 진행 시작
+2026-08-16 20:33:03,940 | INFO | m1q1 루틴 진행 시작
+2026-08-16 20:33:05,126 | INFO | m1q1 루틴 진행 시작
+2026-08-16 20:33:06,309 | INFO | m1q1 루틴 진행 시작
+2026-08-16 20:33:07,459 | INFO | m1q1 루틴 진행 시작
+2026-08-16 20:33:08,593 | INFO | m1q1 루틴 진행 시작
+2026-08-16 20:33:29,980 | INFO | m1q1 루틴 진행 시작
+2026-08-16 20:33:30,150 | INFO | m1q1 루틴 완료
+2026-08-16 20:59:56,223 | INFO | m1q3 사망 진입 루틴 시작
+2026-08-16 21:00:00,006 | INFO | m1q3 루틴 진행 시작
+2026-08-16 21:00:06,901 | INFO | m1q3 루틴 진행 시작
+2026-08-16 21:00:08,568 | INFO | m1q3 루틴 진행 시작
+2026-08-16 21:00:10,668 | INFO | m1q3 루틴 진행 시작
+2026-08-16 21:00:11,805 | INFO | m1q3 루틴 진행 시작
+2026-08-16 21:00:12,937 | INFO | m1q3 루틴 진행 시작
+2026-08-16 21:00:14,525 | INFO | m1q3 루틴 진행 시작
+2026-08-16 21:00:15,674 | INFO | m1q3 루틴 진행 시작
+2026-08-16 21:00:16,860 | INFO | m1q3 루틴 진행 시작
+2026-08-16 21:00:18,029 | INFO | m1q3 루틴 진행 시작
+2026-08-16 21:00:23,737 | INFO | m1q3 루틴 진행 시작
+2026-08-16 21:00:24,870 | INFO | m1q3 루틴 진행 시작
+2026-08-16 21:00:26,006 | INFO | m1q3 루틴 진행 시작
+2026-08-16 21:00:27,150 | INFO | m1q3 루틴 진행 시작
+2026-08-16 21:00:30,773 | INFO | m1q3 루틴 진행 시작
+2026-08-16 21:00:31,924 | INFO | m1q3 루틴 진행 시작
+2026-08-16 21:00:33,093 | INFO | m1q3 루틴 진행 시작
+2026-08-16 21:00:34,262 | INFO | m1q3 루틴 진행 시작
+2026-08-16 21:00:35,441 | INFO | m1q3 루틴 진행 시작
+2026-08-16 21:00:36,595 | INFO | m1q3 루틴 진행 시작
+2026-08-16 21:00:57,773 | INFO | m1q3 루틴 진행 시작
+2026-08-16 21:00:57,937 | INFO | m1q3 루틴 완료
+2026-08-16 21:17:39,398 | INFO | m1q4 사망 진입 루틴 시작
+2026-08-16 21:17:41,675 | INFO | m1q4 사망 진입 루틴 시작
+2026-08-16 21:17:43,349 | INFO | m1q4 루틴 진행 시작
+2026-08-16 21:17:50,577 | INFO | m1q4 루틴 진행 시작
+2026-08-16 21:17:52,195 | INFO | m1q4 루틴 진행 시작
+2026-08-16 21:17:53,834 | INFO | m1q4 루틴 진행 시작
+2026-08-16 21:17:54,968 | INFO | m1q4 루틴 진행 시작
+2026-08-16 21:17:56,136 | INFO | m1q4 루틴 진행 시작
+2026-08-16 21:17:57,772 | INFO | m1q4 루틴 진행 시작
+2026-08-16 21:17:58,938 | INFO | m1q4 루틴 진행 시작
+2026-08-16 21:18:00,103 | INFO | m1q4 루틴 진행 시작
+2026-08-16 21:18:01,271 | INFO | m1q4 루틴 진행 시작
+2026-08-16 21:18:07,766 | INFO | m1q4 루틴 진행 시작
+2026-08-16 21:18:08,931 | INFO | m1q4 루틴 진행 시작
+2026-08-16 21:18:10,096 | INFO | m1q4 루틴 진행 시작
+2026-08-16 21:18:11,235 | INFO | m1q4 루틴 진행 시작
+2026-08-16 21:18:14,937 | INFO | m1q4 루틴 진행 시작
+2026-08-16 21:18:16,082 | INFO | m1q4 루틴 진행 시작
+2026-08-16 21:18:17,256 | INFO | m1q4 루틴 진행 시작
+2026-08-16 21:18:18,411 | INFO | m1q4 루틴 진행 시작
+2026-08-16 21:18:19,543 | INFO | m1q4 루틴 진행 시작
+2026-08-16 21:18:20,676 | INFO | m1q4 루틴 진행 시작
+2026-08-16 21:18:42,165 | INFO | m1q4 루틴 진행 시작
+2026-08-16 21:18:42,332 | INFO | m1q4 루틴 완료
+2026-08-16 22:03:50,901 | INFO | m2q1 사망 진입 루틴 시작
+2026-08-16 22:03:54,295 | INFO | m2q1 루틴 진행 시작
+2026-08-16 22:03:59,643 | INFO | m2q1 루틴 진행 시작
+2026-08-16 22:04:01,334 | INFO | m2q1 루틴 진행 시작
+2026-08-16 22:04:02,937 | INFO | m2q1 루틴 진행 시작
+2026-08-16 22:04:04,104 | INFO | m2q1 루틴 진행 시작
+2026-08-16 22:04:05,291 | INFO | m2q1 루틴 진행 시작
+2026-08-16 22:04:05,749 | INFO | m1q2 사망 진입 루틴 시작
+2026-08-16 22:04:07,121 | INFO | m2q1 루틴 진행 시작
+2026-08-16 22:04:08,974 | INFO | m2q1 루틴 진행 시작
+2026-08-16 22:04:09,986 | INFO | m1q2 루틴 진행 시작
+2026-08-16 22:04:12,360 | INFO | m2q1 루틴 진행 시작
+2026-08-16 22:04:13,533 | INFO | m2q1 루틴 진행 시작
+2026-08-16 22:04:15,480 | INFO | m1q2 루틴 진행 시작
+2026-08-16 22:04:16,359 | INFO | m2q1 루틴 진행 시작
+2026-08-16 22:04:17,866 | INFO | m1q2 루틴 진행 시작
+2026-08-16 22:04:18,744 | INFO | m2q1 루틴 진행 시작
+2026-08-16 22:04:19,746 | INFO | m1q2 루틴 진행 시작
+2026-08-16 22:04:20,624 | INFO | m2q1 루틴 진행 시작
+2026-08-16 22:04:21,637 | INFO | m1q2 루틴 진행 시작
+2026-08-16 22:04:22,525 | INFO | m2q1 루틴 진행 시작
+2026-08-16 22:04:23,537 | INFO | m1q2 루틴 진행 시작
+2026-08-16 22:04:25,718 | INFO | m1q2 루틴 진행 시작
+2026-08-16 22:04:26,560 | INFO | m2q1 루틴 진행 시작
+2026-08-16 22:04:27,539 | INFO | m1q2 루틴 진행 시작
+2026-08-16 22:04:28,394 | INFO | m2q1 루틴 진행 시작
+2026-08-16 22:04:29,389 | INFO | m1q2 루틴 진행 시작
+2026-08-16 22:04:30,264 | INFO | m2q1 루틴 진행 시작
+2026-08-16 22:04:31,280 | INFO | m1q2 루틴 진행 시작
+2026-08-16 22:04:32,155 | INFO | m2q1 루틴 진행 시작
+2026-08-16 22:04:33,316 | INFO | m2q1 루틴 진행 시작
+2026-08-16 22:04:34,492 | INFO | m2q1 루틴 진행 시작
+2026-08-16 22:04:40,737 | INFO | m1q2 루틴 진행 시작
+2026-08-16 22:04:41,805 | INFO | m1q2 루틴 진행 시작
+2026-08-16 22:04:42,873 | INFO | m1q2 루틴 진행 시작
+2026-08-16 22:04:43,941 | INFO | m1q2 루틴 진행 시작
+2026-08-16 22:04:55,782 | INFO | m2q1 루틴 진행 시작
+2026-08-16 22:04:55,954 | INFO | m2q1 루틴 완료
+2026-08-16 22:08:01,282 | INFO | m1q2 루틴 진행 시작
+2026-08-16 22:08:02,415 | INFO | m1q2 루틴 진행 시작
+2026-08-16 22:08:03,550 | INFO | m1q2 루틴 진행 시작
+2026-08-16 22:08:04,682 | INFO | m1q2 루틴 진행 시작
+2026-08-16 22:08:05,818 | INFO | m1q2 루틴 진행 시작
+2026-08-16 22:08:27,017 | INFO | m1q2 루틴 진행 시작
+2026-08-16 22:08:27,177 | INFO | m1q2 루틴 완료
+2026-08-16 22:30:10,350 | INFO | m1q3 사망 진입 루틴 시작
+2026-08-16 22:30:12,620 | INFO | m1q3 사망 진입 루틴 시작
+2026-08-16 22:30:14,302 | INFO | m1q3 루틴 진행 시작
+2026-08-16 22:30:22,164 | INFO | m1q3 루틴 진행 시작
+2026-08-16 22:30:23,865 | INFO | m1q3 루틴 진행 시작
+2026-08-16 22:30:25,934 | INFO | m1q3 루틴 진행 시작
+2026-08-16 22:30:27,082 | INFO | m1q3 루틴 진행 시작
+2026-08-16 22:30:28,215 | INFO | m1q3 루틴 진행 시작
+2026-08-16 22:30:30,220 | INFO | m1q3 루틴 진행 시작
+2026-08-16 22:30:31,352 | INFO | m1q3 루틴 진행 시작
+2026-08-16 22:30:32,487 | INFO | m1q3 루틴 진행 시작
+2026-08-16 22:30:33,603 | INFO | m1q3 루틴 진행 시작
+2026-08-16 22:30:44,515 | INFO | m1q3 루틴 진행 시작
+2026-08-16 22:30:45,651 | INFO | m1q3 루틴 진행 시작
+2026-08-16 22:30:46,782 | INFO | m1q3 루틴 진행 시작
+2026-08-16 22:30:47,900 | INFO | m1q3 루틴 진행 시작
+2026-08-16 22:30:51,490 | INFO | m1q3 루틴 진행 시작
+2026-08-16 22:30:52,641 | INFO | m1q3 루틴 진행 시작
+2026-08-16 22:30:53,776 | INFO | m1q3 루틴 진행 시작
+2026-08-16 22:30:54,931 | INFO | m1q3 루틴 진행 시작
+2026-08-16 22:30:56,042 | INFO | m1q3 루틴 진행 시작
+2026-08-16 22:30:57,165 | INFO | m1q3 루틴 진행 시작
+2026-08-16 22:31:18,568 | INFO | m1q3 루틴 진행 시작
+2026-08-16 22:31:18,736 | INFO | m1q3 루틴 완료
+2026-08-16 22:42:05,052 | INFO | m1q1 루틴 진행 시작
+2026-08-16 22:42:12,375 | INFO | m1q1 루틴 진행 시작
+2026-08-16 22:42:14,034 | INFO | m1q1 루틴 진행 시작
+2026-08-16 22:42:15,669 | INFO | m1q1 루틴 진행 시작
+2026-08-16 22:42:16,840 | INFO | m1q1 루틴 진행 시작
+2026-08-16 22:42:18,006 | INFO | m1q1 루틴 진행 시작
+2026-08-16 22:42:19,638 | INFO | m1q1 루틴 진행 시작
+2026-08-16 22:42:20,801 | INFO | m1q1 루틴 진행 시작
+2026-08-16 22:42:21,934 | INFO | m1q1 루틴 진행 시작
+2026-08-16 22:42:23,110 | INFO | m1q1 루틴 진행 시작
+2026-08-16 22:42:33,115 | INFO | m1q1 루틴 진행 시작
+2026-08-16 22:42:34,270 | INFO | m1q1 루틴 진행 시작
+2026-08-16 22:42:35,438 | INFO | m1q1 루틴 진행 시작
+2026-08-16 22:42:36,603 | INFO | m1q1 루틴 진행 시작
+2026-08-16 22:42:40,240 | INFO | m1q1 루틴 진행 시작
+2026-08-16 22:42:41,407 | INFO | m1q1 루틴 진행 시작
+2026-08-16 22:42:42,595 | INFO | m1q1 루틴 진행 시작
+2026-08-16 22:42:43,761 | INFO | m1q1 루틴 진행 시작
+2026-08-16 22:42:44,928 | INFO | m1q1 루틴 진행 시작
+2026-08-16 22:43:06,170 | INFO | m1q1 루틴 진행 시작
+2026-08-16 22:43:06,337 | INFO | m1q1 루틴 완료
+2026-08-16 22:44:24,738 | ERROR | 모니터 1 / 1분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:24,786 | ERROR | 모니터 1 / 2분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:24,787 | ERROR | 모니터 1 / 3분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:24,788 | ERROR | 모니터 1 / 4분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:24,790 | ERROR | 모니터 2 / 1분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:24,790 | ERROR | 모니터 2 / 2분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:24,942 | ERROR | 모니터 1 / 1분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:24,943 | ERROR | 모니터 1 / 2분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:24,944 | ERROR | 모니터 1 / 3분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:24,945 | ERROR | 모니터 1 / 4분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:24,946 | ERROR | 모니터 2 / 1분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:24,947 | ERROR | 모니터 2 / 2분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:25,099 | ERROR | 모니터 1 / 1분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:25,100 | ERROR | 모니터 1 / 2분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:25,102 | ERROR | 모니터 1 / 3분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:25,103 | ERROR | 모니터 1 / 4분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:25,105 | ERROR | 모니터 2 / 1분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:25,106 | ERROR | 모니터 2 / 2분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:25,258 | ERROR | 모니터 1 / 1분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:25,259 | ERROR | 모니터 1 / 2분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:25,260 | ERROR | 모니터 1 / 3분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:25,260 | ERROR | 모니터 1 / 4분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:25,261 | ERROR | 모니터 2 / 1분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:25,262 | ERROR | 모니터 2 / 2분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:25,414 | ERROR | 모니터 1 / 1분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:25,415 | ERROR | 모니터 1 / 2분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:25,416 | ERROR | 모니터 1 / 3분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:25,417 | ERROR | 모니터 1 / 4분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:25,418 | ERROR | 모니터 2 / 1분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:25,419 | ERROR | 모니터 2 / 2분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:25,571 | ERROR | 모니터 1 / 1분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:25,572 | ERROR | 모니터 1 / 2분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:25,573 | ERROR | 모니터 1 / 3분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:25,574 | ERROR | 모니터 1 / 4분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:25,575 | ERROR | 모니터 2 / 1분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:25,576 | ERROR | 모니터 2 / 2분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:25,728 | ERROR | 모니터 1 / 1분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:25,729 | ERROR | 모니터 1 / 2분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:25,732 | ERROR | 모니터 1 / 3분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:25,734 | ERROR | 모니터 1 / 4분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:25,737 | ERROR | 모니터 2 / 1분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:25,739 | ERROR | 모니터 2 / 2분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:25,890 | ERROR | 모니터 1 / 1분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:25,892 | ERROR | 모니터 1 / 2분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:25,893 | ERROR | 모니터 1 / 3분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:25,894 | ERROR | 모니터 1 / 4분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:25,895 | ERROR | 모니터 2 / 1분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:25,896 | ERROR | 모니터 2 / 2분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:26,048 | ERROR | 모니터 1 / 1분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:26,049 | ERROR | 모니터 1 / 2분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:26,049 | ERROR | 모니터 1 / 3분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:26,051 | ERROR | 모니터 1 / 4분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:26,052 | ERROR | 모니터 2 / 1분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:26,053 | ERROR | 모니터 2 / 2분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:26,205 | ERROR | 모니터 1 / 1분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:26,206 | ERROR | 모니터 1 / 2분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:26,207 | ERROR | 모니터 1 / 3분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:26,208 | ERROR | 모니터 1 / 4분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:26,209 | ERROR | 모니터 2 / 1분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:26,210 | ERROR | 모니터 2 / 2분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:26,362 | ERROR | 모니터 1 / 1분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:26,363 | ERROR | 모니터 1 / 2분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:26,364 | ERROR | 모니터 1 / 3분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:26,365 | ERROR | 모니터 1 / 4분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:26,366 | ERROR | 모니터 2 / 1분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:26,367 | ERROR | 모니터 2 / 2분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:26,519 | ERROR | 모니터 1 / 1분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:26,519 | ERROR | 모니터 1 / 2분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:26,520 | ERROR | 모니터 1 / 3분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:26,521 | ERROR | 모니터 1 / 4분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:26,522 | ERROR | 모니터 2 / 1분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:26,523 | ERROR | 모니터 2 / 2분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:26,675 | ERROR | 모니터 1 / 1분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:26,676 | ERROR | 모니터 1 / 2분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:26,677 | ERROR | 모니터 1 / 3분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:26,678 | ERROR | 모니터 1 / 4분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:26,679 | ERROR | 모니터 2 / 1분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:26,679 | ERROR | 모니터 2 / 2분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:26,831 | ERROR | 모니터 1 / 1분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:26,833 | ERROR | 모니터 1 / 2분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:26,834 | ERROR | 모니터 1 / 3분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:26,835 | ERROR | 모니터 1 / 4분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:26,836 | ERROR | 모니터 2 / 1분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:26,837 | ERROR | 모니터 2 / 2분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:26,989 | ERROR | 모니터 1 / 1분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:26,990 | ERROR | 모니터 1 / 2분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:26,991 | ERROR | 모니터 1 / 3분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:26,992 | ERROR | 모니터 1 / 4분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:26,992 | ERROR | 모니터 2 / 1분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:26,993 | ERROR | 모니터 2 / 2분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:27,145 | ERROR | 모니터 1 / 1분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:27,146 | ERROR | 모니터 1 / 2분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:27,147 | ERROR | 모니터 1 / 3분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:27,148 | ERROR | 모니터 1 / 4분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:27,149 | ERROR | 모니터 2 / 1분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:27,150 | ERROR | 모니터 2 / 2분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:27,303 | ERROR | 모니터 1 / 1분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:27,304 | ERROR | 모니터 1 / 2분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:27,306 | ERROR | 모니터 1 / 3분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:27,307 | ERROR | 모니터 1 / 4분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:27,309 | ERROR | 모니터 2 / 1분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:27,310 | ERROR | 모니터 2 / 2분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:27,462 | ERROR | 모니터 1 / 1분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:27,463 | ERROR | 모니터 1 / 2분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:27,465 | ERROR | 모니터 1 / 3분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:27,466 | ERROR | 모니터 1 / 4분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:27,468 | ERROR | 모니터 2 / 1분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 22:44:27,469 | ERROR | 모니터 2 / 2분면 감시 오류
+Traceback (most recent call last):
+  File "C:\Users\Jongseo Won\Desktop\auto\macro_manager.py", line 712, in loop
+    frame = np.asarray(capture.grab(rect.as_mss()))
+                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\base.py", line 312, in grab
+    img_data_and_maybe_size = self._impl.grab(monitor)
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 380, in grab
+    gdi.BitBlt(memdc, 0, 0, width, height, srcdc, monitor["left"], monitor["top"], SRCCOPY | CAPTUREBLT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jongseo Won\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\mss\windows\gdi.py", line 127, in _errcheck
+    raise ScreenShotError(msg, details=details)
+mss.exception.ScreenShotError: Windows graphics function failed (no error provided): BitBlt
+2026-08-16 23:01:57,615 | INFO | m2q1 사망 진입 루틴 시작
+2026-08-16 23:02:01,063 | INFO | m2q1 루틴 진행 시작
+2026-08-16 23:02:06,468 | INFO | m2q1 루틴 진행 시작
+2026-08-16 23:02:08,106 | INFO | m2q1 루틴 진행 시작
+2026-08-16 23:02:09,705 | INFO | m2q1 루틴 진행 시작
+2026-08-16 23:02:10,873 | INFO | m2q1 루틴 진행 시작
+2026-08-16 23:02:12,068 | INFO | m2q1 루틴 진행 시작
+2026-08-16 23:02:13,686 | INFO | m2q1 루틴 진행 시작
+2026-08-16 23:02:14,833 | INFO | m2q1 루틴 진행 시작
+2026-08-16 23:02:16,013 | INFO | m2q1 루틴 진행 시작
+2026-08-16 23:02:17,171 | INFO | m2q1 루틴 진행 시작
+2026-08-16 23:02:26,782 | INFO | m2q1 루틴 진행 시작
+2026-08-16 23:02:27,961 | INFO | m2q1 루틴 진행 시작
+2026-08-16 23:02:29,148 | INFO | m2q1 루틴 진행 시작
+2026-08-16 23:02:30,332 | INFO | m2q1 루틴 진행 시작
+2026-08-16 23:02:33,412 | INFO | m2q1 루틴 진행 시작
+2026-08-16 23:02:34,568 | INFO | m2q1 루틴 진행 시작
+2026-08-16 23:02:35,758 | INFO | m2q1 루틴 진행 시작
+2026-08-16 23:02:36,912 | INFO | m2q1 루틴 진행 시작
+2026-08-16 23:02:38,083 | INFO | m2q1 루틴 진행 시작
+2026-08-16 23:02:39,243 | INFO | m2q1 루틴 진행 시작
+2026-08-16 23:03:00,692 | INFO | m2q1 루틴 진행 시작
+2026-08-16 23:03:00,857 | INFO | m2q1 루틴 완료
+2026-08-16 23:21:02,164 | INFO | m1q4 사망 진입 루틴 시작
+2026-08-16 23:21:04,483 | INFO | m1q4 사망 진입 루틴 시작
+2026-08-16 23:21:06,152 | INFO | m1q4 루틴 진행 시작
+2026-08-16 23:21:13,143 | INFO | m1q4 루틴 진행 시작
+2026-08-16 23:21:14,825 | INFO | m1q4 루틴 진행 시작
+2026-08-16 23:21:16,949 | INFO | m1q4 루틴 진행 시작
+2026-08-16 23:21:18,115 | INFO | m1q4 루틴 진행 시작
+2026-08-16 23:21:19,299 | INFO | m1q4 루틴 진행 시작
+2026-08-16 23:21:20,949 | INFO | m1q4 루틴 진행 시작
+2026-08-16 23:21:22,102 | INFO | m1q4 루틴 진행 시작
+2026-08-16 23:21:23,272 | INFO | m1q4 루틴 진행 시작
+2026-08-16 23:21:24,439 | INFO | m1q4 루틴 진행 시작
+2026-08-16 23:21:34,066 | INFO | m1q4 루틴 진행 시작
+2026-08-16 23:21:35,252 | INFO | m1q4 루틴 진행 시작
+2026-08-16 23:21:36,415 | INFO | m1q4 루틴 진행 시작
+2026-08-16 23:21:37,568 | INFO | m1q4 루틴 진행 시작
+2026-08-16 23:21:45,909 | INFO | m1q4 루틴 진행 시작
+2026-08-16 23:21:47,080 | INFO | m1q4 루틴 진행 시작
+2026-08-16 23:21:48,244 | INFO | m1q4 루틴 진행 시작
+2026-08-16 23:21:49,379 | INFO | m1q4 루틴 진행 시작
+2026-08-16 23:21:50,554 | INFO | m1q4 루틴 진행 시작
+2026-08-16 23:22:11,835 | INFO | m1q4 루틴 진행 시작
+2026-08-16 23:22:12,006 | INFO | m1q4 루틴 완료
+2026-08-16 23:33:23,959 | INFO | m1q3 사망 진입 루틴 시작
+2026-08-16 23:33:26,247 | INFO | m1q3 사망 진입 루틴 시작
+2026-08-16 23:33:27,914 | INFO | m1q3 루틴 진행 시작
+2026-08-16 23:33:36,279 | INFO | m1q3 루틴 진행 시작
+2026-08-16 23:33:37,946 | INFO | m1q3 루틴 진행 시작
+2026-08-16 23:33:40,046 | INFO | m1q3 루틴 진행 시작
+2026-08-16 23:33:41,196 | INFO | m1q3 루틴 진행 시작
+2026-08-16 23:33:42,365 | INFO | m1q3 루틴 진행 시작
+2026-08-16 23:33:44,002 | INFO | m1q3 루틴 진행 시작
+2026-08-16 23:33:45,204 | INFO | m1q3 루틴 진행 시작
+2026-08-16 23:33:46,372 | INFO | m1q3 루틴 진행 시작
+2026-08-16 23:33:47,521 | INFO | m1q3 루틴 진행 시작
+2026-08-16 23:33:56,832 | INFO | m1q3 루틴 진행 시작
+2026-08-16 23:33:58,014 | INFO | m1q3 루틴 진행 시작
+2026-08-16 23:33:59,199 | INFO | m1q3 루틴 진행 시작
+2026-08-16 23:34:00,367 | INFO | m1q3 루틴 진행 시작
+2026-08-16 23:34:04,106 | INFO | m1q3 루틴 진행 시작
+2026-08-16 23:34:05,309 | INFO | m1q3 루틴 진행 시작
+2026-08-16 23:34:06,490 | INFO | m1q3 루틴 진행 시작
+2026-08-16 23:34:07,657 | INFO | m1q3 루틴 진행 시작
+2026-08-16 23:34:08,829 | INFO | m1q3 루틴 진행 시작
+2026-08-16 23:34:10,026 | INFO | m1q3 루틴 진행 시작
+2026-08-16 23:34:31,498 | INFO | m1q3 루틴 진행 시작
+2026-08-16 23:34:31,668 | INFO | m1q3 루틴 완료
+2026-08-16 23:51:55,845 | INFO | m2q1 사망 진입 루틴 시작
+2026-08-16 23:51:59,748 | INFO | m2q1 루틴 진행 시작
+2026-08-16 23:52:05,047 | INFO | m2q1 루틴 진행 시작
+2026-08-16 23:52:06,734 | INFO | m2q1 루틴 진행 시작
+2026-08-16 23:52:08,347 | INFO | m2q1 루틴 진행 시작
+2026-08-16 23:52:09,533 | INFO | m2q1 루틴 진행 시작
+2026-08-16 23:52:10,704 | INFO | m2q1 루틴 진행 시작
+2026-08-16 23:52:12,753 | INFO | m2q1 루틴 진행 시작
+2026-08-16 23:52:13,925 | INFO | m2q1 루틴 진행 시작
+2026-08-16 23:52:15,102 | INFO | m2q1 루틴 진행 시작
+2026-08-16 23:52:16,260 | INFO | m2q1 루틴 진행 시작
+2026-08-16 23:52:21,511 | INFO | m2q1 루틴 진행 시작
+2026-08-16 23:52:22,720 | INFO | m2q1 루틴 진행 시작
+2026-08-16 23:52:23,903 | INFO | m2q1 루틴 진행 시작
+2026-08-16 23:52:25,088 | INFO | m2q1 루틴 진행 시작
+2026-08-16 23:52:28,192 | INFO | m2q1 루틴 진행 시작
+2026-08-16 23:52:29,374 | INFO | m2q1 루틴 진행 시작
+2026-08-16 23:52:30,538 | INFO | m2q1 루틴 진행 시작
+2026-08-16 23:52:31,717 | INFO | m2q1 루틴 진행 시작
+2026-08-16 23:52:32,896 | INFO | m2q1 루틴 진행 시작
+2026-08-16 23:52:34,076 | INFO | m2q1 루틴 진행 시작
+2026-08-16 23:52:55,485 | INFO | m2q1 루틴 진행 시작
+2026-08-16 23:52:55,646 | INFO | m2q1 루틴 완료
+2026-08-16 23:58:10,112 | INFO | m1q1 사망 진입 루틴 시작
+2026-08-16 23:58:12,434 | INFO | m1q1 사망 진입 루틴 시작
+2026-08-16 23:58:14,118 | INFO | m1q1 루틴 진행 시작
+2026-08-16 23:58:20,155 | INFO | m1q1 루틴 진행 시작
+2026-08-16 23:58:21,822 | INFO | m1q1 루틴 진행 시작
+2026-08-16 23:58:23,477 | INFO | m1q1 루틴 진행 시작
+2026-08-16 23:58:24,644 | INFO | m1q1 루틴 진행 시작
+2026-08-16 23:58:25,832 | INFO | m1q1 루틴 진행 시작
+2026-08-16 23:58:27,500 | INFO | m1q1 루틴 진행 시작
+2026-08-16 23:58:28,666 | INFO | m1q1 루틴 진행 시작
+2026-08-16 23:58:29,847 | INFO | m1q1 루틴 진행 시작
+2026-08-16 23:58:31,035 | INFO | m1q1 루틴 진행 시작
+2026-08-16 23:58:38,958 | INFO | m1q1 루틴 진행 시작
+2026-08-16 23:58:40,127 | INFO | m1q1 루틴 진행 시작
+2026-08-16 23:58:41,310 | INFO | m1q1 루틴 진행 시작
+2026-08-16 23:58:42,480 | INFO | m1q1 루틴 진행 시작
+2026-08-16 23:58:46,252 | INFO | m1q1 루틴 진행 시작
+2026-08-16 23:58:47,453 | INFO | m1q1 루틴 진행 시작
+2026-08-16 23:58:48,643 | INFO | m1q1 루틴 진행 시작
+2026-08-16 23:58:49,808 | INFO | m1q1 루틴 진행 시작
+2026-08-16 23:58:51,008 | INFO | m1q1 루틴 진행 시작
+2026-08-16 23:59:12,226 | INFO | m1q1 루틴 진행 시작
+2026-08-16 23:59:12,394 | INFO | m1q1 루틴 완료
+2026-08-17 00:42:48,405 | INFO | m1q3 사망 진입 루틴 시작
+2026-08-17 00:42:52,234 | INFO | m1q3 루틴 진행 시작
+2026-08-17 00:42:59,667 | INFO | m1q3 루틴 진행 시작
+2026-08-17 00:43:01,334 | INFO | m1q3 루틴 진행 시작
+2026-08-17 00:43:03,395 | INFO | m1q3 루틴 진행 시작
+2026-08-17 00:43:04,512 | INFO | m1q3 루틴 진행 시작
+2026-08-17 00:43:05,670 | INFO | m1q3 루틴 진행 시작
+2026-08-17 00:43:07,671 | INFO | m1q3 루틴 진행 시작
+2026-08-17 00:43:08,801 | INFO | m1q3 루틴 진행 시작
+2026-08-17 00:43:09,940 | INFO | m1q3 루틴 진행 시작
+2026-08-17 00:43:11,072 | INFO | m1q3 루틴 진행 시작
+2026-08-17 00:43:13,092 | INFO | m1q3 루틴 진행 시작
+2026-08-17 00:43:14,260 | INFO | m1q3 루틴 진행 시작
+2026-08-17 00:43:15,428 | INFO | m1q3 루틴 진행 시작
+2026-08-17 00:43:16,593 | INFO | m1q3 루틴 진행 시작
+2026-08-17 00:43:20,196 | INFO | m1q3 루틴 진행 시작
+2026-08-17 00:43:21,330 | INFO | m1q3 루틴 진행 시작
+2026-08-17 00:43:22,470 | INFO | m1q3 루틴 진행 시작
+2026-08-17 00:43:23,605 | INFO | m1q3 루틴 진행 시작
+2026-08-17 00:43:24,739 | INFO | m1q3 루틴 진행 시작
+2026-08-17 00:43:25,873 | INFO | m1q3 루틴 진행 시작
+2026-08-17 00:43:47,206 | INFO | m1q3 루틴 진행 시작
+2026-08-17 00:43:47,377 | INFO | m1q3 루틴 완료
+2026-08-17 00:46:22,241 | INFO | m2q1 사망 진입 루틴 시작
+2026-08-17 00:46:25,581 | INFO | m2q1 루틴 진행 시작
+2026-08-17 00:46:30,916 | INFO | m2q1 루틴 진행 시작
+2026-08-17 00:46:32,605 | INFO | m2q1 루틴 진행 시작
+2026-08-17 00:46:36,445 | INFO | m2q1 루틴 진행 시작
+2026-08-17 00:46:37,591 | INFO | m2q1 루틴 진행 시작
+2026-08-17 00:46:38,782 | INFO | m2q1 루틴 진행 시작
+2026-08-17 00:46:40,401 | INFO | m2q1 루틴 진행 시작
+2026-08-17 00:46:41,560 | INFO | m2q1 루틴 진행 시작
+2026-08-17 00:46:42,713 | INFO | m2q1 루틴 진행 시작
+2026-08-17 00:46:43,887 | INFO | m2q1 루틴 진행 시작
+2026-08-17 00:46:49,883 | INFO | m2q1 루틴 진행 시작
+2026-08-17 00:46:51,082 | INFO | m2q1 루틴 진행 시작
+2026-08-17 00:46:52,249 | INFO | m2q1 루틴 진행 시작
+2026-08-17 00:46:53,428 | INFO | m2q1 루틴 진행 시작
+2026-08-17 00:46:56,515 | INFO | m2q1 루틴 진행 시작
+2026-08-17 00:46:57,695 | INFO | m2q1 루틴 진행 시작
+2026-08-17 00:46:58,854 | INFO | m2q1 루틴 진행 시작
+2026-08-17 00:47:00,037 | INFO | m2q1 루틴 진행 시작
+2026-08-17 00:47:01,224 | INFO | m2q1 루틴 진행 시작
+2026-08-17 00:47:02,401 | INFO | m2q1 루틴 진행 시작
+2026-08-17 00:47:23,892 | INFO | m2q1 루틴 진행 시작
+2026-08-17 00:47:24,059 | INFO | m2q1 루틴 완료
+2026-08-17 00:56:57,154 | INFO | m2q2 루틴 진행 시작
+2026-08-17 00:57:02,601 | INFO | m2q2 루틴 진행 시작
+2026-08-17 00:57:04,269 | INFO | m2q2 루틴 진행 시작
+2026-08-17 00:57:05,893 | INFO | m2q2 루틴 진행 시작
+2026-08-17 00:57:07,064 | INFO | m2q2 루틴 진행 시작
+2026-08-17 00:57:08,229 | INFO | m2q2 루틴 진행 시작
+2026-08-17 00:57:09,840 | INFO | m2q2 루틴 진행 시작
+2026-08-17 00:57:11,031 | INFO | m2q2 루틴 진행 시작
+2026-08-17 00:57:12,194 | INFO | m2q2 루틴 진행 시작
+2026-08-17 00:57:13,364 | INFO | m2q2 루틴 진행 시작
+2026-08-17 00:57:15,874 | INFO | m2q2 루틴 진행 시작
+2026-08-17 00:57:17,048 | INFO | m2q2 루틴 진행 시작
+2026-08-17 00:57:18,239 | INFO | m2q2 루틴 진행 시작
+2026-08-17 00:57:19,424 | INFO | m2q2 루틴 진행 시작
+2026-08-17 00:57:22,462 | INFO | m2q2 루틴 진행 시작
+2026-08-17 00:57:23,643 | INFO | m2q2 루틴 진행 시작
+2026-08-17 00:57:24,807 | INFO | m2q2 루틴 진행 시작
+2026-08-17 00:57:25,955 | INFO | m2q2 루틴 진행 시작
+2026-08-17 00:57:27,103 | INFO | m2q2 루틴 진행 시작
+2026-08-17 00:57:48,292 | INFO | m2q2 루틴 진행 시작
+2026-08-17 00:57:48,463 | INFO | m2q2 루틴 완료
+2026-08-17 01:06:22,419 | INFO | m1q4 사망 진입 루틴 시작
+2026-08-17 01:06:24,708 | INFO | m1q4 사망 진입 루틴 시작
+2026-08-17 01:06:26,376 | INFO | m1q4 루틴 진행 시작
+2026-08-17 01:06:32,145 | INFO | m1q4 루틴 진행 시작
+2026-08-17 01:06:33,765 | INFO | m1q4 루틴 진행 시작
+2026-08-17 01:06:35,801 | INFO | m1q4 루틴 진행 시작
+2026-08-17 01:06:36,970 | INFO | m1q4 루틴 진행 시작
+2026-08-17 01:06:38,138 | INFO | m1q4 루틴 진행 시작
+2026-08-17 01:06:39,737 | INFO | m1q4 루틴 진행 시작
+2026-08-17 01:06:40,888 | INFO | m1q4 루틴 진행 시작
+2026-08-17 01:06:42,020 | INFO | m1q4 루틴 진행 시작
+2026-08-17 01:06:43,145 | INFO | m1q4 루틴 진행 시작
+2026-08-17 01:06:53,569 | INFO | m1q4 루틴 진행 시작
+2026-08-17 01:06:54,704 | INFO | m1q4 루틴 진행 시작
+2026-08-17 01:06:55,875 | INFO | m1q4 루틴 진행 시작
+2026-08-17 01:06:57,010 | INFO | m1q4 루틴 진행 시작
+2026-08-17 01:07:00,628 | INFO | m1q4 루틴 진행 시작
+2026-08-17 01:07:01,761 | INFO | m1q4 루틴 진행 시작
+2026-08-17 01:07:02,911 | INFO | m1q4 루틴 진행 시작
+2026-08-17 01:07:04,062 | INFO | m1q4 루틴 진행 시작
+2026-08-17 01:07:05,197 | INFO | m1q4 루틴 진행 시작
+2026-08-17 01:07:06,313 | INFO | m1q4 루틴 진행 시작
+2026-08-17 01:07:27,751 | INFO | m1q4 루틴 진행 시작
+2026-08-17 01:07:27,906 | INFO | m1q4 루틴 완료
+2026-08-17 01:35:26,865 | INFO | m2q1 사망 진입 루틴 시작
+2026-08-17 01:35:30,285 | INFO | m2q1 루틴 진행 시작
+2026-08-17 01:35:35,598 | INFO | m2q1 루틴 진행 시작
+2026-08-17 01:35:37,257 | INFO | m2q1 루틴 진행 시작
+2026-08-17 01:35:38,854 | INFO | m2q1 루틴 진행 시작
+2026-08-17 01:35:40,030 | INFO | m2q1 루틴 진행 시작
+2026-08-17 01:35:41,211 | INFO | m2q1 루틴 진행 시작
+2026-08-17 01:35:43,280 | INFO | m2q1 루틴 진행 시작
+2026-08-17 01:35:44,428 | INFO | m2q1 루틴 진행 시작
+2026-08-17 01:35:45,610 | INFO | m2q1 루틴 진행 시작
+2026-08-17 01:35:46,750 | INFO | m2q1 루틴 진행 시작
+2026-08-17 01:35:56,214 | INFO | m2q1 루틴 진행 시작
+2026-08-17 01:35:57,381 | INFO | m2q1 루틴 진행 시작
+2026-08-17 01:35:58,560 | INFO | m2q1 루틴 진행 시작
+2026-08-17 01:35:59,760 | INFO | m2q1 루틴 진행 시작
+2026-08-17 01:36:02,829 | INFO | m2q1 루틴 진행 시작
+2026-08-17 01:36:04,001 | INFO | m2q1 루틴 진행 시작
+2026-08-17 01:36:05,166 | INFO | m2q1 루틴 진행 시작
+2026-08-17 01:36:06,343 | INFO | m2q1 루틴 진행 시작
+2026-08-17 01:36:07,504 | INFO | m2q1 루틴 진행 시작
+2026-08-17 01:36:08,669 | INFO | m2q1 루틴 진행 시작
+2026-08-17 01:36:29,881 | INFO | m2q1 루틴 진행 시작
+2026-08-17 01:36:30,046 | INFO | m2q1 루틴 완료
+2026-08-17 01:41:11,225 | INFO | m1q3 사망 진입 루틴 시작
+2026-08-17 01:41:15,040 | INFO | m1q3 루틴 진행 시작
+2026-08-17 01:41:23,581 | INFO | m1q3 루틴 진행 시작
+2026-08-17 01:41:25,234 | INFO | m1q3 루틴 진행 시작
+2026-08-17 01:41:27,259 | INFO | m1q3 루틴 진행 시작
+2026-08-17 01:41:28,425 | INFO | m1q3 루틴 진행 시작
+2026-08-17 01:41:29,574 | INFO | m1q3 루틴 진행 시작
+2026-08-17 01:41:31,678 | INFO | m1q3 루틴 진행 시작
+2026-08-17 01:41:32,830 | INFO | m1q3 루틴 진행 시작
+2026-08-17 01:41:33,995 | INFO | m1q3 루틴 진행 시작
+2026-08-17 01:41:35,148 | INFO | m1q3 루틴 진행 시작
+2026-08-17 01:41:45,710 | INFO | m1q3 루틴 진행 시작
+2026-08-17 01:41:47,342 | INFO | m1q3 루틴 진행 시작
+2026-08-17 01:41:48,494 | INFO | m1q3 루틴 진행 시작
+2026-08-17 01:41:49,627 | INFO | m1q3 루틴 진행 시작
+2026-08-17 01:41:53,213 | INFO | m1q3 루틴 진행 시작
+2026-08-17 01:41:54,364 | INFO | m1q3 루틴 진행 시작
+2026-08-17 01:41:55,499 | INFO | m1q3 루틴 진행 시작
+2026-08-17 01:41:56,633 | INFO | m1q3 루틴 진행 시작
+2026-08-17 01:41:57,800 | INFO | m1q3 루틴 진행 시작
+2026-08-17 01:41:58,970 | INFO | m1q3 루틴 진행 시작
+2026-08-17 01:42:20,296 | INFO | m1q3 루틴 진행 시작
+2026-08-17 01:42:20,465 | INFO | m1q3 루틴 완료
+2026-08-17 02:04:48,663 | INFO | m1q2 사망 진입 루틴 시작
+2026-08-17 02:04:51,012 | INFO | m1q2 사망 진입 루틴 시작
+2026-08-17 02:04:52,683 | INFO | m1q2 루틴 진행 시작
+2026-08-17 02:04:58,590 | INFO | m1q2 루틴 진행 시작
+2026-08-17 02:05:00,258 | INFO | m1q2 루틴 진행 시작
+2026-08-17 02:05:01,898 | INFO | m1q2 루틴 진행 시작
+2026-08-17 02:05:03,065 | INFO | m1q2 루틴 진행 시작
+2026-08-17 02:05:04,230 | INFO | m1q2 루틴 진행 시작
+2026-08-17 02:05:05,834 | INFO | m1q2 루틴 진행 시작
+2026-08-17 02:05:06,982 | INFO | m1q2 루틴 진행 시작
+2026-08-17 02:05:08,102 | INFO | m1q2 루틴 진행 시작
+2026-08-17 02:05:09,219 | INFO | m1q2 루틴 진행 시작
+2026-08-17 02:05:11,222 | INFO | m1q2 루틴 진행 시작
+2026-08-17 02:05:12,367 | INFO | m1q2 루틴 진행 시작
+2026-08-17 02:05:13,487 | INFO | m1q2 루틴 진행 시작
+2026-08-17 02:05:14,636 | INFO | m1q2 루틴 진행 시작
+2026-08-17 02:05:18,227 | INFO | m1q2 루틴 진행 시작
+2026-08-17 02:05:19,394 | INFO | m1q2 루틴 진행 시작
+2026-08-17 02:05:20,511 | INFO | m1q2 루틴 진행 시작
+2026-08-17 02:05:21,647 | INFO | m1q2 루틴 진행 시작
+2026-08-17 02:05:22,799 | INFO | m1q2 루틴 진행 시작
+2026-08-17 02:05:44,289 | INFO | m1q2 루틴 진행 시작
+2026-08-17 02:05:44,460 | INFO | m1q2 루틴 완료
+2026-08-17 02:26:01,744 | INFO | m2q1 사망 진입 루틴 시작
+2026-08-17 02:26:05,213 | INFO | m2q1 루틴 진행 시작
+2026-08-17 02:26:10,493 | INFO | m2q1 루틴 진행 시작
+2026-08-17 02:26:12,158 | INFO | m2q1 루틴 진행 시작
+2026-08-17 02:26:13,754 | INFO | m2q1 루틴 진행 시작
+2026-08-17 02:26:14,939 | INFO | m2q1 루틴 진행 시작
+2026-08-17 02:26:16,126 | INFO | m2q1 루틴 진행 시작
+2026-08-17 02:26:18,160 | INFO | m2q1 루틴 진행 시작
+2026-08-17 02:26:19,326 | INFO | m2q1 루틴 진행 시작
+2026-08-17 02:26:20,492 | INFO | m2q1 루틴 진행 시작
+2026-08-17 02:26:21,645 | INFO | m2q1 루틴 진행 시작
+2026-08-17 02:26:32,164 | INFO | m2q1 루틴 진행 시작
+2026-08-17 02:26:33,341 | INFO | m2q1 루틴 진행 시작
+2026-08-17 02:26:34,529 | INFO | m2q1 루틴 진행 시작
+2026-08-17 02:26:35,713 | INFO | m2q1 루틴 진행 시작
+2026-08-17 02:26:38,789 | INFO | m2q1 루틴 진행 시작
+2026-08-17 02:26:39,972 | INFO | m2q1 루틴 진행 시작
+2026-08-17 02:26:41,153 | INFO | m2q1 루틴 진행 시작
+2026-08-17 02:26:42,339 | INFO | m2q1 루틴 진행 시작
+2026-08-17 02:26:43,489 | INFO | m2q1 루틴 진행 시작
+2026-08-17 02:26:44,658 | INFO | m2q1 루틴 진행 시작
+2026-08-17 02:27:05,957 | INFO | m2q1 루틴 진행 시작
+2026-08-17 02:27:06,121 | INFO | m2q1 루틴 완료
+2026-08-17 02:37:55,689 | INFO | m1q3 사망 진입 루틴 시작
+2026-08-17 02:37:59,376 | INFO | m1q3 루틴 진행 시작
+2026-08-17 02:38:08,320 | INFO | m1q3 루틴 진행 시작
+2026-08-17 02:38:09,957 | INFO | m1q3 루틴 진행 시작
+2026-08-17 02:38:12,023 | INFO | m1q3 루틴 진행 시작
+2026-08-17 02:38:13,194 | INFO | m1q3 루틴 진행 시작
+2026-08-17 02:38:14,358 | INFO | m1q3 루틴 진행 시작
+2026-08-17 02:38:15,958 | INFO | m1q3 루틴 진행 시작
+2026-08-17 02:38:17,112 | INFO | m1q3 루틴 진행 시작
+2026-08-17 02:38:18,260 | INFO | m1q3 루틴 진행 시작
+2026-08-17 02:38:19,394 | INFO | m1q3 루틴 진행 시작
+2026-08-17 02:38:28,593 | INFO | m1q3 루틴 진행 시작
+2026-08-17 02:38:29,708 | INFO | m1q3 루틴 진행 시작
+2026-08-17 02:38:30,857 | INFO | m1q3 루틴 진행 시작
+2026-08-17 02:38:32,013 | INFO | m1q3 루틴 진행 시작
+2026-08-17 02:38:35,594 | INFO | m1q3 루틴 진행 시작
+2026-08-17 02:38:36,751 | INFO | m1q3 루틴 진행 시작
+2026-08-17 02:38:37,899 | INFO | m1q3 루틴 진행 시작
+2026-08-17 02:38:39,051 | INFO | m1q3 루틴 진행 시작
+2026-08-17 02:38:40,185 | INFO | m1q3 루틴 진행 시작
+2026-08-17 02:38:41,318 | INFO | m1q3 루틴 진행 시작
+2026-08-17 02:39:02,760 | INFO | m1q3 루틴 진행 시작
+2026-08-17 02:39:02,932 | INFO | m1q3 루틴 완료
+2026-08-17 02:44:34,043 | INFO | m1q4 사망 진입 루틴 시작
+2026-08-17 02:44:37,896 | INFO | m1q4 루틴 진행 시작
+2026-08-17 02:44:44,340 | INFO | m1q4 루틴 진행 시작
+2026-08-17 02:44:46,006 | INFO | m1q4 루틴 진행 시작
+2026-08-17 02:44:47,640 | INFO | m1q4 루틴 진행 시작
+2026-08-17 02:44:48,808 | INFO | m1q4 루틴 진행 시작
+2026-08-17 02:44:49,977 | INFO | m1q4 루틴 진행 시작
+2026-08-17 02:44:51,610 | INFO | m1q4 루틴 진행 시작
+2026-08-17 02:44:52,778 | INFO | m1q4 루틴 진행 시작
+2026-08-17 02:44:53,948 | INFO | m1q4 루틴 진행 시작
+2026-08-17 02:44:55,116 | INFO | m1q4 루틴 진행 시작
+2026-08-17 02:45:04,709 | INFO | m1q4 루틴 진행 시작
+2026-08-17 02:45:05,876 | INFO | m1q4 루틴 진행 시작
+2026-08-17 02:45:07,043 | INFO | m1q4 루틴 진행 시작
+2026-08-17 02:45:08,211 | INFO | m1q4 루틴 진행 시작
+2026-08-17 02:45:11,915 | INFO | m1q4 루틴 진행 시작
+2026-08-17 02:45:13,050 | INFO | m1q4 루틴 진행 시작
+2026-08-17 02:45:14,198 | INFO | m1q4 루틴 진행 시작
+2026-08-17 02:45:15,370 | INFO | m1q4 루틴 진행 시작
+2026-08-17 02:45:16,536 | INFO | m1q4 루틴 진행 시작
+2026-08-17 02:45:17,704 | INFO | m1q4 루틴 진행 시작
+2026-08-17 02:45:38,925 | INFO | m1q4 루틴 진행 시작
+2026-08-17 02:45:39,097 | INFO | m1q4 루틴 완료
+2026-08-17 03:16:58,486 | INFO | m2q1 사망 진입 루틴 시작
+2026-08-17 03:17:01,897 | INFO | m2q1 루틴 진행 시작
+2026-08-17 03:17:07,284 | INFO | m2q1 루틴 진행 시작
+2026-08-17 03:17:08,960 | INFO | m2q1 루틴 진행 시작
+2026-08-17 03:17:10,561 | INFO | m2q1 루틴 진행 시작
+2026-08-17 03:17:11,727 | INFO | m2q1 루틴 진행 시작
+2026-08-17 03:17:12,909 | INFO | m2q1 루틴 진행 시작
+2026-08-17 03:17:14,511 | INFO | m2q1 루틴 진행 시작
+2026-08-17 03:17:15,694 | INFO | m2q1 루틴 진행 시작
+2026-08-17 03:17:16,843 | INFO | m2q1 루틴 진행 시작
+2026-08-17 03:17:18,011 | INFO | m2q1 루틴 진행 시작
+2026-08-17 03:17:24,495 | INFO | m2q1 루틴 진행 시작
+2026-08-17 03:17:25,671 | INFO | m2q1 루틴 진행 시작
+2026-08-17 03:17:26,860 | INFO | m2q1 루틴 진행 시작
+2026-08-17 03:17:28,042 | INFO | m2q1 루틴 진행 시작
+2026-08-17 03:17:31,123 | INFO | m2q1 루틴 진행 시작
+2026-08-17 03:17:32,282 | INFO | m2q1 루틴 진행 시작
+2026-08-17 03:17:33,412 | INFO | m2q1 루틴 진행 시작
+2026-08-17 03:17:34,599 | INFO | m2q1 루틴 진행 시작
+2026-08-17 03:17:35,754 | INFO | m2q1 루틴 진행 시작
+2026-08-17 03:17:36,919 | INFO | m2q1 루틴 진행 시작
+2026-08-17 03:17:58,237 | INFO | m2q1 루틴 진행 시작
+2026-08-17 03:17:58,404 | INFO | m2q1 루틴 완료
+2026-08-17 03:20:58,373 | INFO | m1q3 사망 진입 루틴 시작
+2026-08-17 03:21:02,097 | INFO | m1q3 루틴 진행 시작
+2026-08-17 03:21:09,885 | INFO | m1q3 루틴 진행 시작
+2026-08-17 03:21:11,519 | INFO | m1q3 루틴 진행 시작
+2026-08-17 03:21:13,975 | INFO | m1q3 루틴 진행 시작
+2026-08-17 03:21:15,126 | INFO | m1q3 루틴 진행 시작
+2026-08-17 03:21:16,276 | INFO | m1q3 루틴 진행 시작
+2026-08-17 03:21:17,896 | INFO | m1q3 루틴 진행 시작
+2026-08-17 03:21:19,063 | INFO | m1q3 루틴 진행 시작
+2026-08-17 03:21:20,233 | INFO | m1q3 루틴 진행 시작
+2026-08-17 03:21:21,383 | INFO | m1q3 루틴 진행 시작
+2026-08-17 03:21:23,420 | INFO | m1q3 루틴 진행 시작
+2026-08-17 03:21:24,585 | INFO | m1q3 루틴 진행 시작
+2026-08-17 03:21:25,750 | INFO | m1q3 루틴 진행 시작
+2026-08-17 03:21:26,920 | INFO | m1q3 루틴 진행 시작
+2026-08-17 03:21:30,491 | INFO | m1q3 루틴 진행 시작
+2026-08-17 03:21:31,626 | INFO | m1q3 루틴 진행 시작
+2026-08-17 03:21:32,797 | INFO | m1q3 루틴 진행 시작
+2026-08-17 03:21:33,928 | INFO | m1q3 루틴 진행 시작
+2026-08-17 03:21:35,064 | INFO | m1q3 루틴 진행 시작
+2026-08-17 03:21:36,196 | INFO | m1q3 루틴 진행 시작
+2026-08-17 03:21:57,489 | INFO | m1q3 루틴 진행 시작
+2026-08-17 03:21:57,657 | INFO | m1q3 루틴 완료
+2026-08-17 04:01:55,108 | INFO | m2q1 사망 진입 루틴 시작
+2026-08-17 04:01:58,949 | INFO | m2q1 루틴 진행 시작
+2026-08-17 04:02:04,275 | INFO | m2q1 루틴 진행 시작
+2026-08-17 04:02:05,947 | INFO | m2q1 루틴 진행 시작
+2026-08-17 04:02:07,547 | INFO | m2q1 루틴 진행 시작
+2026-08-17 04:02:08,716 | INFO | m2q1 루틴 진행 시작
+2026-08-17 04:02:09,905 | INFO | m2q1 루틴 진행 시작
+2026-08-17 04:02:11,968 | INFO | m2q1 루틴 진행 시작
+2026-08-17 04:02:13,134 | INFO | m2q1 루틴 진행 시작
+2026-08-17 04:02:14,285 | INFO | m2q1 루틴 진행 시작
+2026-08-17 04:02:15,432 | INFO | m2q1 루틴 진행 시작
+2026-08-17 04:02:26,003 | INFO | m2q1 루틴 진행 시작
+2026-08-17 04:02:27,169 | INFO | m2q1 루틴 진행 시작
+2026-08-17 04:02:28,356 | INFO | m2q1 루틴 진행 시작
+2026-08-17 04:02:29,536 | INFO | m2q1 루틴 진행 시작
+2026-08-17 04:02:32,623 | INFO | m2q1 루틴 진행 시작
+2026-08-17 04:02:33,818 | INFO | m2q1 루틴 진행 시작
+2026-08-17 04:02:35,009 | INFO | m2q1 루틴 진행 시작
+2026-08-17 04:02:36,181 | INFO | m2q1 루틴 진행 시작
+2026-08-17 04:02:37,360 | INFO | m2q1 루틴 진행 시작
+2026-08-17 04:02:38,543 | INFO | m2q1 루틴 진행 시작
+2026-08-17 04:02:59,947 | INFO | m2q1 루틴 진행 시작
+2026-08-17 04:03:00,115 | INFO | m2q1 루틴 완료
+2026-08-17 04:19:55,153 | INFO | m1q3 사망 진입 루틴 시작
+2026-08-17 04:19:58,955 | INFO | m1q3 루틴 진행 시작
+2026-08-17 04:20:06,778 | INFO | m1q3 루틴 진행 시작
+2026-08-17 04:20:08,427 | INFO | m1q3 루틴 진행 시작
+2026-08-17 04:20:10,496 | INFO | m1q3 루틴 진행 시작
+2026-08-17 04:20:11,633 | INFO | m1q3 루틴 진행 시작
+2026-08-17 04:20:12,788 | INFO | m1q3 루틴 진행 시작
+2026-08-17 04:20:14,400 | INFO | m1q3 루틴 진행 시작
+2026-08-17 04:20:15,525 | INFO | m1q3 루틴 진행 시작
+2026-08-17 04:20:16,657 | INFO | m1q3 루틴 진행 시작
+2026-08-17 04:20:17,791 | INFO | m1q3 루틴 진행 시작
+2026-08-17 04:20:20,747 | INFO | m1q3 루틴 진행 시작
+2026-08-17 04:20:21,880 | INFO | m1q3 루틴 진행 시작
+2026-08-17 04:20:23,012 | INFO | m1q3 루틴 진행 시작
+2026-08-17 04:20:24,144 | INFO | m1q3 루틴 진행 시작
+2026-08-17 04:20:27,697 | INFO | m1q3 루틴 진행 시작
+2026-08-17 04:20:28,851 | INFO | m1q3 루틴 진행 시작
+2026-08-17 04:20:29,988 | INFO | m1q3 루틴 진행 시작
+2026-08-17 04:20:31,122 | INFO | m1q3 루틴 진행 시작
+2026-08-17 04:20:32,287 | INFO | m1q3 루틴 진행 시작
+2026-08-17 04:20:33,425 | INFO | m1q3 루틴 진행 시작
+2026-08-17 04:20:54,793 | INFO | m1q3 루틴 진행 시작
+2026-08-17 04:20:54,965 | INFO | m1q3 루틴 완료
+2026-08-17 04:31:50,952 | INFO | m1q4 사망 진입 루틴 시작
+2026-08-17 04:31:53,272 | INFO | m1q4 사망 진입 루틴 시작
+2026-08-17 04:31:54,956 | INFO | m1q4 루틴 진행 시작
+2026-08-17 04:32:01,447 | INFO | m1q4 루틴 진행 시작
+2026-08-17 04:32:03,565 | INFO | m1q4 루틴 진행 시작
+2026-08-17 04:32:05,202 | INFO | m1q4 루틴 진행 시작
+2026-08-17 04:32:06,372 | INFO | m1q4 루틴 진행 시작
+2026-08-17 04:32:07,539 | INFO | m1q4 루틴 진행 시작
+2026-08-17 04:32:09,206 | INFO | m1q4 루틴 진행 시작
+2026-08-17 04:32:10,375 | INFO | m1q4 루틴 진행 시작
+2026-08-17 04:32:11,542 | INFO | m1q4 루틴 진행 시작
+2026-08-17 04:32:12,727 | INFO | m1q4 루틴 진행 시작
+2026-08-17 04:32:19,201 | INFO | m1q4 루틴 진행 시작
+2026-08-17 04:32:20,372 | INFO | m1q4 루틴 진행 시작
+2026-08-17 04:32:21,537 | INFO | m1q4 루틴 진행 시작
+2026-08-17 04:32:22,704 | INFO | m1q4 루틴 진행 시작
+2026-08-17 04:32:26,440 | INFO | m1q4 루틴 진행 시작
+2026-08-17 04:32:27,609 | INFO | m1q4 루틴 진행 시작
+2026-08-17 04:32:28,794 | INFO | m1q4 루틴 진행 시작
+2026-08-17 04:32:29,960 | INFO | m1q4 루틴 진행 시작
+2026-08-17 04:32:31,149 | INFO | m1q4 루틴 진행 시작
+2026-08-17 04:32:32,314 | INFO | m1q4 루틴 진행 시작
+2026-08-17 04:32:53,823 | INFO | m1q4 루틴 진행 시작
+2026-08-17 04:32:53,986 | INFO | m1q4 루틴 완료
+2026-08-17 04:55:44,059 | INFO | m2q1 사망 진입 루틴 시작
+2026-08-17 04:55:47,369 | INFO | m2q1 루틴 진행 시작
+2026-08-17 04:55:52,694 | INFO | m2q1 루틴 진행 시작
+2026-08-17 04:55:54,363 | INFO | m2q1 루틴 진행 시작
+2026-08-17 04:55:55,943 | INFO | m2q1 루틴 진행 시작
+2026-08-17 04:55:57,129 | INFO | m2q1 루틴 진행 시작
+2026-08-17 04:55:58,289 | INFO | m2q1 루틴 진행 시작
+2026-08-17 04:55:59,920 | INFO | m2q1 루틴 진행 시작
+2026-08-17 04:56:01,083 | INFO | m2q1 루틴 진행 시작
+2026-08-17 04:56:02,248 | INFO | m2q1 루틴 진행 시작
+2026-08-17 04:56:03,435 | INFO | m2q1 루틴 진행 시작
+2026-08-17 04:56:13,430 | INFO | m2q1 루틴 진행 시작
+2026-08-17 04:56:14,599 | INFO | m2q1 루틴 진행 시작
+2026-08-17 04:56:15,769 | INFO | m2q1 루틴 진행 시작
+2026-08-17 04:56:16,955 | INFO | m2q1 루틴 진행 시작
+2026-08-17 04:56:20,072 | INFO | m2q1 루틴 진행 시작
+2026-08-17 04:56:21,258 | INFO | m2q1 루틴 진행 시작
+2026-08-17 04:56:22,424 | INFO | m2q1 루틴 진행 시작
+2026-08-17 04:56:23,611 | INFO | m2q1 루틴 진행 시작
+2026-08-17 04:56:24,762 | INFO | m2q1 루틴 진행 시작
+2026-08-17 04:56:25,946 | INFO | m2q1 루틴 진행 시작
+2026-08-17 04:56:47,331 | INFO | m2q1 루틴 진행 시작
+2026-08-17 04:56:47,496 | INFO | m2q1 루틴 완료
+2026-08-17 05:12:26,186 | INFO | m1q3 사망 진입 루틴 시작
+2026-08-17 05:12:30,037 | INFO | m1q3 루틴 진행 시작
+2026-08-17 05:12:38,348 | INFO | m1q3 루틴 진행 시작
+2026-08-17 05:12:40,016 | INFO | m1q3 루틴 진행 시작
+2026-08-17 05:12:42,133 | INFO | m1q3 루틴 진행 시작
+2026-08-17 05:12:43,322 | INFO | m1q3 루틴 진행 시작
+2026-08-17 05:12:44,488 | INFO | m1q3 루틴 진행 시작
+2026-08-17 05:12:46,571 | INFO | m1q3 루틴 진행 시작
+2026-08-17 05:12:47,722 | INFO | m1q3 루틴 진행 시작
+2026-08-17 05:12:48,876 | INFO | m1q3 루틴 진행 시작
+2026-08-17 05:12:50,007 | INFO | m1q3 루틴 진행 시작
+2026-08-17 05:12:59,684 | INFO | m1q3 루틴 진행 시작
+2026-08-17 05:13:00,856 | INFO | m1q3 루틴 진행 시작
+2026-08-17 05:13:01,990 | INFO | m1q3 루틴 진행 시작
+2026-08-17 05:13:03,120 | INFO | m1q3 루틴 진행 시작
+2026-08-17 05:13:06,690 | INFO | m1q3 루틴 진행 시작
+2026-08-17 05:13:07,846 | INFO | m1q3 루틴 진행 시작
+2026-08-17 05:13:08,980 | INFO | m1q3 루틴 진행 시작
+2026-08-17 05:13:10,146 | INFO | m1q3 루틴 진행 시작
+2026-08-17 05:13:11,282 | INFO | m1q3 루틴 진행 시작
+2026-08-17 05:13:12,417 | INFO | m1q3 루틴 진행 시작
+2026-08-17 05:13:33,724 | INFO | m1q3 루틴 진행 시작
+2026-08-17 05:13:33,889 | INFO | m1q3 루틴 완료
+2026-08-17 05:27:55,545 | INFO | m1q2 사망 진입 루틴 시작
+2026-08-17 05:27:59,331 | INFO | m1q2 루틴 진행 시작
+2026-08-17 05:28:05,324 | INFO | m1q2 루틴 진행 시작
+2026-08-17 05:28:06,991 | INFO | m1q2 루틴 진행 시작
+2026-08-17 05:28:08,632 | INFO | m1q2 루틴 진행 시작
+2026-08-17 05:28:09,780 | INFO | m1q2 루틴 진행 시작
+2026-08-17 05:28:10,928 | INFO | m1q2 루틴 진행 시작
+2026-08-17 05:28:12,514 | INFO | m1q2 루틴 진행 시작
+2026-08-17 05:28:13,662 | INFO | m1q2 루틴 진행 시작
+2026-08-17 05:28:14,798 | INFO | m1q2 루틴 진행 시작
+2026-08-17 05:28:15,932 | INFO | m1q2 루틴 진행 시작
+2026-08-17 05:28:18,370 | INFO | m1q2 루틴 진행 시작
+2026-08-17 05:28:19,502 | INFO | m1q2 루틴 진행 시작
+2026-08-17 05:28:20,637 | INFO | m1q2 루틴 진행 시작
+2026-08-17 05:28:21,792 | INFO | m1q2 루틴 진행 시작
+2026-08-17 05:28:25,344 | INFO | m1q2 루틴 진행 시작
+2026-08-17 05:28:26,477 | INFO | m1q2 루틴 진행 시작
+2026-08-17 05:28:27,612 | INFO | m1q2 루틴 진행 시작
+2026-08-17 05:28:28,745 | INFO | m1q2 루틴 진행 시작
+2026-08-17 05:28:29,880 | INFO | m1q2 루틴 진행 시작
+2026-08-17 05:28:51,169 | INFO | m1q2 루틴 진행 시작
+2026-08-17 05:28:51,340 | INFO | m1q2 루틴 완료
+2026-08-17 05:50:41,896 | INFO | m2q1 사망 진입 루틴 시작
+2026-08-17 05:50:45,323 | INFO | m2q1 루틴 진행 시작
+2026-08-17 05:50:50,646 | INFO | m2q1 루틴 진행 시작
+2026-08-17 05:50:52,301 | INFO | m2q1 루틴 진행 시작
+2026-08-17 05:50:53,884 | INFO | m2q1 루틴 진행 시작
+2026-08-17 05:50:55,037 | INFO | m2q1 루틴 진행 시작
+2026-08-17 05:50:56,213 | INFO | m2q1 루틴 진행 시작
+2026-08-17 05:50:57,833 | INFO | m2q1 루틴 진행 시작
+2026-08-17 05:50:59,029 | INFO | m2q1 루틴 진행 시작
+2026-08-17 05:51:00,191 | INFO | m2q1 루틴 진행 시작
+2026-08-17 05:51:01,370 | INFO | m2q1 루틴 진행 시작
+2026-08-17 05:51:10,923 | INFO | m2q1 루틴 진행 시작
+2026-08-17 05:51:12,117 | INFO | m2q1 루틴 진행 시작
+2026-08-17 05:51:13,306 | INFO | m2q1 루틴 진행 시작
+2026-08-17 05:51:14,475 | INFO | m2q1 루틴 진행 시작
+2026-08-17 05:51:17,577 | INFO | m2q1 루틴 진행 시작
+2026-08-17 05:51:18,762 | INFO | m2q1 루틴 진행 시작
+2026-08-17 05:51:19,935 | INFO | m2q1 루틴 진행 시작
+2026-08-17 05:51:21,103 | INFO | m2q1 루틴 진행 시작
+2026-08-17 05:51:22,265 | INFO | m2q1 루틴 진행 시작
+2026-08-17 05:51:23,445 | INFO | m2q1 루틴 진행 시작
+2026-08-17 05:51:44,783 | INFO | m2q1 루틴 진행 시작
+2026-08-17 05:51:44,951 | INFO | m2q1 루틴 완료
+2026-08-17 06:17:09,256 | INFO | m1q1 사망 진입 루틴 시작
+2026-08-17 06:17:11,491 | INFO | m1q1 사망 진입 루틴 시작
+2026-08-17 06:17:13,147 | INFO | m1q1 루틴 진행 시작
+2026-08-17 06:17:19,585 | INFO | m1q1 루틴 진행 시작
+2026-08-17 06:17:21,237 | INFO | m1q1 루틴 진행 시작
+2026-08-17 06:17:22,871 | INFO | m1q1 루틴 진행 시작
+2026-08-17 06:17:24,041 | INFO | m1q1 루틴 진행 시작
+2026-08-17 06:17:25,208 | INFO | m1q1 루틴 진행 시작
+2026-08-17 06:17:26,841 | INFO | m1q1 루틴 진행 시작
+2026-08-17 06:17:28,008 | INFO | m1q1 루틴 진행 시작
+2026-08-17 06:17:29,126 | INFO | m1q1 루틴 진행 시작
+2026-08-17 06:17:30,279 | INFO | m1q1 루틴 진행 시작
+2026-08-17 06:17:33,699 | INFO | m1q1 루틴 진행 시작
+2026-08-17 06:17:34,815 | INFO | m1q1 루틴 진행 시작
+2026-08-17 06:17:35,965 | INFO | m1q1 루틴 진행 시작
+2026-08-17 06:17:37,083 | INFO | m1q1 루틴 진행 시작
+2026-08-17 06:17:40,657 | INFO | m1q1 루틴 진행 시작
+2026-08-17 06:17:41,824 | INFO | m1q1 루틴 진행 시작
+2026-08-17 06:17:42,974 | INFO | m1q1 루틴 진행 시작
+2026-08-17 06:17:44,126 | INFO | m1q1 루틴 진행 시작
+2026-08-17 06:17:45,293 | INFO | m1q1 루틴 진행 시작
+2026-08-17 06:18:06,735 | INFO | m1q1 루틴 진행 시작
+2026-08-17 06:18:06,902 | INFO | m1q1 루틴 완료
+2026-08-17 06:19:30,272 | INFO | m1q3 사망 진입 루틴 시작
+2026-08-17 06:19:33,942 | INFO | m1q3 루틴 진행 시작
+2026-08-17 06:19:41,668 | INFO | m1q3 루틴 진행 시작
+2026-08-17 06:19:43,320 | INFO | m1q3 루틴 진행 시작
+2026-08-17 06:19:45,374 | INFO | m1q3 루틴 진행 시작
+2026-08-17 06:19:46,523 | INFO | m1q3 루틴 진행 시작
+2026-08-17 06:19:47,675 | INFO | m1q3 루틴 진행 시작
+2026-08-17 06:19:49,692 | INFO | m1q3 루틴 진행 시작
+2026-08-17 06:19:50,826 | INFO | m1q3 루틴 진행 시작
+2026-08-17 06:19:51,998 | INFO | m1q3 루틴 진행 시작
+2026-08-17 06:19:53,145 | INFO | m1q3 루틴 진행 시작
+2026-08-17 06:20:03,576 | INFO | m1q3 루틴 진행 시작
+2026-08-17 06:20:04,724 | INFO | m1q3 루틴 진행 시작
+2026-08-17 06:20:05,861 | INFO | m1q3 루틴 진행 시작
+2026-08-17 06:20:07,026 | INFO | m1q3 루틴 진행 시작
+2026-08-17 06:20:10,731 | INFO | m1q3 루틴 진행 시작
+2026-08-17 06:20:11,903 | INFO | m1q3 루틴 진행 시작
+2026-08-17 06:20:13,083 | INFO | m1q3 루틴 진행 시작
+2026-08-17 06:20:14,250 | INFO | m1q3 루틴 진행 시작
+2026-08-17 06:20:15,418 | INFO | m1q3 루틴 진행 시작
+2026-08-17 06:20:16,586 | INFO | m1q3 루틴 진행 시작
+2026-08-17 06:20:37,880 | INFO | m1q3 루틴 진행 시작
+2026-08-17 06:20:38,043 | INFO | m1q3 루틴 완료
+2026-08-17 06:29:56,051 | INFO | m2q2 루틴 진행 시작
+2026-08-17 06:30:01,418 | INFO | m2q2 루틴 진행 시작
+2026-08-17 06:30:03,110 | INFO | m2q2 루틴 진행 시작
+2026-08-17 06:30:05,143 | INFO | m2q2 루틴 진행 시작
+2026-08-17 06:30:06,330 | INFO | m2q2 루틴 진행 시작
+2026-08-17 06:30:07,502 | INFO | m2q2 루틴 진행 시작
+2026-08-17 06:30:09,541 | INFO | m2q2 루틴 진행 시작
+2026-08-17 06:30:10,697 | INFO | m2q2 루틴 진행 시작
+2026-08-17 06:30:11,842 | INFO | m2q2 루틴 진행 시작
+2026-08-17 06:30:13,008 | INFO | m2q2 루틴 진행 시작
+2026-08-17 06:30:26,830 | INFO | m2q2 루틴 진행 시작
+2026-08-17 06:30:28,025 | INFO | m2q2 루틴 진행 시작
+2026-08-17 06:30:29,191 | INFO | m2q2 루틴 진행 시작
+2026-08-17 06:30:30,360 | INFO | m2q2 루틴 진행 시작
+2026-08-17 06:30:33,410 | INFO | m2q2 루틴 진행 시작
+2026-08-17 06:30:34,579 | INFO | m2q2 루틴 진행 시작
+2026-08-17 06:30:35,748 | INFO | m2q2 루틴 진행 시작
+2026-08-17 06:30:36,926 | INFO | m2q2 루틴 진행 시작
+2026-08-17 06:30:38,111 | INFO | m2q2 루틴 진행 시작
+2026-08-17 06:30:59,450 | INFO | m2q2 루틴 진행 시작
+2026-08-17 06:30:59,616 | INFO | m2q2 루틴 완료
+2026-08-17 06:32:43,808 | INFO | m1q4 사망 진입 루틴 시작
+2026-08-17 06:32:46,042 | INFO | m1q4 사망 진입 루틴 시작
+2026-08-17 06:32:47,699 | INFO | m1q4 루틴 진행 시작
+2026-08-17 06:32:54,953 | INFO | m1q4 루틴 진행 시작
+2026-08-17 06:32:56,587 | INFO | m1q4 루틴 진행 시작
+2026-08-17 06:32:58,639 | INFO | m1q4 루틴 진행 시작
+2026-08-17 06:32:59,773 | INFO | m1q4 루틴 진행 시작
+2026-08-17 06:33:00,907 | INFO | m1q4 루틴 진행 시작
+2026-08-17 06:33:02,500 | INFO | m1q4 루틴 진행 시작
+2026-08-17 06:33:03,662 | INFO | m1q4 루틴 진행 시작
+2026-08-17 06:33:04,795 | INFO | m1q4 루틴 진행 시작
+2026-08-17 06:33:05,932 | INFO | m1q4 루틴 진행 시작
+2026-08-17 06:33:15,541 | INFO | m1q4 루틴 진행 시작
+2026-08-17 06:33:16,675 | INFO | m1q4 루틴 진행 시작
+2026-08-17 06:33:17,808 | INFO | m1q4 루틴 진행 시작
+2026-08-17 06:33:18,941 | INFO | m1q4 루틴 진행 시작
+2026-08-17 06:33:22,467 | INFO | m1q4 루틴 진행 시작
+2026-08-17 06:33:23,648 | INFO | m1q4 루틴 진행 시작
+2026-08-17 06:33:24,783 | INFO | m1q4 루틴 진행 시작
+2026-08-17 06:33:25,918 | INFO | m1q4 루틴 진행 시작
+2026-08-17 06:33:27,074 | INFO | m1q4 루틴 진행 시작
+2026-08-17 06:33:28,219 | INFO | m1q4 루틴 진행 시작
+2026-08-17 06:33:49,762 | INFO | m1q4 루틴 진행 시작
+2026-08-17 06:33:49,930 | INFO | m1q4 루틴 완료
+2026-08-17 06:34:54,693 | INFO | m2q1 사망 진입 루틴 시작
+2026-08-17 06:34:58,005 | INFO | m2q1 루틴 진행 시작
+2026-08-17 06:35:03,312 | INFO | m2q1 루틴 진행 시작
+2026-08-17 06:35:04,979 | INFO | m2q1 루틴 진행 시작
+2026-08-17 06:35:06,596 | INFO | m2q1 루틴 진행 시작
+2026-08-17 06:35:07,765 | INFO | m2q1 루틴 진행 시작
+2026-08-17 06:35:08,937 | INFO | m2q1 루틴 진행 시작
+2026-08-17 06:35:10,554 | INFO | m2q1 루틴 진행 시작
+2026-08-17 06:35:11,704 | INFO | m2q1 루틴 진행 시작
+2026-08-17 06:35:12,887 | INFO | m2q1 루틴 진행 시작
+2026-08-17 06:35:14,068 | INFO | m2q1 루틴 진행 시작
+2026-08-17 06:35:20,195 | INFO | m2q1 루틴 진행 시작
+2026-08-17 06:35:21,384 | INFO | m2q1 루틴 진행 시작
+2026-08-17 06:35:22,588 | INFO | m2q1 루틴 진행 시작
+2026-08-17 06:35:23,764 | INFO | m2q1 루틴 진행 시작
+2026-08-17 06:35:26,864 | INFO | m2q1 루틴 진행 시작
+2026-08-17 06:35:28,046 | INFO | m2q1 루틴 진행 시작
+2026-08-17 06:35:29,224 | INFO | m2q1 루틴 진행 시작
+2026-08-17 06:35:30,391 | INFO | m2q1 루틴 진행 시작
+2026-08-17 06:35:31,543 | INFO | m2q1 루틴 진행 시작
+2026-08-17 06:35:32,722 | INFO | m2q1 루틴 진행 시작
+2026-08-17 06:35:54,258 | INFO | m2q1 루틴 진행 시작
+2026-08-17 06:35:54,425 | INFO | m2q1 루틴 완료
+2026-08-17 06:56:26,625 | INFO | m1q3 사망 진입 루틴 시작
+2026-08-17 06:56:30,512 | INFO | m1q3 루틴 진행 시작
+2026-08-17 06:56:39,703 | INFO | m1q3 루틴 진행 시작
+2026-08-17 06:56:41,372 | INFO | m1q3 루틴 진행 시작
+2026-08-17 06:56:43,941 | INFO | m1q3 루틴 진행 시작
+2026-08-17 06:56:45,078 | INFO | m1q3 루틴 진행 시작
+2026-08-17 06:56:46,214 | INFO | m1q3 루틴 진행 시작
+2026-08-17 06:56:48,216 | INFO | m1q3 루틴 진행 시작
+2026-08-17 06:56:49,365 | INFO | m1q3 루틴 진행 시작
+2026-08-17 06:56:50,495 | INFO | m1q3 루틴 진행 시작
+2026-08-17 06:56:51,632 | INFO | m1q3 루틴 진행 시작
+2026-08-17 06:56:57,606 | INFO | m1q3 루틴 진행 시작
+2026-08-17 06:56:58,722 | INFO | m1q3 루틴 진행 시작
+2026-08-17 06:56:59,879 | INFO | m1q3 루틴 진행 시작
+2026-08-17 06:57:01,022 | INFO | m1q3 루틴 진행 시작
+2026-08-17 06:57:04,580 | INFO | m1q3 루틴 진행 시작
+2026-08-17 06:57:05,715 | INFO | m1q3 루틴 진행 시작
+2026-08-17 06:57:06,883 | INFO | m1q3 루틴 진행 시작
+2026-08-17 06:57:08,035 | INFO | m1q3 루틴 진행 시작
+2026-08-17 06:57:09,166 | INFO | m1q3 루틴 진행 시작
+2026-08-17 06:57:10,300 | INFO | m1q3 루틴 진행 시작
+2026-08-17 06:57:31,691 | INFO | m1q3 루틴 진행 시작
+2026-08-17 06:57:31,858 | INFO | m1q3 루틴 완료
+2026-08-17 07:25:08,858 | INFO | m2q1 사망 진입 루틴 시작
+2026-08-17 07:25:12,286 | INFO | m2q1 루틴 진행 시작
+2026-08-17 07:25:17,586 | INFO | m2q1 루틴 진행 시작
+2026-08-17 07:25:19,266 | INFO | m2q1 루틴 진행 시작
+2026-08-17 07:25:20,890 | INFO | m2q1 루틴 진행 시작
+2026-08-17 07:25:22,035 | INFO | m2q1 루틴 진행 시작
+2026-08-17 07:25:23,209 | INFO | m2q1 루틴 진행 시작
+2026-08-17 07:25:24,789 | INFO | m2q1 루틴 진행 시작
+2026-08-17 07:25:25,978 | INFO | m2q1 루틴 진행 시작
+2026-08-17 07:25:27,123 | INFO | m2q1 루틴 진행 시작
+2026-08-17 07:25:28,312 | INFO | m2q1 루틴 진행 시작
+2026-08-17 07:25:34,858 | INFO | m2q1 루틴 진행 시작
+2026-08-17 07:25:36,033 | INFO | m2q1 루틴 진행 시작
+2026-08-17 07:25:37,196 | INFO | m2q1 루틴 진행 시작
+2026-08-17 07:25:38,374 | INFO | m2q1 루틴 진행 시작
+2026-08-17 07:25:41,495 | INFO | m2q1 루틴 진행 시작
+2026-08-17 07:25:42,669 | INFO | m2q1 루틴 진행 시작
+2026-08-17 07:25:43,859 | INFO | m2q1 루틴 진행 시작
+2026-08-17 07:25:45,050 | INFO | m2q1 루틴 진행 시작
+2026-08-17 07:25:46,215 | INFO | m2q1 루틴 진행 시작
+2026-08-17 07:25:47,365 | INFO | m2q1 루틴 진행 시작
+2026-08-17 07:26:08,701 | INFO | m2q1 루틴 진행 시작
+2026-08-17 07:26:08,866 | INFO | m2q1 루틴 완료
+2026-08-17 08:05:11,986 | INFO | m1q3 사망 진입 루틴 시작
+2026-08-17 08:05:15,841 | INFO | m1q3 루틴 진행 시작
+2026-08-17 08:05:24,136 | INFO | m1q3 루틴 진행 시작
+2026-08-17 08:05:25,806 | INFO | m1q3 루틴 진행 시작
+2026-08-17 08:05:27,888 | INFO | m1q3 루틴 진행 시작
+2026-08-17 08:05:29,042 | INFO | m1q3 루틴 진행 시작
+2026-08-17 08:05:30,212 | INFO | m1q3 루틴 진행 시작
+2026-08-17 08:05:32,216 | INFO | m1q3 루틴 진행 시작
+2026-08-17 08:05:33,361 | INFO | m1q3 루틴 진행 시작
+2026-08-17 08:05:34,514 | INFO | m1q3 루틴 진행 시작
+2026-08-17 08:05:35,653 | INFO | m1q3 루틴 진행 시작
+2026-08-17 08:05:46,217 | INFO | m1q3 루틴 진행 시작
+2026-08-17 08:05:47,383 | INFO | m1q3 루틴 진행 시작
+2026-08-17 08:05:48,515 | INFO | m1q3 루틴 진행 시작
+2026-08-17 08:05:49,651 | INFO | m1q3 루틴 진행 시작
+2026-08-17 08:05:53,241 | INFO | m1q3 루틴 진행 시작
+2026-08-17 08:05:54,387 | INFO | m1q3 루틴 진행 시작
+2026-08-17 08:05:55,539 | INFO | m1q3 루틴 진행 시작
+2026-08-17 08:05:56,690 | INFO | m1q3 루틴 진행 시작
+2026-08-17 08:05:57,844 | INFO | m1q3 루틴 진행 시작
+2026-08-17 08:05:58,992 | INFO | m1q3 루틴 진행 시작
+2026-08-17 08:06:20,456 | INFO | m1q3 루틴 진행 시작
+2026-08-17 08:06:20,624 | INFO | m1q3 루틴 완료
+2026-08-17 08:18:01,002 | INFO | m2q1 사망 진입 루틴 시작
+2026-08-17 08:18:04,374 | INFO | m2q1 루틴 진행 시작
+2026-08-17 08:18:09,679 | INFO | m2q1 루틴 진행 시작
+2026-08-17 08:18:11,343 | INFO | m2q1 루틴 진행 시작
+2026-08-17 08:18:12,930 | INFO | m2q1 루틴 진행 시작
+2026-08-17 08:18:14,099 | INFO | m2q1 루틴 진행 시작
+2026-08-17 08:18:15,289 | INFO | m2q1 루틴 진행 시작
+2026-08-17 08:18:17,355 | INFO | m2q1 루틴 진행 시작
+2026-08-17 08:18:18,517 | INFO | m2q1 루틴 진행 시작
+2026-08-17 08:18:19,685 | INFO | m2q1 루틴 진행 시작
+2026-08-17 08:18:20,854 | INFO | m2q1 루틴 진행 시작
+2026-08-17 08:18:26,471 | INFO | m2q1 루틴 진행 시작
+2026-08-17 08:18:27,634 | INFO | m2q1 루틴 진행 시작
+2026-08-17 08:18:28,818 | INFO | m2q1 루틴 진행 시작
+2026-08-17 08:18:30,002 | INFO | m2q1 루틴 진행 시작
+2026-08-17 08:18:33,107 | INFO | m2q1 루틴 진행 시작
+2026-08-17 08:18:34,289 | INFO | m2q1 루틴 진행 시작
+2026-08-17 08:18:35,456 | INFO | m2q1 루틴 진행 시작
+2026-08-17 08:18:36,633 | INFO | m2q1 루틴 진행 시작
+2026-08-17 08:18:37,809 | INFO | m2q1 루틴 진행 시작
+2026-08-17 08:18:38,979 | INFO | m2q1 루틴 진행 시작
+2026-08-17 08:19:00,312 | INFO | m2q1 루틴 진행 시작
+2026-08-17 08:19:00,470 | INFO | m2q1 루틴 완료
+2026-08-17 08:21:39,155 | INFO | m1q1 사망 진입 루틴 시작
+2026-08-17 08:21:41,472 | INFO | m1q1 사망 진입 루틴 시작
+2026-08-17 08:21:43,174 | INFO | m1q1 루틴 진행 시작
+2026-08-17 08:21:49,316 | INFO | m1q1 루틴 진행 시작
+2026-08-17 08:21:50,984 | INFO | m1q1 루틴 진행 시작
+2026-08-17 08:21:52,637 | INFO | m1q1 루틴 진행 시작
+2026-08-17 08:21:53,839 | INFO | m1q1 루틴 진행 시작
+2026-08-17 08:21:55,025 | INFO | m1q1 루틴 진행 시작
+2026-08-17 08:21:56,674 | INFO | m1q1 루틴 진행 시작
+2026-08-17 08:21:57,846 | INFO | m1q1 루틴 진행 시작
+2026-08-17 08:21:59,014 | INFO | m1q1 루틴 진행 시작
+2026-08-17 08:22:00,200 | INFO | m1q1 루틴 진행 시작
+2026-08-17 08:22:07,276 | INFO | m1q1 루틴 진행 시작
+2026-08-17 08:22:08,457 | INFO | m1q1 루틴 진행 시작
+2026-08-17 08:22:09,641 | INFO | m1q1 루틴 진행 시작
+2026-08-17 08:22:10,792 | INFO | m1q1 루틴 진행 시작
+2026-08-17 08:22:14,538 | INFO | m1q1 루틴 진행 시작
+2026-08-17 08:22:15,716 | INFO | m1q1 루틴 진행 시작
+2026-08-17 08:22:16,907 | INFO | m1q1 루틴 진행 시작
+2026-08-17 08:22:18,108 | INFO | m1q1 루틴 진행 시작
+2026-08-17 08:22:19,308 | INFO | m1q1 루틴 진행 시작
+2026-08-17 08:22:40,618 | INFO | m1q1 루틴 진행 시작
+2026-08-17 08:22:40,780 | INFO | m1q1 루틴 완료
+2026-08-17 08:26:01,835 | INFO | m1q4 사망 진입 루틴 시작
+2026-08-17 08:26:04,123 | INFO | m1q4 사망 진입 루틴 시작
+2026-08-17 08:26:05,825 | INFO | m1q4 루틴 진행 시작
+2026-08-17 08:26:11,467 | INFO | m1q4 루틴 진행 시작
+2026-08-17 08:26:13,135 | INFO | m1q4 루틴 진행 시작
+2026-08-17 08:26:14,770 | INFO | m1q4 루틴 진행 시작
+2026-08-17 08:26:15,936 | INFO | m1q4 루틴 진행 시작
+2026-08-17 08:26:17,122 | INFO | m1q4 루틴 진행 시작
+2026-08-17 08:26:18,809 | INFO | m1q4 루틴 진행 시작
+2026-08-17 08:26:20,012 | INFO | m1q4 루틴 진행 시작
+2026-08-17 08:26:21,199 | INFO | m1q4 루틴 진행 시작
+2026-08-17 08:26:22,384 | INFO | m1q4 루틴 진행 시작
+2026-08-17 08:26:33,696 | INFO | m1q4 루틴 진행 시작
+2026-08-17 08:26:34,862 | INFO | m1q4 루틴 진행 시작
+2026-08-17 08:26:36,049 | INFO | m1q4 루틴 진행 시작
+2026-08-17 08:26:37,247 | INFO | m1q4 루틴 진행 시작
+2026-08-17 08:26:41,021 | INFO | m1q4 루틴 진행 시작
+2026-08-17 08:26:42,205 | INFO | m1q4 루틴 진행 시작
+2026-08-17 08:26:43,405 | INFO | m1q4 루틴 진행 시작
+2026-08-17 08:26:44,597 | INFO | m1q4 루틴 진행 시작
+2026-08-17 08:26:45,797 | INFO | m1q4 루틴 진행 시작
+2026-08-17 08:26:46,963 | INFO | m1q4 루틴 진행 시작
+2026-08-17 08:27:08,174 | INFO | m1q4 루틴 진행 시작
+2026-08-17 08:27:08,340 | INFO | m1q4 루틴 완료
+2026-08-17 09:04:27,626 | INFO | m2q1 사망 진입 루틴 시작
+2026-08-17 09:04:30,986 | INFO | m2q1 루틴 진행 시작
+2026-08-17 09:04:37,362 | INFO | m2q1 루틴 진행 시작
+2026-08-17 09:04:39,044 | INFO | m2q1 루틴 진행 시작
+2026-08-17 09:04:40,682 | INFO | m2q1 루틴 진행 시작
+2026-08-17 09:04:41,866 | INFO | m2q1 루틴 진행 시작
+2026-08-17 09:04:43,054 | INFO | m2q1 루틴 진행 시작
+2026-08-17 09:04:45,136 | INFO | m2q1 루틴 진행 시작
+2026-08-17 09:04:46,322 | INFO | m2q1 루틴 진행 시작
+2026-08-17 09:04:47,489 | INFO | m2q1 루틴 진행 시작
+2026-08-17 09:04:48,662 | INFO | m2q1 루틴 진행 시작
+2026-08-17 09:04:50,317 | INFO | m2q1 루틴 진행 시작
+2026-08-17 09:04:51,520 | INFO | m2q1 루틴 진행 시작
+2026-08-17 09:04:52,699 | INFO | m2q1 루틴 진행 시작
+2026-08-17 09:04:53,895 | INFO | m2q1 루틴 진행 시작
+2026-08-17 09:04:57,033 | INFO | m2q1 루틴 진행 시작
+2026-08-17 09:04:58,222 | INFO | m2q1 루틴 진행 시작
+2026-08-17 09:04:59,415 | INFO | m2q1 루틴 진행 시작
+2026-08-17 09:05:00,612 | INFO | m2q1 루틴 진행 시작
+2026-08-17 09:05:01,804 | INFO | m2q1 루틴 진행 시작
+2026-08-17 09:05:02,987 | INFO | m2q1 루틴 진행 시작
+2026-08-17 09:05:24,376 | INFO | m2q1 루틴 진행 시작
+2026-08-17 09:05:24,540 | INFO | m2q1 루틴 완료

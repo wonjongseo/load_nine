@@ -1319,7 +1319,7 @@ class TargetEditor(tk.Toplevel):
             "현재 적용 이미지 (변경 시 분면 전용)",
             "클릭 보정 X",
             "Y",
-            "분면별 좌표 X (좌표 클릭만)",
+            "좌표 X",
             "Y",
             "",
         )
@@ -1360,6 +1360,9 @@ class TargetEditor(tk.Toplevel):
             click_offset = routine_click_offsets.get(sid, [0, 0])
             click_x_var = tk.StringVar(value=str(click_offset[0]))
             click_y_var = tk.StringVar(value=str(click_offset[1]))
+            # 사망 전/진입(legacy) 단계도 분면별 전용 이미지를 수정할 수 있어야 합니다.
+            # 클릭 보정은 기존처럼 전체 루틴 단계에서만 사용합니다.
+            image_editable = not coordinate_step
             click_enabled = scope == "routine" and not coordinate_step
             stage_label = ttk.Label(
                 self.body,
@@ -1387,7 +1390,7 @@ class TargetEditor(tk.Toplevel):
                 self.body,
                 textvariable=override_var,
                 width=75,
-                state="normal" if click_enabled else "disabled",
+                state="normal" if image_editable else "disabled",
             )
             override_entry.grid(row=row_index, column=2, padx=3)
             ttk.Entry(
@@ -1405,18 +1408,18 @@ class TargetEditor(tk.Toplevel):
             ttk.Entry(
                 self.body,
                 textvariable=x_var,
-                width=8,
+                width=6,
                 state="normal" if coordinate_step else "disabled",
-            ).grid(row=row_index, column=5)
+            ).grid(row=row_index, column=5, padx=2)
             ttk.Entry(
                 self.body,
                 textvariable=y_var,
-                width=8,
+                width=6,
                 state="normal" if coordinate_step else "disabled",
-            ).grid(row=row_index, column=6)
+            ).grid(row=row_index, column=6, padx=2)
             buttons = ttk.Frame(self.body)
             buttons.grid(row=row_index, column=7, padx=4)
-            image_button_state = "disabled" if coordinate_step else "normal"
+            image_button_state = "normal" if image_editable else "disabled"
             ttk.Button(buttons, text="파일", state=image_button_state, command=lambda v=override_var: self.choose(v)).pack(side="left")
             ttk.Button(
                 buttons,

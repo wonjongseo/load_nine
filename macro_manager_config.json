@@ -77,9 +77,9 @@
       "enabled": true,
       "overrides": {
         "11_potion": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_1/quadrant_2/m1q2_11 물약 선택_20260815_170141.png",
-        "16_region": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_1/quadrant_2/m1q2_16 이동할 지역_20260815_170309.png",
-        "17_hunting_ground": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_1/quadrant_2/m1q2_17 이동할 사냥터_20260815_170326.png",
-        "18_monster": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_1/quadrant_2/m1q2_18 몬스터_20260815_170346.png"
+        "16_region": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_1/quadrant_2/16_region.png",
+        "17_hunting_ground": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_1/quadrant_2/17_hunting_ground.png",
+        "18_monster": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_1/quadrant_2/18_monster.png"
       },
       "fallbacks": {
         "15_world_map": [
@@ -101,7 +101,8 @@
           },
           "fallbacks": {}
         }
-      }
+      },
+      "click_offsets": {}
     },
     "m1q3": {
       "enabled": true,
@@ -198,7 +199,9 @@
         "19_quick_move": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/19_quick_move.png",
         "20_confirm": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/20_confirm.png",
         "21_auto": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/21_auto.png",
-        "16_world": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_1/16_world.png"
+        "16_world": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_1/16_world.png",
+        "001_dyied": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_1/001_dyied.png",
+        "002_sandtimer": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_1/002_sandtimer.png"
       },
       "fallbacks": {
         "15_world_map": [
@@ -324,7 +327,8 @@
           },
           "fallbacks": {}
         }
-      }
+      },
+      "click_offsets": {}
     },
     "m2q3": {
       "enabled": false,
