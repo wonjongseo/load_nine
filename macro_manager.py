@@ -50,6 +50,9 @@ PRE_CLICK_DELAY = 0.5
 # 게임이 너무 짧은 합성 클릭을 놓치지 않도록 0.08초(80ms) 동안 유지한 뒤 뗍니다.
 CLICK_HOLD_SECONDS = 0.08
 
+
+# 루틴 시작 후 이 시간 안에 끝나지 않으면 전체 루틴 이미지를 재검색합니다.
+ROUTINE_RECOVERY_SECONDS = 300.0
 # 여러 분면이 루틴을 병행해도 실제 마우스 입력은 한 번에 하나만 보냅니다.
 MOUSE_CLICK_LOCK = threading.Lock()
 
@@ -554,6 +557,8 @@ class MacroEngine:
         # 물약 10개 감지 후 모래시계를 일정 시간 기다리기 위한 deadline입니다.
         self.pre_death_deadlines: dict[str, float] = {}
         self.return_deadlines: dict[str, float] = {}
+        # 분면별 전체 루틴 시작 시각. 5분 recovery에 사용합니다.
+        self.routine_started_at: dict[str, float] = {}
         # 한 분면에서 루틴을 시작하면 마지막 단계까지 다른 분면의
         # 클릭 루틴이 끼어들지 못하도록 현재 작업 대상을 잠급니다.
         self.active_target_key: str | None = None
@@ -579,6 +584,57 @@ class MacroEngine:
         self.pre_death_stages.pop(key, None)
         self.pre_death_deadlines.pop(key, None)
         self.return_deadlines.pop(key, None)
+        self.routine_started_at.pop(key, None)
+
+    def mark_routine_started(self, key: str) -> None:
+        if key not in self.routine_started_at:
+            self.routine_started_at[key] = time.monotonic()
+            logging.info("%s 전체 루틴 5분 recovery 타이머 시작", key)
+
+    def clear_routine_started(self, key: str) -> None:
+        self.routine_started_at.pop(key, None)
+
+    def recover_routine_position(
+        self,
+        gray: np.ndarray,
+        rect: Rect,
+        steps: list[dict],
+        routine_overrides: dict,
+    ) -> tuple[int, str, float] | None:
+        detected: list[tuple[int, str, float]] = []
+
+        for candidate_index, candidate in enumerate(steps):
+            coordinate_only = (
+                candidate.get("fallback") is not None
+                or bool(candidate.get("coordinate_from_target"))
+            )
+            if coordinate_only:
+                continue
+
+            candidate_id = candidate.get("id", "")
+            candidate_path = (
+                routine_overrides.get(candidate_id)
+                or candidate.get("image", "")
+            )
+            if not candidate_path:
+                continue
+
+            candidate_match = self.find(gray, candidate_path, rect)
+            if candidate_match is None:
+                continue
+
+            detected.append(
+                (
+                    candidate_index,
+                    candidate.get("name", candidate_id),
+                    float(candidate_match[2]),
+                )
+            )
+
+        if not detected:
+            return None
+
+        return max(detected, key=lambda item: item[0])
 
     def template(self, path: str) -> np.ndarray | None:
         if not path:
@@ -647,6 +703,7 @@ class MacroEngine:
         self.step_started_at.pop(key, None)
         if next_index == 0:
             logging.info("%s 루틴 완료", key)
+            self.clear_routine_started(key)
 
     def loop(self) -> None:
         try:
@@ -687,12 +744,18 @@ class MacroEngine:
                             step.get("fallback") is not None
                             or bool(step.get("coordinate_from_target"))
                         )
-                        fallback = None
+
+                        # fallback 좌표는 이미지 단계에서도 사용할 수 있습니다.
+                        # 이미지 단계:
+                        #   이미지 탐색 -> timeout -> fallback 좌표 클릭
+                        # 좌표 전용 단계:
+                        #   기존처럼 이미지를 사용하지 않고 fallback 좌표 사용
+                        fallback = routine_fallbacks.get(step_id)
+                        if fallback is None:
+                            fallback = step.get("fallback")
+
                         if step_uses_coordinate:
                             image_path = ""
-                            fallback = routine_fallbacks.get(step_id)
-                            if fallback is None:
-                                fallback = step.get("fallback")
 
                         # 이동할 월드: 분면 전용/공용 이미지가 모두 없으면 즉시 다음 단계.
                         if step.get("skip_if_no_image") and not image_path and not step_uses_coordinate:
@@ -720,6 +783,42 @@ class MacroEngine:
                         try:
                             frame = np.asarray(capture.grab(rect.as_mss()))
                             gray = cv2.cvtColor(frame, cv2.COLOR_BGRA2GRAY)
+
+                            routine_started = self.routine_started_at.get(key)
+                            if routine_started is not None:
+                                elapsed = time.monotonic() - routine_started
+                                if elapsed >= ROUTINE_RECOVERY_SECONDS:
+                                    self.app.set_row_status(key, "5분 초과 → 전체 루틴 이미지 재검색")
+                                    recovery = self.recover_routine_position(gray, rect, steps, routine_overrides)
+                                    if recovery is not None:
+                                        recovered_index, recovered_name, recovered_score = recovery
+                                        self.entry_stages.pop(key, None)
+                                        self.entry_deadlines.pop(key, None)
+                                        self.pre_death_stages.pop(key, None)
+                                        self.pre_death_deadlines.pop(key, None)
+                                        self.return_deadlines.pop(key, None)
+                                        self.deadlines.pop(key, None)
+                                        self.step_started_at.pop(key, None)
+                                        self.step_indexes[key] = recovered_index
+                                        self.routine_started_at[key] = time.monotonic()
+                                        logging.warning(
+                                            "%s 5분 초과 → %d. %s 감지(%.3f) → 해당 단계부터 재개",
+                                            key, recovered_index + 1, recovered_name, recovered_score,
+                                        )
+                                        self.app.set_row_status(
+                                            key,
+                                            f"5분 복구 → {recovered_index + 1}. {recovered_name} 감지 → 해당 단계부터 재개",
+                                        )
+                                        continue
+                                    logging.warning(
+                                        "%s 5분 초과 → 전체 루틴 이미지 미검출 → 초기화", key,
+                                    )
+                                    self.reset_target(key)
+                                    self.app.set_row_status(
+                                        key,
+                                        "5분 복구 실패 → 감지 이미지 없음 → 처음부터 다시 감시",
+                                    )
+                                    continue
                             match = None
 
                             pre_death_steps = {
@@ -1000,6 +1099,7 @@ class MacroEngine:
                                             rect,
                                         )
                                         if dyied_match:
+                                            self.mark_routine_started(key)
                                             logging.info("%s 사망 진입 루틴 시작", key)
                                             time.sleep(
                                                 float(
@@ -1063,6 +1163,7 @@ class MacroEngine:
                                         rect,
                                     ) if potion_path else None
                                     if potion_match:
+                                        self.mark_routine_started(key)
                                         logging.info("%s 사망 전 귀환 루틴 시작", key)
                                         sandtimer = entry_steps.get(
                                             "002_sandtimer",
@@ -1104,6 +1205,8 @@ class MacroEngine:
                                         f"{index + 1}. {step['name']} 재확인 실패 → 클릭 취소",
                                     )
                                     continue
+                                if index == 0:
+                                    self.mark_routine_started(key)
                                 logging.info("%s 루틴 진행 시작", key)
                                 click_x, click_y = self.configured_image_click_point(
                                     confirmed_match,
@@ -1386,7 +1489,7 @@ class TargetEditor(tk.Toplevel):
             "현재 적용 이미지 (변경 시 분면 전용)",
             "클릭 보정 X",
             "Y",
-            "좌표 X",
+            "Fallback X",
             "Y",
             "",
         )
@@ -1423,8 +1526,16 @@ class TargetEditor(tk.Toplevel):
                 if coordinate_step
                 else overrides.get(sid, "") or common_image
             )
-            point = fallbacks.get(sid) or ["", ""] if coordinate_step else ["", ""]
-            x_var, y_var = tk.StringVar(value=str(point[0])), tk.StringVar(value=str(point[1]))
+            if scope == "routine":
+                point = fallbacks.get(sid) or ["", ""]
+            else:
+                point = (
+                    fallbacks.get(sid) or ["", ""]
+                    if coordinate_step
+                    else ["", ""]
+                )
+            x_var = tk.StringVar(value=str(point[0]))
+            y_var = tk.StringVar(value=str(point[1]))
             click_offsets = (
                 legacy_click_offsets
                 if scope == "legacy"
@@ -1481,13 +1592,21 @@ class TargetEditor(tk.Toplevel):
                 self.body,
                 textvariable=x_var,
                 width=6,
-                state="normal" if coordinate_step else "disabled",
+                state=(
+                    "normal"
+                    if scope == "routine" or coordinate_step
+                    else "disabled"
+                ),
             ).grid(row=row_index, column=5, padx=2)
             ttk.Entry(
                 self.body,
                 textvariable=y_var,
                 width=6,
-                state="normal" if coordinate_step else "disabled",
+                state=(
+                    "normal"
+                    if scope == "routine" or coordinate_step
+                    else "disabled"
+                ),
             ).grid(row=row_index, column=6, padx=2)
             buttons = ttk.Frame(self.body)
             buttons.grid(row=row_index, column=7, padx=4)
@@ -1509,6 +1628,9 @@ class TargetEditor(tk.Toplevel):
                 "click_x": click_x_var,
                 "click_y": click_y_var,
                 "coordinate": coordinate_step,
+                "fallback_enabled": (
+                    scope == "routine" or coordinate_step
+                ),
                 "click_enabled": click_enabled,
                 "scope": scope,
             })
@@ -1644,15 +1766,18 @@ class TargetEditor(tk.Toplevel):
                     overrides, fallbacks = legacy_overrides, legacy_fallbacks
                 else:
                     overrides, fallbacks = routine_overrides, routine_fallbacks
-                if row["coordinate"]:
-                    x, y = row["x"].get().strip(), row["y"].get().strip()
+                if row.get("fallback_enabled", row["coordinate"]):
+                    x = row["x"].get().strip()
+                    y = row["y"].get().strip()
                     if x or y:
                         if not x or not y:
                             raise ValueError
                         fallbacks[row["id"]] = [int(x), int(y)]
                     else:
                         fallbacks.pop(row["id"], None)
-                else:
+
+                # 좌표 전용 단계가 아닌 경우에는 이미지 설정도 별도로 저장합니다.
+                if not row["coordinate"]:
                     override = row["override"].get().strip()
                     if override and override != row["common"]:
                         overrides[row["id"]] = override
@@ -1673,7 +1798,7 @@ class TargetEditor(tk.Toplevel):
                     else:
                         click_offsets.pop(row["id"], None)
         except ValueError:
-            messagebox.showerror("좌표 오류", "X와 Y에는 정수를 입력하세요.", parent=self)
+            messagebox.showerror("좌표 오류", "Fallback X와 Y는 둘 다 비우거나 둘 다 정수로 입력하세요.", parent=self)
             return
         target["overrides"], target["fallbacks"] = (
             legacy_overrides,

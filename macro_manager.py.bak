@@ -50,6 +50,9 @@ PRE_CLICK_DELAY = 0.5
 # 게임이 너무 짧은 합성 클릭을 놓치지 않도록 0.08초(80ms) 동안 유지한 뒤 뗍니다.
 CLICK_HOLD_SECONDS = 0.08
 
+
+# 루틴 시작 후 이 시간 안에 끝나지 않으면 전체 루틴 이미지를 재검색합니다.
+ROUTINE_RECOVERY_SECONDS = 300.0
 # 여러 분면이 루틴을 병행해도 실제 마우스 입력은 한 번에 하나만 보냅니다.
 MOUSE_CLICK_LOCK = threading.Lock()
 
@@ -554,6 +557,8 @@ class MacroEngine:
         # 물약 10개 감지 후 모래시계를 일정 시간 기다리기 위한 deadline입니다.
         self.pre_death_deadlines: dict[str, float] = {}
         self.return_deadlines: dict[str, float] = {}
+        # 분면별 전체 루틴 시작 시각. 5분 recovery에 사용합니다.
+        self.routine_started_at: dict[str, float] = {}
         # 한 분면에서 루틴을 시작하면 마지막 단계까지 다른 분면의
         # 클릭 루틴이 끼어들지 못하도록 현재 작업 대상을 잠급니다.
         self.active_target_key: str | None = None
@@ -579,6 +584,57 @@ class MacroEngine:
         self.pre_death_stages.pop(key, None)
         self.pre_death_deadlines.pop(key, None)
         self.return_deadlines.pop(key, None)
+        self.routine_started_at.pop(key, None)
+
+    def mark_routine_started(self, key: str) -> None:
+        if key not in self.routine_started_at:
+            self.routine_started_at[key] = time.monotonic()
+            logging.info("%s 전체 루틴 5분 recovery 타이머 시작", key)
+
+    def clear_routine_started(self, key: str) -> None:
+        self.routine_started_at.pop(key, None)
+
+    def recover_routine_position(
+        self,
+        gray: np.ndarray,
+        rect: Rect,
+        steps: list[dict],
+        routine_overrides: dict,
+    ) -> tuple[int, str, float] | None:
+        detected: list[tuple[int, str, float]] = []
+
+        for candidate_index, candidate in enumerate(steps):
+            coordinate_only = (
+                candidate.get("fallback") is not None
+                or bool(candidate.get("coordinate_from_target"))
+            )
+            if coordinate_only:
+                continue
+
+            candidate_id = candidate.get("id", "")
+            candidate_path = (
+                routine_overrides.get(candidate_id)
+                or candidate.get("image", "")
+            )
+            if not candidate_path:
+                continue
+
+            candidate_match = self.find(gray, candidate_path, rect)
+            if candidate_match is None:
+                continue
+
+            detected.append(
+                (
+                    candidate_index,
+                    candidate.get("name", candidate_id),
+                    float(candidate_match[2]),
+                )
+            )
+
+        if not detected:
+            return None
+
+        return max(detected, key=lambda item: item[0])
 
     def template(self, path: str) -> np.ndarray | None:
         if not path:
@@ -647,6 +703,7 @@ class MacroEngine:
         self.step_started_at.pop(key, None)
         if next_index == 0:
             logging.info("%s 루틴 완료", key)
+            self.clear_routine_started(key)
 
     def loop(self) -> None:
         try:
@@ -720,6 +777,42 @@ class MacroEngine:
                         try:
                             frame = np.asarray(capture.grab(rect.as_mss()))
                             gray = cv2.cvtColor(frame, cv2.COLOR_BGRA2GRAY)
+
+                            routine_started = self.routine_started_at.get(key)
+                            if routine_started is not None:
+                                elapsed = time.monotonic() - routine_started
+                                if elapsed >= ROUTINE_RECOVERY_SECONDS:
+                                    self.app.set_row_status(key, "5분 초과 → 전체 루틴 이미지 재검색")
+                                    recovery = self.recover_routine_position(gray, rect, steps, routine_overrides)
+                                    if recovery is not None:
+                                        recovered_index, recovered_name, recovered_score = recovery
+                                        self.entry_stages.pop(key, None)
+                                        self.entry_deadlines.pop(key, None)
+                                        self.pre_death_stages.pop(key, None)
+                                        self.pre_death_deadlines.pop(key, None)
+                                        self.return_deadlines.pop(key, None)
+                                        self.deadlines.pop(key, None)
+                                        self.step_started_at.pop(key, None)
+                                        self.step_indexes[key] = recovered_index
+                                        self.routine_started_at[key] = time.monotonic()
+                                        logging.warning(
+                                            "%s 5분 초과 → %d. %s 감지(%.3f) → 해당 단계부터 재개",
+                                            key, recovered_index + 1, recovered_name, recovered_score,
+                                        )
+                                        self.app.set_row_status(
+                                            key,
+                                            f"5분 복구 → {recovered_index + 1}. {recovered_name} 감지 → 해당 단계부터 재개",
+                                        )
+                                        continue
+                                    logging.warning(
+                                        "%s 5분 초과 → 전체 루틴 이미지 미검출 → 초기화", key,
+                                    )
+                                    self.reset_target(key)
+                                    self.app.set_row_status(
+                                        key,
+                                        "5분 복구 실패 → 감지 이미지 없음 → 처음부터 다시 감시",
+                                    )
+                                    continue
                             match = None
 
                             pre_death_steps = {
@@ -1000,6 +1093,7 @@ class MacroEngine:
                                             rect,
                                         )
                                         if dyied_match:
+                                            self.mark_routine_started(key)
                                             logging.info("%s 사망 진입 루틴 시작", key)
                                             time.sleep(
                                                 float(
@@ -1063,6 +1157,7 @@ class MacroEngine:
                                         rect,
                                     ) if potion_path else None
                                     if potion_match:
+                                        self.mark_routine_started(key)
                                         logging.info("%s 사망 전 귀환 루틴 시작", key)
                                         sandtimer = entry_steps.get(
                                             "002_sandtimer",
@@ -1073,7 +1168,7 @@ class MacroEngine:
                                             float(
                                                 sandtimer.get(
                                                     "timeout",
-                                                    15.0,
+                                                    3.0,
                                                 )
                                             ),
                                         )
@@ -1104,6 +1199,8 @@ class MacroEngine:
                                         f"{index + 1}. {step['name']} 재확인 실패 → 클릭 취소",
                                     )
                                     continue
+                                if index == 0:
+                                    self.mark_routine_started(key)
                                 logging.info("%s 루틴 진행 시작", key)
                                 click_x, click_y = self.configured_image_click_point(
                                     confirmed_match,

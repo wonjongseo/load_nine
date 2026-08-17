@@ -46,14 +46,18 @@
       "enabled": true,
       "overrides": {
         "11_potion": "images/quadrant_1/11_potion.png",
-        "16_region": "images/quadrant_1/16_region.png",
-        "17_hunting_ground": "images/quadrant_1/17_hunting_ground.png",
-        "18_monster": "images/quadrant_1/18_monster.png"
+        "16_region": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_1/quadrant_1/16_region.png",
+        "17_hunting_ground": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_1/quadrant_1/17_hunting_ground.png",
+        "18_monster": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_1/quadrant_1/18_monster.png"
       },
       "fallbacks": {
         "15_world_map": [
           140,
           170
+        ],
+        "02_menu": [
+          926,
+          79
         ]
       },
       "post_routine_id": "default_hunting",
@@ -86,6 +90,10 @@
         "15_world_map": [
           148,
           177
+        ],
+        "02_menu": [
+          923,
+          76
         ]
       },
       "post_routine_id": "default_hunting",
@@ -123,6 +131,10 @@
         "15_world_map": [
           153,
           149
+        ],
+        "02_menu": [
+          927,
+          49
         ]
       },
       "post_routine_id": "default_hunting",
@@ -160,6 +172,10 @@
         "15_world_map": [
           149,
           141
+        ],
+        "02_menu": [
+          925,
+          55
         ]
       },
       "post_routine_id": "default_hunting",
@@ -211,6 +227,10 @@
         "15_world_map": [
           213,
           310
+        ],
+        "02_menu": [
+          1852,
+          80
         ]
       },
       "post_routine_id": "default_hunting",
@@ -288,6 +308,10 @@
         "15_world_map": [
           224,
           269
+        ],
+        "02_menu": [
+          1854,
+          85
         ]
       },
       "post_routine_id": "default_hunting",
