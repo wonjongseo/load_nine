@@ -48,9 +48,7 @@
         "11_potion": "images/quadrant_1/11_potion.png",
         "16_region": "images/quadrant_1/16_region.png",
         "17_hunting_ground": "images/quadrant_1/17_hunting_ground.png",
-        "18_monster": "images/quadrant_1/18_monster.png",
-        "potion_10": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_1/quadrant_1/potion_10.png",
-        "home_icon": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_1/quadrant_1/home_icon.png"
+        "18_monster": "images/quadrant_1/18_monster.png"
       },
       "fallbacks": {
         "15_world_map": [
