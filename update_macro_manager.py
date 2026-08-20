@@ -1,467 +1,127 @@
 from __future__ import annotations
 
-import ast
-import shutil
-import sys
 from pathlib import Path
 
-
-NEW_PREAMBLE = '''from __future__ import annotations
-
-from macro_manager import *  # noqa: F401,F403
-
-_UI_POLISHED_WINDOWS: set[int] = set()
-_UI_WHEEL_INSTALLED = False
-
-
-def _safe_configure(widget, **kwargs) -> None:
-    try:
-        widget.configure(**kwargs)
-    except Exception:
-        pass
-
-
-def _is_scrollable(widget) -> bool:
-    return hasattr(widget, "yview_scroll") or hasattr(widget, "xview_scroll")
-
-
-def _scroll_target_from_pointer(root):
-    try:
-        x, y = root.winfo_pointerxy()
-        widget = root.winfo_containing(x, y)
-    except Exception:
-        return None
-
-    current = widget
-    while current is not None:
-        if _is_scrollable(current):
-            return current
-        current = getattr(current, "master", None)
-    return None
-
-
-def _on_mousewheel(root, event):
-    target = _scroll_target_from_pointer(root)
-    if target is None:
-        return
-
-    delta = getattr(event, "delta", 0)
-    if delta == 0:
-        return
-
-    units = -int(delta / 120)
-    if units == 0:
-        units = -1 if delta > 0 else 1
-
-    try:
-        if event.state & 0x0001 and hasattr(target, "xview_scroll"):
-            target.xview_scroll(units, "units")
-        elif hasattr(target, "yview_scroll"):
-            target.yview_scroll(units, "units")
-        return "break"
-    except Exception:
-        return None
-
-
-def _on_linux_wheel(root, direction, event):
-    target = _scroll_target_from_pointer(root)
-    if target is None:
-        return
-
-    try:
-        if event.state & 0x0001 and hasattr(target, "xview_scroll"):
-            target.xview_scroll(direction, "units")
-        elif hasattr(target, "yview_scroll"):
-            target.yview_scroll(direction, "units")
-        return "break"
-    except Exception:
-        return None
-
-
-def install_global_mousewheel(root) -> None:
-    global _UI_WHEEL_INSTALLED
-    if _UI_WHEEL_INSTALLED:
-        return
-    _UI_WHEEL_INSTALLED = True
-
-    try:
-        root.bind_all(
-            "<MouseWheel>",
-            lambda e, r=root: _on_mousewheel(r, e),
-            add="+",
-        )
-        root.bind_all(
-            "<Shift-MouseWheel>",
-            lambda e, r=root: _on_mousewheel(r, e),
-            add="+",
-        )
-        root.bind_all(
-            "<Button-4>",
-            lambda e, r=root: _on_linux_wheel(r, -1, e),
-            add="+",
-        )
-        root.bind_all(
-            "<Button-5>",
-            lambda e, r=root: _on_linux_wheel(r, 1, e),
-            add="+",
-        )
-    except Exception:
-        pass
-
-
-def _apply_widget_design(widget) -> None:
-    try:
-        cls = widget.winfo_class()
-    except Exception:
-        cls = ""
-
-    if cls == "Treeview":
-        try:
-            widget.configure(style="Editor.Treeview", selectmode="browse")
-        except Exception:
-            pass
-
-    elif cls == "TButton":
-        try:
-            text = str(widget.cget("text")).strip()
-        except Exception:
-            text = ""
-
-        if text in {"저장", "적용", "확인", "추가", "만들기"}:
-            _safe_configure(widget, style="Primary.TButton")
-        elif "삭제" in text:
-            _safe_configure(widget, style="Danger.TButton")
-        else:
-            _safe_configure(widget, style="Secondary.TButton")
-
-    elif cls == "TEntry":
-        try:
-            width = int(widget.cget("width"))
-            if width > 70:
-                widget.configure(width=46)
-        except Exception:
-            pass
-
-    elif cls == "Listbox":
-        try:
-            widget.configure(
-                exportselection=False,
-                activestyle="none",
-                borderwidth=0,
-                highlightthickness=1,
-            )
-        except Exception:
-            pass
-
-    try:
-        children = widget.winfo_children()
-    except Exception:
-        children = []
-
-    for child in children:
-        _apply_widget_design(child)
-
-
-def _polish_editor_window(window) -> None:
-    try:
-        wid = int(window.winfo_id())
-    except Exception:
-        return
-
-    if wid in _UI_POLISHED_WINDOWS:
-        return
-    _UI_POLISHED_WINDOWS.add(wid)
-
-    try:
-        title = window.title()
-    except Exception:
-        title = ""
-
-    is_target_editor = "분면" in title
-    is_routine_editor = "루틴" in title or "Routine" in title
-
-    if isinstance(window, tk.Toplevel):
-        try:
-            if is_target_editor or is_routine_editor:
-                window.geometry("1180x760")
-                window.minsize(1000, 680)
-            else:
-                window.minsize(860, 600)
-            window.resizable(True, True)
-        except Exception:
-            pass
-
-        try:
-            window.bind("<Escape>", lambda _e, w=window: w.destroy(), add="+")
-        except Exception:
-            pass
-
-        if callable(getattr(window, "save", None)):
-            try:
-                window.bind(
-                    "<Control-s>",
-                    lambda _e, w=window: (w.save(), "break")[-1],
-                    add="+",
-                )
-            except Exception:
-                pass
-
-    _apply_widget_design(window)
-
-
-def _poll_windows(root) -> None:
-    try:
-        stack = [root]
-        while stack:
-            widget = stack.pop()
-            try:
-                children = widget.winfo_children()
-            except Exception:
-                children = []
-
-            for child in children:
-                if isinstance(child, tk.Toplevel):
-                    _polish_editor_window(child)
-                stack.append(child)
-
-        root.after(250, lambda: _poll_windows(root))
-    except Exception:
-        pass
-
-
-def apply_unified_ui(root) -> None:
-    def _apply():
-        try:
-            style = ttk.Style(root)
-            themes = set(style.theme_names())
-
-            if sys.platform.startswith("win") and "vista" in themes:
-                style.theme_use("vista")
-            elif "clam" in themes:
-                style.theme_use("clam")
-
-            root.option_add("*Font", ("Segoe UI", 10))
-            root.option_add("*TCombobox*Listbox.font", ("Segoe UI", 10))
-
-            style.configure("TLabel", padding=(0, 2))
-            style.configure("TEntry", padding=5)
-            style.configure("TCombobox", padding=4)
-            style.configure("TCheckbutton", padding=(2, 4))
-            style.configure("TRadiobutton", padding=(2, 4))
-
-            style.configure(
-                "Primary.TButton",
-                padding=(14, 8),
-                font=("Segoe UI Semibold", 10),
-            )
-            style.configure(
-                "Secondary.TButton",
-                padding=(11, 7),
-            )
-            style.configure(
-                "Danger.TButton",
-                padding=(11, 7),
-                font=("Segoe UI Semibold", 10),
-            )
-
-            style.configure("TLabelframe", padding=12)
-            style.configure(
-                "TLabelframe.Label",
-                font=("Segoe UI Semibold", 10),
-            )
-
-            style.configure(
-                "Treeview",
-                rowheight=30,
-                font=("Segoe UI", 10),
-                borderwidth=0,
-            )
-            style.configure(
-                "Treeview.Heading",
-                font=("Segoe UI Semibold", 10),
-                padding=(8, 7),
-            )
-            style.configure(
-                "Editor.Treeview",
-                rowheight=32,
-                font=("Segoe UI", 10),
-            )
-
-            style.configure(
-                "TNotebook.Tab",
-                padding=(16, 8),
-                font=("Segoe UI Semibold", 10),
-            )
-
-            try:
-                root.minsize(920, 640)
-            except Exception:
-                pass
-
-            install_global_mousewheel(root)
-            _apply_widget_design(root)
-            _poll_windows(root)
-
-        except Exception:
-            try:
-                root.after(50, _apply)
-            except Exception:
-                pass
-
-    _apply()
-
-
-'''
-
-
-README_SECTION = '''
-## UI / UX 개선
-
-분면별 루틴 설정과 루틴 만들기/편집 화면은 같은 디자인 규칙을 사용합니다.
-
-- Segoe UI 기반 스타일
-- 편집창 크기/최소 크기 통일
-- 단계 목록 행 높이 및 선택 가독성 개선
-- 저장/적용/삭제 등 버튼 시각 계층 정리
-- 긴 이미지 경로 입력창 폭 정리
-- 좌표 입력 용어를 `Fallback X/Y`로 통일
-- `Esc`로 편집창 닫기
-- `Ctrl+S`로 저장 가능한 편집창 저장
-
-### 마우스 휠 스크롤
-
-Scrollbar가 보이지만 마우스 휠로 움직이지 않던 문제를 수정했습니다.
-
-마우스 포인터 아래의 `Canvas`, `Treeview`, `Listbox` 등 실제 스크롤 가능한 위젯을 자동으로 찾아 스크롤합니다.
-
-- 휠: 세로 스크롤
-- `Shift + 휠`: 가로 스크롤
-- Windows 고해상도 휠/터치패드 delta 대응
-'''
-
-
-def first_class_offset(source: str) -> int:
-    tree = ast.parse(source)
-    lines = source.splitlines(keepends=True)
-
-    for node in tree.body:
-        if isinstance(node, ast.ClassDef):
-            return sum(len(x) for x in lines[:node.lineno - 1])
-
-    raise RuntimeError("macro_manager_ui.py에서 UI 클래스를 찾지 못했습니다.")
-
-
-def ensure_apply_call(source: str) -> str:
-    if "apply_unified_ui(self)" in source:
-        return source
-
-    tree = ast.parse(source)
-    lines = source.splitlines(keepends=True)
-
-    for node in tree.body:
-        if not isinstance(node, ast.ClassDef) or node.name != "MacroManager":
-            continue
-
-        for child in node.body:
-            if not isinstance(child, ast.FunctionDef):
-                continue
-            if child.name != "__init__" or not child.body:
-                continue
-
-            first = child.body[0]
-            line_no = first.lineno
-
-            if (
-                isinstance(first, ast.Expr)
-                and isinstance(first.value, ast.Constant)
-                and isinstance(first.value.value, str)
-                and len(child.body) > 1
-            ):
-                line_no = child.body[1].lineno
-
-            line = lines[line_no - 1]
-            indent = line[: len(line) - len(line.lstrip())]
-            offset = sum(len(x) for x in lines[:line_no - 1])
-
-            return (
-                source[:offset]
-                + indent
-                + "apply_unified_ui(self)\n"
-                + source[offset:]
-            )
-
-    raise RuntimeError("MacroManager.__init__()을 찾지 못했습니다.")
-
-
-def patch_ui(ui_path: Path) -> None:
-    source = ui_path.read_text(encoding="utf-8")
-    offset = first_class_offset(source)
-    class_body = source[offset:]
-
-    new_source = NEW_PREAMBLE + class_body
-    new_source = ensure_apply_call(new_source)
-
-    new_source = new_source.replace('"좌표 X"', '"Fallback X"')
-    new_source = new_source.replace('"좌표 Y"', '"Fallback Y"')
-
-    compile(new_source, str(ui_path), "exec")
-    ui_path.write_text(new_source, encoding="utf-8")
-
-
-def patch_readme(readme_path: Path) -> None:
-    if not readme_path.exists():
-        return
-
-    text = readme_path.read_text(encoding="utf-8")
-    marker = "## UI / UX 개선"
-
-    if marker in text:
-        text = text.split(marker, 1)[0].rstrip()
-
-    text = text.rstrip() + "\n\n" + README_SECTION.lstrip()
-    readme_path.write_text(text, encoding="utf-8")
-
-
-def main() -> None:
-    repo = Path(sys.argv[1]).resolve() if len(sys.argv) > 1 else Path.cwd()
-
-    ui_path = repo / "macro_manager_ui.py"
-    readme_path = repo / "README.md"
-
-    if not ui_path.exists():
-        raise SystemExit(
-            "macro_manager_ui.py가 없습니다.\n"
-            "먼저 UI 분리 패치를 적용한 폴더에서 실행하세요.\n"
-            '예: py update_ui_design_scroll.py "C:\\\\Users\\\\Jongseo Won\\\\Desktop\\\\auto"'
-        )
-
-    ui_backup = ui_path.with_suffix(".py.bak")
-    shutil.copy2(ui_path, ui_backup)
-    print(f"[BACKUP] {ui_backup}")
-
-    if readme_path.exists():
-        readme_backup = readme_path.with_suffix(".md.bak")
-        shutil.copy2(readme_path, readme_backup)
-        print(f"[BACKUP] {readme_backup}")
-
-    patch_ui(ui_path)
-    patch_readme(readme_path)
-
-    print()
-    print("[OK] UI 디자인/UX 패치 완료")
-    print("[OK] macro_manager_ui.py 문법 검사 통과")
-    print()
-    print("적용 내용:")
-    print("- 분면 설정/루틴 편집창 크기 및 디자인 규칙 통일")
-    print("- 버튼/입력/Treeview/섹션 스타일 개선")
-    print("- Fallback 용어 통일")
-    print("- 마우스 휠 세로 스크롤 수정")
-    print("- Shift + 휠 가로 스크롤 지원")
-    print("- Canvas/Treeview/Listbox 포인터 기준 자동 스크롤")
-    print("- README UI/UX 설명 갱신")
-    print()
-    print("매크로 실행 엔진은 수정하지 않았습니다.")
-
-
-if __name__ == "__main__":
-    main()
+TARGET = Path(__file__).with_name("macro_manager_ui.py")
+
+if not TARGET.exists():
+    raise FileNotFoundError(f"macro_manager_ui.py를 찾을 수 없습니다: {TARGET}")
+
+text = TARGET.read_text(encoding="utf-8")
+original = text
+
+if "import sqlite3\n" not in text:
+    text = text.replace(
+        "from macro_manager import *  # noqa: F401,F403\n",
+        "from macro_manager import *  # noqa: F401,F403\n\nimport sqlite3\n",
+        1,
+    )
+
+start = text.find("class DungeonSettingsWindow(tk.Toplevel):")
+if start != -1:
+    end = text.find("\nclass MacroManager:", start)
+    if end == -1:
+        raise RuntimeError("기존 DungeonSettingsWindow 끝을 찾지 못했습니다.")
+    text = text[:start] + text[end + 1:]
+
+if "class TargetDungeonSettingsWindow(tk.Toplevel):" not in text:
+    marker = "\nclass MacroManager:"
+    if marker not in text:
+        raise RuntimeError("MacroManager 클래스 위치를 찾지 못했습니다.")
+    text = text.replace(
+        marker,
+        "\n" + 'class TargetDungeonSettingsWindow(tk.Toplevel):\n    IMAGE_ITEMS = (\n        ("menu", "메뉴", "02_menu.png"),\n        ("dungeon", "던전 메뉴", "dungeon.png"),\n        ("dungeon_A", "던전 A", "dungeon_A.png"),\n        ("dungeon_B", "던전 B", "dungeon_B.png"),\n        ("enter", "입장", "enter.png"),\n        ("auto", "AUTO", "21_auto.png"),\n        ("in_dungeon", "던전 내부 확인", "in_dungeon.png"),\n        ("exit", "나가기", "exit.png"),\n    )\n\n    def __init__(self, app: "MacroManager", key: str) -> None:\n        super().__init__(app.root)\n        self.app = app\n        self.key = key\n        self.title(f"던전 설정 - {app.targets[key][0]}")\n        self.transient(app.root)\n        self.minsize(980, 680)\n        center_on_parent(self, app.root, 1080, 760)\n\n        dungeon_root = self.app.config.setdefault("dungeon_daily", {})\n        targets = dungeon_root.setdefault("targets", {})\n        self.cfg = targets.setdefault(\n            key,\n            {"A": True, "B": True, "images": {}},\n        )\n        self.cfg.setdefault("images", {})\n\n        self.a_var = tk.BooleanVar(value=bool(self.cfg.get("A", True)))\n        self.b_var = tk.BooleanVar(value=bool(self.cfg.get("B", True)))\n        self.a_status = tk.StringVar(value="이용가능")\n        self.b_status = tk.StringVar(value="이용가능")\n        self.image_vars: dict[str, tk.StringVar] = {}\n\n        outer = ttk.Frame(self, padding=16)\n        outer.pack(fill="both", expand=True)\n\n        title_row = ttk.Frame(outer)\n        title_row.pack(fill="x", pady=(0, 12))\n\n        ttk.Label(\n            title_row,\n            text=f"{app.targets[key][0]} - 매일 던전",\n            font=("Segoe UI Semibold", 14),\n        ).pack(side="left")\n\n        ttk.Button(\n            title_row,\n            text="오늘 상태 새로고침",\n            command=self.refresh_statuses,\n        ).pack(side="right")\n\n        use_box = ttk.LabelFrame(outer, text="실행할 던전", padding=12)\n        use_box.pack(fill="x", pady=(0, 12))\n\n        ttk.Checkbutton(\n            use_box,\n            text="Dungeon A 입장",\n            variable=self.a_var,\n        ).grid(row=0, column=0, sticky="w", padx=(0, 12))\n\n        ttk.Label(\n            use_box,\n            textvariable=self.a_status,\n            width=12,\n            anchor="center",\n        ).grid(row=0, column=1, padx=(0, 30))\n\n        ttk.Checkbutton(\n            use_box,\n            text="Dungeon B 입장",\n            variable=self.b_var,\n        ).grid(row=0, column=2, sticky="w", padx=(0, 12))\n\n        ttk.Label(\n            use_box,\n            textvariable=self.b_status,\n            width=12,\n            anchor="center",\n        ).grid(row=0, column=3)\n\n        ttk.Label(\n            outer,\n            text=(\n                "이미지는 이 분면 전용으로 저장됩니다. "\n                "모니터 해상도/배율이 다르면 각 분면에서 따로 캡처하세요."\n            ),\n        ).pack(anchor="w", pady=(0, 8))\n\n        image_box = ttk.LabelFrame(\n            outer,\n            text="분면 전용 던전 이미지",\n            padding=10,\n        )\n        image_box.pack(fill="both", expand=True)\n\n        headers = ("구분", "현재 적용 이미지", "파일", "캡처")\n        for col, title in enumerate(headers):\n            ttk.Label(\n                image_box,\n                text=title,\n                font=("Segoe UI Semibold", 10),\n                anchor="center",\n            ).grid(row=0, column=col, padx=4, pady=(0, 8), sticky="ew")\n\n        image_box.columnconfigure(1, weight=1)\n\n        saved_images = self.cfg.setdefault("images", {})\n\n        for row, (image_id, label, default_name) in enumerate(\n            self.IMAGE_ITEMS,\n            1,\n        ):\n            default_path = self.default_image_path(default_name)\n            value = saved_images.get(image_id, "") or default_path\n            var = tk.StringVar(value=value)\n            self.image_vars[image_id] = var\n\n            ttk.Label(\n                image_box,\n                text=label,\n                width=18,\n                anchor="w",\n            ).grid(row=row, column=0, padx=4, pady=4, sticky="w")\n\n            ttk.Entry(\n                image_box,\n                textvariable=var,\n                width=68,\n            ).grid(row=row, column=1, padx=4, pady=4, sticky="ew")\n\n            ttk.Button(\n                image_box,\n                text="파일",\n                width=7,\n                command=lambda v=var: self.choose_image(v),\n            ).grid(row=row, column=2, padx=3, pady=4)\n\n            ttk.Button(\n                image_box,\n                text="캡처",\n                width=7,\n                command=lambda iid=image_id, v=var: self.capture_image(\n                    iid,\n                    v,\n                ),\n            ).grid(row=row, column=3, padx=3, pady=4)\n\n        footer = ttk.Frame(outer)\n        footer.pack(fill="x", pady=(14, 0))\n\n        ttk.Button(\n            footer,\n            text="닫기",\n            command=self.destroy,\n        ).pack(side="right", padx=(6, 0))\n\n        ttk.Button(\n            footer,\n            text="저장",\n            style="Primary.TButton",\n            command=self.save,\n        ).pack(side="right")\n\n        self.refresh_statuses()\n\n    def default_image_path(self, filename: str) -> str:\n        test_path = BASE_DIR / "images" / "test" / filename\n        normal_path = BASE_DIR / "images" / filename\n\n        if test_path.exists():\n            return str(test_path)\n        if normal_path.exists():\n            return str(normal_path)\n        return ""\n\n    def choose_image(self, variable: tk.StringVar) -> None:\n        path = filedialog.askopenfilename(\n            parent=self,\n            initialdir=BASE_DIR / "images",\n            filetypes=[\n                ("이미지", "*.png *.jpg *.jpeg *.bmp"),\n                ("모든 파일", "*.*"),\n            ],\n        )\n        if path:\n            variable.set(path)\n\n    def capture_image(\n        self,\n        image_id: str,\n        variable: tk.StringVar,\n    ) -> None:\n        destination = CAPTURE_DIR / "dungeon" / self.key\n\n        path = self.app.capture_and_crop(\n            self.key,\n            f"dungeon_{image_id}",\n            destination_dir=destination,\n            parent=self,\n            suggested_filename=f"dungeon_{image_id}.png",\n        )\n\n        if path:\n            variable.set(path)\n\n    def dungeon_status_db_path(self) -> Path:\n        return BASE_DIR / "dungeon_status.db"\n\n    def read_today_status(self, dungeon: str) -> str:\n        db_path = self.dungeon_status_db_path()\n        if not db_path.exists():\n            return "이용가능"\n\n        try:\n            today = time.strftime("%Y-%m-%d")\n            with sqlite3.connect(db_path) as conn:\n                row = conn.execute(\n                    "SELECT status FROM dungeon_usage "\n                    "WHERE target_key = ? AND dungeon = ? AND usage_date = ?",\n                    (self.key, dungeon, today),\n                ).fetchone()\n\n            if row and str(row[0]).upper() == "COMPLETED":\n                return "만료"\n            return "이용가능"\n        except Exception:\n            logging.exception(\n                "던전 상태 DB 읽기 실패: %s / %s",\n                self.key,\n                dungeon,\n            )\n            return "확인 실패"\n\n    def refresh_statuses(self) -> None:\n        self.a_status.set(self.read_today_status("A"))\n        self.b_status.set(self.read_today_status("B"))\n\n    def save(self) -> None:\n        self.cfg["A"] = bool(self.a_var.get())\n        self.cfg["B"] = bool(self.b_var.get())\n\n        images = self.cfg.setdefault("images", {})\n        for image_id, variable in self.image_vars.items():\n            value = variable.get().strip()\n            if value:\n                images[image_id] = value\n            else:\n                images.pop(image_id, None)\n\n        self.app.persist()\n        self.app.global_status.set(\n            f"{self.app.targets[self.key][0]} 던전 설정 저장 완료"\n        )\n        self.destroy()\n' + marker,
+        1,
+    )
+
+for block in [
+    """        ttk.Button(
+            top,
+            text="던전",
+            command=self.open_dungeon_settings,
+        ).pack(side="left", padx=3)
+""",
+    """        ttk.Button(top, text="던전", command=self.open_dungeon_settings).pack(side="left", padx=3)
+""",
+]:
+    text = text.replace(block, "", 1)
+
+text = text.replace(
+    """    def open_dungeon_settings(self) -> None:
+        DungeonSettingsWindow(self)
+""",
+    "",
+    1,
+)
+
+header_pairs = [
+    (
+        'headers = ("사용", "대상", "상태", "선택 루틴", "루틴 설정", "현재 위치 테스트")',
+        'headers = ("사용", "대상", "상태", "선택 루틴", "루틴 설정", "던전", "현재 위치 테스트")',
+    ),
+    (
+        'headers = ("사용", "대상", "상태", "선택 루틴", "분면 루틴 설정", "현재 위치 테스트")',
+        'headers = ("사용", "대상", "상태", "선택 루틴", "분면 루틴 설정", "던전", "현재 위치 테스트")',
+    ),
+    (
+        'headers = ("사용", "대상", "상태", "선택 루틴", "루틴 이미지·좌표", "현재 위치 테스트")',
+        'headers = ("사용", "대상", "상태", "선택 루틴", "루틴 이미지·좌표", "던전", "현재 위치 테스트")',
+    ),
+]
+
+header_done = False
+for old, new in header_pairs:
+    if old in text:
+        text = text.replace(old, new, 1)
+        header_done = True
+        break
+
+if not header_done:
+    raise RuntimeError("메인 테이블 headers를 찾지 못했습니다.")
+
+row_pairs = [
+    (
+        '            ttk.Button(container, text="루틴 설정", command=lambda k=key: TargetEditor(self, k)).grid(row=row, column=4, padx=5)\n'
+        '            ttk.Button(container, text="분면 중앙 클릭", command=lambda k=key: self.test_target(k)).grid(row=row, column=5, padx=5)\n',
+        '            ttk.Button(container, text="루틴 설정", command=lambda k=key: TargetEditor(self, k)).grid(row=row, column=4, padx=5)\n'
+        '            ttk.Button(container, text="던전", command=lambda k=key: TargetDungeonSettingsWindow(self, k)).grid(row=row, column=5, padx=5)\n'
+        '            ttk.Button(container, text="분면 중앙 클릭", command=lambda k=key: self.test_target(k)).grid(row=row, column=6, padx=5)\n',
+    ),
+    (
+        '            ttk.Button(container, text="분면 루틴 설정", command=lambda k=key: TargetEditor(self, k)).grid(row=row, column=4, padx=5)\n'
+        '            ttk.Button(container, text="분면 중앙 클릭", command=lambda k=key: self.test_target(k)).grid(row=row, column=5, padx=5)\n',
+        '            ttk.Button(container, text="분면 루틴 설정", command=lambda k=key: TargetEditor(self, k)).grid(row=row, column=4, padx=5)\n'
+        '            ttk.Button(container, text="던전", command=lambda k=key: TargetDungeonSettingsWindow(self, k)).grid(row=row, column=5, padx=5)\n'
+        '            ttk.Button(container, text="분면 중앙 클릭", command=lambda k=key: self.test_target(k)).grid(row=row, column=6, padx=5)\n',
+    ),
+]
+
+row_done = False
+for old, new in row_pairs:
+    if old in text:
+        text = text.replace(old, new, 1)
+        row_done = True
+        break
+
+if not row_done:
+    raise RuntimeError("메인 테이블 분면 버튼 영역을 찾지 못했습니다.")
+
+if text == original:
+    raise RuntimeError("변경 사항이 없습니다.")
+
+backup = TARGET.with_suffix(".py.bak_before_target_dungeon_ui")
+if not backup.exists():
+    backup.write_text(original, encoding="utf-8")
+
+compile(text, str(TARGET), "exec")
+TARGET.write_text(text, encoding="utf-8")
+
+print("수정 완료:", TARGET)
+print("백업:", backup)
+print()
+print("- header 던전 버튼 제거")
+print("- 분면별 행에 던전 버튼 추가")
+print("- 분면별 A/B 체크 + 오늘 상태")
+print("- 분면별 던전 이미지 등록/캡처")
+print("- menu/dungeon/A/B/enter/auto/in_dungeon/exit")
+print("- 저장 위치: dungeon_daily.targets.<target>.images")

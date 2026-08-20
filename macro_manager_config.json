@@ -709,5 +709,21 @@
     }
   },
   "full_routines_v2": true,
-  "default_hunting_v3": true
+  "default_hunting_v3": true,
+  "dungeon_daily": {
+    "targets": {
+      "m1q1": {
+        "images": {}
+      },
+      "m1q2": {
+        "images": {}
+      },
+      "m1q3": {},
+      "m1q4": {},
+      "m2q1": {},
+      "m2q2": {},
+      "m2q3": {},
+      "m2q4": {}
+    }
+  }
 }

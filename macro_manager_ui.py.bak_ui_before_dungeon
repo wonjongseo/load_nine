@@ -2,8 +2,6 @@ from __future__ import annotations
 
 from macro_manager import *  # noqa: F401,F403
 
-import sqlite3
-
 _UI_POLISHED_WINDOWS: set[int] = set()
 _UI_WHEEL_INSTALLED = False
 
@@ -441,923 +439,403 @@ class CropDialog(tk.Toplevel):
 
 
 class TargetEditor(tk.Toplevel):
-    """분면별 루틴 선택 + 루틴 생성/삭제 + 단계 편집을 한 화면에서 처리합니다."""
-
-    DEFAULT_ROUTINE_ID = "default_hunting"
-
     def __init__(self, app: "MacroManager", key: str) -> None:
         super().__init__(app.root)
-        self.app = app
-        self.key = key
+        self.app, self.key = app, key
         self.title(f"분면별 루틴 설정 - {app.targets[key][0]}")
         self.transient(app.root)
-        self.minsize(1500, 760)
-        center_on_parent(self, app.root, 1850, 920)
-
+        self.minsize(1700, 900)
+        center_on_parent(self, app.root, 2050, 1040)
         self.rows: list[dict] = []
-        self.current_routine_id: str | None = None
-        self.routine_name_to_id: dict[str, str] = {}
-
-        target = self.app.config["targets"].setdefault(self.key, {})
-        current_id = target.get("post_routine_id", self.DEFAULT_ROUTINE_ID)
-
-        header = ttk.Frame(self, padding=(14, 12, 14, 8))
-        header.pack(fill="x")
-
+        target = app.config["targets"].setdefault(key, {})
+        selector = ttk.Frame(self, padding=(12, 8))
+        selector.pack(fill="x")
         ttk.Label(
-            header,
-            text=f"대상: {self.app.targets[self.key][0]}",
-            font=("Segoe UI Semibold", 12),
-        ).pack(side="left", padx=(0, 18))
-
-        ttk.Label(header, text="적용 루틴").pack(side="left")
-
-        self.routine_var = tk.StringVar()
-        self.routine_combo = ttk.Combobox(
-            header,
-            textvariable=self.routine_var,
-            state="readonly",
-            width=24,
-        )
-        self.routine_combo.pack(side="left", padx=(6, 8))
-        self.routine_combo.bind("<<ComboboxSelected>>", self.change_routine)
-
-        ttk.Button(
-            header,
-            text="루틴 만들기",
-            command=self.open_create_routine_dialog,
-        ).pack(side="left", padx=3)
-
-        self.delete_routine_button = ttk.Button(
-            header,
-            text="루틴 삭제",
-            command=self.delete_current_routine,
-        )
-        self.delete_routine_button.pack(side="left", padx=3)
-
-        ttk.Label(
-            header,
-            text="기본 루틴은 단계 구조가 잠겨 있으며 이미지/좌표와 클릭 전 대기만 변경할 수 있습니다.",
-        ).pack(side="left", padx=(16, 0))
-
-        outer = ttk.Frame(self, padding=(10, 4, 10, 4))
-        outer.pack(fill="both", expand=True)
-
-        self.canvas = tk.Canvas(outer, highlightthickness=0)
-        ybar = ttk.Scrollbar(outer, orient="vertical", command=self.canvas.yview)
-        xbar = ttk.Scrollbar(outer, orient="horizontal", command=self.canvas.xview)
-
-        self.body = ttk.Frame(self.canvas)
-        self.body.bind(
-            "<Configure>",
-            lambda _event: self.canvas.configure(
-                scrollregion=self.canvas.bbox("all")
-            ),
-        )
-
-        self.canvas.create_window((0, 0), window=self.body, anchor="nw")
-        self.canvas.configure(
-            yscrollcommand=ybar.set,
-            xscrollcommand=xbar.set,
-        )
-
-        self.canvas.bind("<Enter>", self._bind_mousewheel)
-        self.canvas.bind("<Leave>", self._unbind_mousewheel)
-        self.body.bind("<Enter>", self._bind_mousewheel)
-        self.body.bind("<Leave>", self._unbind_mousewheel)
-
-        self.canvas.grid(row=0, column=0, sticky="nsew")
-        ybar.grid(row=0, column=1, sticky="ns")
-        xbar.grid(row=1, column=0, sticky="ew")
-        outer.rowconfigure(0, weight=1)
-        outer.columnconfigure(0, weight=1)
-
-        footer = ttk.Frame(self, padding=(12, 8, 12, 12))
-        footer.pack(fill="x")
-
-        self.info_var = tk.StringVar(value="")
-        ttk.Label(
-            footer,
-            textvariable=self.info_var,
+            selector,
+            text="이 분면에서 실행할 전체 루틴:",
+            font=("Malgun Gothic", 10, "bold"),
         ).pack(side="left")
-
+        self.routine_name_to_id = {
+            routine.get("name", routine_id): routine_id
+            for routine_id, routine in app.config.get("post_routines", {}).items()
+        }
+        current_id = target.get("post_routine_id", "default_hunting")
+        current_name = next(
+            (name for name, rid in self.routine_name_to_id.items() if rid == current_id),
+            next(iter(self.routine_name_to_id), ""),
+        )
+        self.routine_var = tk.StringVar(value=current_name)
+        routine_combo = ttk.Combobox(
+            selector,
+            textvariable=self.routine_var,
+            values=list(self.routine_name_to_id),
+            state="readonly",
+            width=32,
+        )
+        routine_combo.pack(side="left", padx=8)
+        routine_combo.bind("<<ComboboxSelected>>", self.change_routine)
         ttk.Button(
-            footer,
-            text="닫기",
-            command=self.destroy,
-            width=14,
-        ).pack(side="right", padx=(6, 0))
-
-        ttk.Button(
-            footer,
-            text="저장",
-            style="Primary.TButton",
-            command=self.save,
-            width=14,
-        ).pack(side="right")
-
-        self.refresh_routine_choices(current_id)
-
-    def _bind_mousewheel(self, _event=None) -> None:
-        self.bind_all("<MouseWheel>", self._on_mousewheel)
-        self.bind_all("<Shift-MouseWheel>", self._on_shift_mousewheel)
-
-    def _unbind_mousewheel(self, _event=None) -> None:
-        try:
-            self.unbind_all("<MouseWheel>")
-            self.unbind_all("<Shift-MouseWheel>")
-        except tk.TclError:
-            pass
-
-    def _on_mousewheel(self, event) -> str:
-        delta = int(-event.delta / 120)
-        if delta == 0:
-            delta = -1 if event.delta > 0 else 1
-        self.canvas.yview_scroll(delta, "units")
-        return "break"
-
-    def _on_shift_mousewheel(self, event) -> str:
-        delta = int(-event.delta / 120)
-        if delta == 0:
-            delta = -1 if event.delta > 0 else 1
-        self.canvas.xview_scroll(delta, "units")
-        return "break"
-
-    def refresh_routine_choices(self, select_id: str | None = None) -> None:
-        routines = self.app.config.setdefault("post_routines", {})
-        self.routine_name_to_id = {}
-
-        names: list[str] = []
-        selected_name = ""
-
-        for routine_id, routine in routines.items():
-            name = routine.get("name", routine_id)
-            display = (
-                f"{name} (기본)"
-                if routine_id == self.DEFAULT_ROUTINE_ID
-                else name
+            selector,
+            text="루틴 만들기·편집",
+            command=self.edit_routines,
+        ).pack(side="left", padx=4)
+        ttk.Label(
+            selector,
+            text=(
+                "※ 클릭 보정 0,0은 찾은 이미지 정중앙입니다. "
+                "+X=오른쪽, -X=왼쪽, +Y=아래, -Y=위"
+            ),
+        ).pack(side="left", padx=12)
+        outer = ttk.Frame(self, padding=10)
+        outer.pack(fill="both", expand=True)
+        canvas = tk.Canvas(outer)
+        scrollbar = ttk.Scrollbar(outer, orient="vertical", command=canvas.yview)
+        self.body = ttk.Frame(canvas)
+        self.body.bind("<Configure>", lambda _e: canvas.configure(scrollregion=canvas.bbox("all")))
+        canvas.create_window((0, 0), window=self.body, anchor="nw")
+        canvas.configure(yscrollcommand=scrollbar.set)
+        canvas.pack(side="left", fill="both", expand=True)
+        scrollbar.pack(side="right", fill="y")
+        headers = (
+            "단계 (클릭=캡처)",
+            "공용 이미지",
+            "현재 적용 이미지 (변경 시 분면 전용)",
+            "클릭 보정 X",
+            "Y",
+            "Fallback X",
+            "Y",
+            "",
+        )
+        for col, text in enumerate(headers):
+            ttk.Label(self.body, text=text).grid(row=0, column=col, padx=4, pady=5)
+        legacy_overrides = target.setdefault("overrides", {})
+        legacy_fallbacks = target.setdefault("fallbacks", {})
+        selected_routine_id = target.get("post_routine_id", "default_hunting")
+        routine_overrides, routine_fallbacks = target_step_settings(
+            target,
+            selected_routine_id,
+        )
+        routine_click_offsets = target_click_offsets(
+            target,
+            selected_routine_id,
+        )
+        legacy_click_offsets = target_legacy_click_offsets(target)
+        display_steps = [
+            *((step, "legacy") for step in app.config.get("pre_death_steps", [])),
+            *((step, "legacy") for step in app.config.get("entry_steps", [])),
+            *((step, "routine") for step in steps_for_target(app.config, target)),
+        ]
+        for row_index, (step, scope) in enumerate(display_steps, 1):
+            sid = step["id"]
+            overrides = legacy_overrides if scope == "legacy" else routine_overrides
+            fallbacks = legacy_fallbacks if scope == "legacy" else routine_fallbacks
+            coordinate_step = (
+                step.get("fallback") is not None
+                or bool(step.get("coordinate_from_target"))
             )
+            common_image = step.get("image", "")
+            override_var = tk.StringVar(
+                value=""
+                if coordinate_step
+                else overrides.get(sid, "") or common_image
+            )
+            if scope == "routine":
+                point = fallbacks.get(sid) or ["", ""]
+            else:
+                point = (
+                    fallbacks.get(sid) or ["", ""]
+                    if coordinate_step
+                    else ["", ""]
+                )
+            x_var = tk.StringVar(value=str(point[0]))
+            y_var = tk.StringVar(value=str(point[1]))
+            click_offsets = (
+                legacy_click_offsets
+                if scope == "legacy"
+                else routine_click_offsets
+            )
+            click_offset = click_offsets.get(sid, [0, 0])
+            click_x_var = tk.StringVar(value=str(click_offset[0]))
+            click_y_var = tk.StringVar(value=str(click_offset[1]))
+            # 이미지 기반 단계는 사망 전/진입 단계까지 모두 클릭 보정을 설정할 수 있습니다.
+            image_editable = not coordinate_step
+            click_enabled = not coordinate_step
+            stage_label = ttk.Label(
+                self.body,
+                text=f"{row_index}. {step['name']}",
+                cursor="hand2",
+            )
+            stage_label.grid(
+                row=row_index,
+                column=0,
+                sticky="w",
+            )
+            stage_label.bind(
+                "<Button-1>",
+                lambda _event, variable=override_var, current=step: self.preview_image(
+                    variable,
+                    current,
+                ),
+            )
+            ttk.Label(
+                self.body,
+                text=common_image or "(없음)",
+                width=20,
+            ).grid(row=row_index, column=1)
+            override_entry = ttk.Entry(
+                self.body,
+                textvariable=override_var,
+                width=75,
+                state="normal" if image_editable else "disabled",
+            )
+            override_entry.grid(row=row_index, column=2, padx=3)
+            ttk.Entry(
+                self.body,
+                textvariable=click_x_var,
+                width=8,
+                state="normal" if click_enabled else "disabled",
+            ).grid(row=row_index, column=3)
+            ttk.Entry(
+                self.body,
+                textvariable=click_y_var,
+                width=8,
+                state="normal" if click_enabled else "disabled",
+            ).grid(row=row_index, column=4)
+            ttk.Entry(
+                self.body,
+                textvariable=x_var,
+                width=6,
+                state=(
+                    "normal"
+                    if scope == "routine" or coordinate_step
+                    else "disabled"
+                ),
+            ).grid(row=row_index, column=5, padx=2)
+            ttk.Entry(
+                self.body,
+                textvariable=y_var,
+                width=6,
+                state=(
+                    "normal"
+                    if scope == "routine" or coordinate_step
+                    else "disabled"
+                ),
+            ).grid(row=row_index, column=6, padx=2)
+            buttons = ttk.Frame(self.body)
+            buttons.grid(row=row_index, column=7, padx=4)
+            image_button_state = "normal" if image_editable else "disabled"
+            ttk.Button(buttons, text="파일", state=image_button_state, command=lambda v=override_var: self.choose(v)).pack(side="left")
+            ttk.Button(
+                buttons,
+                text="공용",
+                state=image_button_state,
+                command=lambda v=override_var, common=common_image: v.set(common),
+            ).pack(side="left")
+            ttk.Button(buttons, text="캡처", state=image_button_state, command=lambda v=override_var, s=step: self.capture(v, s)).pack(side="left")
+            self.rows.append({
+                "id": sid,
+                "override": override_var,
+                "common": common_image,
+                "x": x_var,
+                "y": y_var,
+                "click_x": click_x_var,
+                "click_y": click_y_var,
+                "coordinate": coordinate_step,
+                "fallback_enabled": (
+                    scope == "routine" or coordinate_step
+                ),
+                "click_enabled": click_enabled,
+                "scope": scope,
+            })
+        ttk.Button(self, text="저장", command=self.save).pack(pady=8)
 
-            if display in self.routine_name_to_id:
-                display = f"{display} [{routine_id}]"
+    def choose(self, variable: tk.StringVar) -> None:
+        path = filedialog.askopenfilename(filetypes=[("PNG 이미지", "*.png"), ("이미지", "*.png *.jpg *.bmp")])
+        if path:
+            variable.set(path)
 
-            self.routine_name_to_id[display] = routine_id
-            names.append(display)
+    def capture(self, variable: tk.StringVar, step: dict) -> None:
+        path = self.app.capture_and_crop(self.key, step["id"])
+        if path:
+            variable.set(path)
 
-            if routine_id == select_id:
-                selected_name = display
-
-        self.routine_combo.configure(values=names)
-
-        if not selected_name and names:
-            selected_name = names[0]
-
-        if selected_name:
-            self.routine_var.set(selected_name)
-            self.current_routine_id = self.routine_name_to_id[selected_name]
-        else:
-            self.routine_var.set("")
-            self.current_routine_id = None
-
-        self.refresh_delete_button()
-        self.build_rows()
-
-    def selected_routine_id(self) -> str | None:
-        return self.routine_name_to_id.get(self.routine_var.get())
-
-    def change_routine(self, _event: tk.Event | None = None) -> None:
-        if self.current_routine_id:
-            if not self.save_rows(persist=False):
-                return
-
-        routine_id = self.selected_routine_id()
-        if not routine_id:
+    def preview_image(self, variable: tk.StringVar, step: dict) -> None:
+        configured = variable.get().strip() or step.get("image", "")
+        common_image = step.get("image", "")
+        source = (
+            "분면별 이미지"
+            if configured and configured != common_image
+            else "공용 이미지"
+        )
+        if not configured:
+            messagebox.showinfo(
+                "등록된 이미지 없음",
+                f"{step['name']} 단계에는 이미지가 없습니다.\n좌표 클릭 단계일 수 있습니다.",
+                parent=self,
+            )
+            return
+        image_path = Path(configured)
+        if not image_path.is_absolute():
+            image_path = BASE_DIR / image_path
+        if not image_path.exists():
+            messagebox.showerror(
+                "이미지 파일 없음",
+                f"등록된 파일을 찾을 수 없습니다.\n\n{image_path}",
+                parent=self,
+            )
+            return
+        try:
+            photo = tk.PhotoImage(file=str(image_path))
+        except tk.TclError as exc:
+            messagebox.showerror(
+                "미리보기 실패",
+                f"이미지를 열 수 없습니다.\n{exc}",
+                parent=self,
+            )
             return
 
-        self.current_routine_id = routine_id
+        max_width, max_height = 1000, 650
+        scale = max(
+            1,
+            math.ceil(photo.width() / max_width),
+            math.ceil(photo.height() / max_height),
+        )
+        if scale > 1:
+            photo = photo.subsample(scale, scale)
+
+        preview = tk.Toplevel(self)
+        preview.title(f"이미지 미리보기 - {step['name']}")
+        preview.transient(self)
+        ttk.Label(
+            preview,
+            text=f"{source}: {image_path}",
+            padding=(10, 8),
+        ).pack(fill="x")
+        image_label = ttk.Label(preview, image=photo, padding=10)
+        image_label.image = photo
+        image_label.pack(fill="both", expand=True)
+        ttk.Button(preview, text="닫기", command=preview.destroy).pack(pady=(0, 10))
+        center_on_parent(
+            preview,
+            self,
+            min(photo.width() + 40, 1060),
+            min(photo.height() + 100, 750),
+        )
+
+    def change_routine(self, _event: tk.Event | None = None) -> None:
+        routine_id = self.routine_name_to_id.get(self.routine_var.get())
+        if not routine_id:
+            return
         target = self.app.config["targets"].setdefault(self.key, {})
         target["post_routine_id"] = routine_id
         self.app.persist()
         self.app.engine.reset_target(self.key)
         self.app.refresh_main_routine_choices()
+        self.destroy()
+        TargetEditor(self.app, self.key)
 
-        self.refresh_delete_button()
-        self.build_rows()
-
-    def refresh_delete_button(self) -> None:
-        state = (
-            "disabled"
-            if self.current_routine_id == self.DEFAULT_ROUTINE_ID
-            else "normal"
+    def edit_routines(self) -> None:
+        manager = EditableRoutineManager(
+            self.app,
+            initial_capture_key=self.key,
+            initial_routine_id=self.app.config["targets"]
+            .get(self.key, {})
+            .get("post_routine_id", "default_hunting"),
         )
-        self.delete_routine_button.configure(state=state)
+        self.wait_window(manager)
+        if self.winfo_exists():
+            self.destroy()
+            TargetEditor(self.app, self.key)
 
-    def open_create_routine_dialog(self) -> None:
-        if self.current_routine_id:
-            if not self.save_rows(persist=False):
-                return
-
-        dialog = tk.Toplevel(self)
-        dialog.title("새 루틴 만들기")
-        dialog.transient(self)
-        dialog.resizable(False, False)
-        center_on_parent(dialog, self, 520, 250)
-
-        frame = ttk.Frame(dialog, padding=18)
-        frame.pack(fill="both", expand=True)
-
-        ttk.Label(
-            frame,
-            text="새 루틴 만들기",
-            font=("Segoe UI Semibold", 13),
-        ).grid(row=0, column=0, columnspan=2, sticky="w", pady=(0, 14))
-
-        routines = self.app.config.setdefault("post_routines", {})
-        base_name_to_id: dict[str, str] = {}
-        base_names: list[str] = []
-
-        for routine_id, routine in routines.items():
-            display = routine.get("name", routine_id)
-            if routine_id == self.DEFAULT_ROUTINE_ID:
-                display = f"{display} (기본)"
-            if display in base_name_to_id:
-                display = f"{display} [{routine_id}]"
-            base_name_to_id[display] = routine_id
-            base_names.append(display)
-
-        default_base = next(
-            (
-                name
-                for name, routine_id in base_name_to_id.items()
-                if routine_id == self.current_routine_id
-            ),
-            next(iter(base_names), ""),
-        )
-
-        base_var = tk.StringVar(value=default_base)
-        name_var = tk.StringVar(value="새 루틴")
-
-        ttk.Label(frame, text="베이스가 될 루틴").grid(
-            row=1, column=0, sticky="w", padx=(0, 12), pady=6
-        )
-        ttk.Combobox(
-            frame,
-            textvariable=base_var,
-            values=base_names,
-            state="readonly",
-            width=34,
-        ).grid(row=1, column=1, sticky="ew", pady=6)
-
-        ttk.Label(frame, text="만들 루틴명").grid(
-            row=2, column=0, sticky="w", padx=(0, 12), pady=6
-        )
-        name_entry = ttk.Entry(
-            frame,
-            textvariable=name_var,
-            width=36,
-        )
-        name_entry.grid(row=2, column=1, sticky="ew", pady=6)
-
-        button_row = ttk.Frame(frame)
-        button_row.grid(
-            row=3,
-            column=0,
-            columnspan=2,
-            sticky="e",
-            pady=(18, 0),
-        )
-
-        def create() -> None:
-            name = name_var.get().strip()
-            base_id = base_name_to_id.get(base_var.get())
-
-            if not name:
-                messagebox.showerror(
-                    "루틴명 필요",
-                    "만들 루틴명을 입력하세요.",
-                    parent=dialog,
-                )
-                return
-
-            if not base_id or base_id not in routines:
-                messagebox.showerror(
-                    "베이스 루틴 오류",
-                    "베이스가 될 루틴을 선택하세요.",
-                    parent=dialog,
-                )
-                return
-
-            existing_names = {
-                routine.get("name", routine_id)
-                for routine_id, routine in routines.items()
-            }
-            if name in existing_names:
-                messagebox.showerror(
-                    "루틴명 중복",
-                    "같은 이름의 루틴이 이미 있습니다.",
-                    parent=dialog,
-                )
-                return
-
-            routine_id = f"routine_{time.time_ns()}"
-            source = routines[base_id]
-            routines[routine_id] = {
-                "name": name,
-                "steps": json.loads(
-                    json.dumps(source.get("steps", []))
-                ),
-            }
-
-            target = self.app.config["targets"].setdefault(self.key, {})
-            target["post_routine_id"] = routine_id
-
-            initialize_routine_target_settings(self.app.config)
-            self.app.persist()
-            self.app.engine.reset_target(self.key)
-            self.app.refresh_main_routine_choices()
-
-            dialog.destroy()
-            self.refresh_routine_choices(routine_id)
-            self.info_var.set(f"'{name}' 루틴을 만들었습니다.")
-
-        ttk.Button(
-            button_row,
-            text="취소",
-            command=dialog.destroy,
-            width=12,
-        ).pack(side="right", padx=(6, 0))
-
-        ttk.Button(
-            button_row,
-            text="만들기",
-            style="Primary.TButton",
-            command=create,
-            width=12,
-        ).pack(side="right")
-
-        dialog.bind("<Return>", lambda _e: create())
-        dialog.bind("<Escape>", lambda _e: dialog.destroy())
-        dialog.grab_set()
-        name_entry.focus_set()
-        name_entry.select_range(0, "end")
-
-    def delete_current_routine(self) -> None:
-        routine_id = self.current_routine_id
-        if not routine_id:
-            return
-
-        if routine_id == self.DEFAULT_ROUTINE_ID:
-            messagebox.showinfo(
-                "삭제 불가",
-                "기본 루틴은 삭제할 수 없습니다.",
-                parent=self,
-            )
-            return
-
-        routine = self.app.config["post_routines"].get(routine_id)
-        if not routine:
-            return
-
-        routine_name = routine.get("name", routine_id)
-
-        if not messagebox.askyesno(
-            "루틴 삭제",
-            f"'{routine_name}' 루틴을 정말 삭제하시겠습니까?",
-            parent=self,
-        ):
-            return
-
-        del self.app.config["post_routines"][routine_id]
-
-        for target in self.app.config.get("targets", {}).values():
-            if target.get("post_routine_id") == routine_id:
-                target["post_routine_id"] = self.DEFAULT_ROUTINE_ID
-
-            routine_settings = target.get("routine_settings")
-            if isinstance(routine_settings, dict):
-                routine_settings.pop(routine_id, None)
-
-        initialize_routine_target_settings(self.app.config)
-        self.app.persist()
-        self.app.engine.reset_target(self.key)
-        self.app.refresh_main_routine_choices()
-
-        self.refresh_routine_choices(self.DEFAULT_ROUTINE_ID)
-        self.info_var.set(f"'{routine_name}' 루틴을 삭제했습니다.")
-
-    def build_rows(self, focus_step_id: str | None = None) -> None:
-        for child in self.body.winfo_children():
-            child.destroy()
-
-        self.rows = []
-
-        routine_id = self.current_routine_id
-        routine = self.app.config.get("post_routines", {}).get(
-            routine_id or "",
-            {},
-        )
-        is_default = routine_id == self.DEFAULT_ROUTINE_ID
-
+    def save(self) -> None:
         target = self.app.config["targets"].setdefault(self.key, {})
-        target_overrides, target_fallbacks = target_step_settings(
-            target,
-            routine_id or self.DEFAULT_ROUTINE_ID,
+        # 다른 루틴에서 같은 내부 단계 ID를 사용할 수 있으므로 현재 루틴에서
+        # 비활성인 이미지/좌표 값은 삭제하지 않고 보존합니다.
+        legacy_overrides = dict(target.get("overrides", {}))
+        legacy_fallbacks = dict(target.get("fallbacks", {}))
+        routine_id = self.routine_name_to_id.get(
+            self.routine_var.get(),
+            "default_hunting",
         )
-
-        headers = (
-            "순서",
-            "단계 이름",
-            "동작",
-            "현재 적용 이미지 또는 좌표 X,Y",
-            "클릭 전 대기",
-            "파일",
-            "캡처",
-            "아래+",
-            "삭제",
-            "↑",
-            "↓",
+        routine_click_offsets = dict(
+            target_click_offsets(target, routine_id)
         )
-
-        for column, title in enumerate(headers):
-            ttk.Label(
-                self.body,
-                text=title,
-                font=("Segoe UI Semibold", 10),
-                anchor="center",
-            ).grid(
-                row=0,
-                column=column,
-                padx=4,
-                pady=(4, 8),
-                sticky="ew",
-            )
-
-        self.body.columnconfigure(1, weight=1)
-        self.body.columnconfigure(3, weight=2)
-
-        for index, step in enumerate(routine.get("steps", [])):
-            row_num = index + 1
-            step_id = step.get("id", "")
-            base_fallback = step.get("fallback")
-            from_target = bool(step.get("coordinate_from_target"))
-
-            applied_fallback = target_fallbacks.get(step_id)
-            if applied_fallback is None:
-                applied_fallback = base_fallback
-
-            common_image = step.get("image", "")
-            applied_image = target_overrides.get(step_id) or common_image
-
-            coordinate_step = (
-                base_fallback is not None
-                or from_target
-            )
-
-            name_var = tk.StringVar(value=step.get("name", ""))
-            action_var = tk.StringVar(
-                value=(
-                    "좌표 클릭"
-                    if coordinate_step
-                    else "이미지 클릭"
-                )
-            )
-            image_var = tk.StringVar(value=applied_image)
-
-            x_var = tk.StringVar(
-                value=(
-                    str(applied_fallback[0])
-                    if applied_fallback is not None
-                    else ""
-                )
-            )
-            y_var = tk.StringVar(
-                value=(
-                    str(applied_fallback[1])
-                    if applied_fallback is not None
-                    else ""
-                )
-            )
-
-            delay_var = tk.StringVar(
-                value=str(step.get("pre_click_delay", PRE_CLICK_DELAY))
-            )
-
-            ttk.Label(
-                self.body,
-                text=str(row_num),
-                width=5,
-                anchor="center",
-            ).grid(row=row_num, column=0, padx=3, pady=3)
-
-            name_entry = ttk.Entry(
-                self.body,
-                textvariable=name_var,
-                width=23,
-                state="disabled" if is_default else "normal",
-            )
-            name_entry.grid(
-                row=row_num,
-                column=1,
-                sticky="ew",
-                padx=3,
-                pady=3,
-            )
-
-            action_combo = ttk.Combobox(
-                self.body,
-                textvariable=action_var,
-                values=("이미지 클릭", "좌표 클릭"),
-                state="disabled" if is_default else "readonly",
-                width=12,
-            )
-            action_combo.grid(
-                row=row_num,
-                column=2,
-                padx=3,
-                pady=3,
-            )
-
-            value_cell = ttk.Frame(self.body)
-            value_cell.grid(
-                row=row_num,
-                column=3,
-                sticky="ew",
-                padx=3,
-                pady=3,
-            )
-
-            image_entry = ttk.Entry(
-                value_cell,
-                textvariable=image_var,
-                width=48,
-            )
-
-            coord_frame = ttk.Frame(value_cell)
-            ttk.Label(coord_frame, text="X").pack(
-                side="left",
-                padx=(0, 3),
-            )
-            ttk.Entry(
-                coord_frame,
-                textvariable=x_var,
-                width=11,
-            ).pack(side="left")
-            ttk.Label(coord_frame, text="Y").pack(
-                side="left",
-                padx=(10, 3),
-            )
-            ttk.Entry(
-                coord_frame,
-                textvariable=y_var,
-                width=11,
-            ).pack(side="left")
-
-            ttk.Entry(
-                self.body,
-                textvariable=delay_var,
-                width=9,
-            ).grid(
-                row=row_num,
-                column=4,
-                padx=3,
-                pady=3,
-            )
-
-            file_button = ttk.Button(
-                self.body,
-                text="파일",
-                width=6,
-                command=lambda v=image_var, a=action_var: self.choose_file(
-                    v,
-                    a,
-                ),
-            )
-            file_button.grid(
-                row=row_num,
-                column=5,
-                padx=2,
-                pady=3,
-            )
-
-            capture_button = ttk.Button(
-                self.body,
-                text="캡처",
-                width=6,
-                command=lambda v=image_var, a=action_var, s=step, order=row_num, n=name_var: self.capture_row(
-                    v,
-                    a,
-                    s,
-                    order,
-                    n,
-                ),
-            )
-            capture_button.grid(
-                row=row_num,
-                column=6,
-                padx=2,
-                pady=3,
-            )
-
-            structure_state = "disabled" if is_default else "normal"
-
-            ttk.Button(
-                self.body,
-                text="아래+",
-                width=6,
-                state=structure_state,
-                command=lambda i=index: self.add_below(i),
-            ).grid(row=row_num, column=7, padx=2, pady=3)
-
-            ttk.Button(
-                self.body,
-                text="삭제",
-                width=6,
-                state=structure_state,
-                command=lambda i=index: self.delete_row(i),
-            ).grid(row=row_num, column=8, padx=2, pady=3)
-
-            ttk.Button(
-                self.body,
-                text="↑",
-                width=4,
-                state=structure_state,
-                command=lambda i=index: self.move_row(i, -1),
-            ).grid(row=row_num, column=9, padx=2, pady=3)
-
-            ttk.Button(
-                self.body,
-                text="↓",
-                width=4,
-                state=structure_state,
-                command=lambda i=index: self.move_row(i, 1),
-            ).grid(row=row_num, column=10, padx=2, pady=3)
-
-            def toggle_value_cell(
-                *_args: object,
-                action: tk.StringVar = action_var,
-                image_widget: ttk.Entry = image_entry,
-                coordinate_widget: ttk.Frame = coord_frame,
-                file_widget: ttk.Button = file_button,
-                capture_widget: ttk.Button = capture_button,
-            ) -> None:
-                image_widget.pack_forget()
-                coordinate_widget.pack_forget()
-
-                if action.get() == "좌표 클릭":
-                    coordinate_widget.pack(fill="x")
-                    file_widget.configure(state="disabled")
-                    capture_widget.configure(state="disabled")
-                else:
-                    image_widget.pack(fill="x")
-                    file_widget.configure(state="normal")
-                    capture_widget.configure(state="normal")
-
-            action_var.trace_add("write", toggle_value_cell)
-            toggle_value_cell()
-
-            self.rows.append(
-                {
-                    "step": step,
-                    "id": step_id,
-                    "name": name_var,
-                    "action": action_var,
-                    "image": image_var,
-                    "x": x_var,
-                    "y": y_var,
-                    "delay": delay_var,
-                    "from_target": from_target,
-                    "coordinate_step": coordinate_step,
-                    "common_image": common_image,
-                    "base_fallback": base_fallback,
-                    "is_default": is_default,
-                }
-            )
-
-            if focus_step_id == step.get("id"):
-                self.after(20, name_entry.focus_set)
-
-        self.refresh_delete_button()
-
-    def choose_file(
-        self,
-        image_var: tk.StringVar,
-        action_var: tk.StringVar,
-    ) -> None:
-        path = filedialog.askopenfilename(
-            parent=self,
-            initialdir=BASE_DIR / "images",
-            filetypes=[
-                ("이미지", "*.png *.jpg *.bmp"),
-                ("모든 파일", "*.*"),
-            ],
+        legacy_click_offsets = dict(
+            target_legacy_click_offsets(target)
         )
-        if path:
-            image_var.set(path)
-            if action_var.get() != "이미지 클릭":
-                action_var.set("이미지 클릭")
-
-    def capture_row(
-        self,
-        image_var: tk.StringVar,
-        action_var: tk.StringVar,
-        step: dict,
-        order: int,
-        name_var: tk.StringVar,
-    ) -> None:
-        step_id = step.get("id", f"step_{order}")
-        routine_dir = CAPTURE_DIR / "common_routines" / (
-            self.current_routine_id or self.DEFAULT_ROUTINE_ID
-        )
-
-        path = self.app.capture_and_crop(
-            self.key,
-            step_id,
-            destination_dir=routine_dir,
-            parent=self,
-            suggested_filename=self.capture_filename(
-                order,
-                name_var.get(),
-            ),
-        )
-
-        if path:
-            image_var.set(path)
-            if action_var.get() != "이미지 클릭":
-                action_var.set("이미지 클릭")
-
-    @staticmethod
-    def capture_filename(order: int, step_name: str) -> str:
-        clean_name = re.sub(
-            r'[<>:"/\\|?*]',
-            "",
-            step_name.strip(),
-        )
-        clean_name = re.sub(
-            r"\s+",
-            "_",
-            clean_name,
-        ).strip("._")
-
-        if not clean_name:
-            clean_name = f"{order:02d}_step"
-        elif not re.match(r"^\d+", clean_name):
-            clean_name = f"{order:02d}_{clean_name}"
-
-        return f"{clean_name}.png"
-
-    def add_below(self, index: int) -> None:
-        if self.current_routine_id == self.DEFAULT_ROUTINE_ID:
-            return
-        if not self.save_rows(persist=False):
-            return
-
-        routine = self.app.config["post_routines"][self.current_routine_id]
-        new_step = {
-            "id": f"custom_{time.time_ns()}",
-            "name": "새 단계",
-            "image": "",
-            "timeout": 15.0,
-            "pre_click_delay": PRE_CLICK_DELAY,
-        }
-        routine["steps"].insert(index + 1, new_step)
-        self.app.persist()
-        self.build_rows(new_step["id"])
-
-    def delete_row(self, index: int) -> None:
-        if self.current_routine_id == self.DEFAULT_ROUTINE_ID:
-            return
-        if not self.save_rows(persist=False):
-            return
-
-        routine = self.app.config["post_routines"][self.current_routine_id]
-        step = routine["steps"][index]
-
-        if not messagebox.askyesno(
-            "단계 삭제",
-            f"'{step.get('name', '선택 단계')}' 단계를 삭제하시겠습니까?",
-            parent=self,
-        ):
-            return
-
-        del routine["steps"][index]
-        self.app.persist()
-        self.build_rows()
-
-    def move_row(self, index: int, offset: int) -> None:
-        if self.current_routine_id == self.DEFAULT_ROUTINE_ID:
-            return
-        if not self.save_rows(persist=False):
-            return
-
-        steps = self.app.config["post_routines"][self.current_routine_id]["steps"]
-        destination = max(
-            0,
-            min(len(steps) - 1, index + offset),
-        )
-
-        if destination == index:
-            return
-
-        step = steps.pop(index)
-        steps.insert(destination, step)
-        self.app.persist()
-        self.build_rows(step.get("id"))
-
-    def save_rows(self, persist: bool = True) -> bool:
-        routine_id = self.current_routine_id
-        if not routine_id:
-            return True
-
-        routine = self.app.config["post_routines"].get(routine_id)
-        if not routine:
-            return True
-
-        is_default = routine_id == self.DEFAULT_ROUTINE_ID
-
-        target = self.app.config["targets"].setdefault(self.key, {})
-        routine_overrides, routine_fallbacks = target_step_settings(
+        current_overrides, current_fallbacks = target_step_settings(
             target,
             routine_id,
         )
-
+        if routine_id == "default_hunting":
+            routine_overrides = legacy_overrides
+            routine_fallbacks = legacy_fallbacks
+        else:
+            routine_overrides = dict(current_overrides)
+            routine_fallbacks = dict(current_fallbacks)
         try:
             for row in self.rows:
-                step = row["step"]
-
-                if not is_default:
-                    name = row["name"].get().strip()
-                    if not name:
-                        raise ValueError(
-                            "단계 이름은 비워둘 수 없습니다."
-                        )
-                    step["name"] = name
-
-                delay = float(row["delay"].get())
-                if delay < 0:
-                    raise ValueError(
-                        "클릭 전 대기는 0 이상이어야 합니다."
-                    )
-                step["pre_click_delay"] = delay
-
-                step_id = row["id"]
-                action = row["action"].get()
-
-                if action == "좌표 클릭":
-                    x_text = row["x"].get().strip()
-                    y_text = row["y"].get().strip()
-
-                    if not x_text or not y_text:
-                        raise ValueError(
-                            f"'{step.get('name', '')}' 단계의 X와 Y 좌표를 모두 입력하세요."
-                        )
-
-                    routine_fallbacks[step_id] = [
-                        int(float(x_text)),
-                        int(float(y_text)),
-                    ]
-
-                    if not is_default:
-                        step["coordinate_from_target"] = True
-                        step.pop("fallback", None)
-
-                    routine_overrides.pop(step_id, None)
-
+                if row["scope"] == "legacy":
+                    overrides, fallbacks = legacy_overrides, legacy_fallbacks
                 else:
-                    image = row["image"].get().strip()
-                    common_image = row.get("common_image", "")
-
-                    if image and image != common_image:
-                        routine_overrides[step_id] = image
+                    overrides, fallbacks = routine_overrides, routine_fallbacks
+                if row.get("fallback_enabled", row["coordinate"]):
+                    x = row["x"].get().strip()
+                    y = row["y"].get().strip()
+                    if x or y:
+                        if not x or not y:
+                            raise ValueError
+                        fallbacks[row["id"]] = [int(x), int(y)]
                     else:
-                        routine_overrides.pop(step_id, None)
+                        fallbacks.pop(row["id"], None)
 
-                    if not is_default:
-                        step.pop("coordinate_from_target", None)
-                        step.pop("fallback", None)
-
-                    # 이미지 단계의 기존 fallback 좌표는 보존합니다.
-
-        except ValueError as exc:
-            messagebox.showerror(
-                "입력 오류",
-                str(exc),
-                parent=self,
+                # 좌표 전용 단계가 아닌 경우에는 이미지 설정도 별도로 저장합니다.
+                if not row["coordinate"]:
+                    override = row["override"].get().strip()
+                    if override and override != row["common"]:
+                        overrides[row["id"]] = override
+                    else:
+                        overrides.pop(row["id"], None)
+                if row["click_enabled"]:
+                    click_x_text = row["click_x"].get().strip() or "0"
+                    click_y_text = row["click_y"].get().strip() or "0"
+                    click_x = int(float(click_x_text))
+                    click_y = int(float(click_y_text))
+                    click_offsets = (
+                        legacy_click_offsets
+                        if row["scope"] == "legacy"
+                        else routine_click_offsets
+                    )
+                    if click_x or click_y:
+                        click_offsets[row["id"]] = [click_x, click_y]
+                    else:
+                        click_offsets.pop(row["id"], None)
+        except ValueError:
+            messagebox.showerror("좌표 오류", "Fallback X와 Y는 둘 다 비우거나 둘 다 정수로 입력하세요.", parent=self)
+            return
+        target["overrides"], target["fallbacks"] = (
+            legacy_overrides,
+            legacy_fallbacks,
+        )
+        target["legacy_click_offsets"] = legacy_click_offsets
+        if routine_id == "default_hunting":
+            target["overrides"], target["fallbacks"] = (
+                routine_overrides,
+                routine_fallbacks,
             )
-            return False
-
-        if persist:
+        else:
+            target.setdefault("routine_settings", {})[routine_id] = {
+                "overrides": routine_overrides,
+                "fallbacks": routine_fallbacks,
+                "click_offsets": routine_click_offsets,
+            }
+        if routine_id == "default_hunting":
+            target["click_offsets"] = routine_click_offsets
+        if routine_id:
             target["post_routine_id"] = routine_id
+        self.app.persist()
+        self.destroy()
 
-            initialize_routine_target_settings(self.app.config)
-            self.app.persist()
-            self.app.engine.reset_target(self.key)
-            self.app.refresh_main_routine_choices()
-            self.info_var.set("저장 완료")
-
-        return True
-
-    def save(self) -> None:
-        self.save_rows(persist=True)
 
 class CommonRoutineEditor(tk.Toplevel):
     GROUP_LABELS = {
@@ -2661,264 +2139,6 @@ class EditableRoutineManager(tk.Toplevel):
         self.destroy()
 
 
-
-class TargetDungeonSettingsWindow(tk.Toplevel):
-    IMAGE_ITEMS = (
-        ("menu", "메뉴", "02_menu.png"),
-        ("dungeon", "던전 메뉴", "dungeon.png"),
-        ("dungeon_A", "던전 A", "dungeon_A.png"),
-        ("dungeon_B", "던전 B", "dungeon_B.png"),
-        ("enter", "입장", "enter.png"),
-        ("auto", "AUTO", "21_auto.png"),
-        ("in_dungeon", "던전 내부 확인", "in_dungeon.png"),
-        ("exit", "나가기", "exit.png"),
-    )
-
-    def __init__(self, app: "MacroManager", key: str) -> None:
-        super().__init__(app.root)
-        self.app = app
-        self.key = key
-        self.title(f"던전 설정 - {app.targets[key][0]}")
-        self.transient(app.root)
-        self.minsize(980, 680)
-        center_on_parent(self, app.root, 1080, 760)
-
-        dungeon_root = self.app.config.setdefault("dungeon_daily", {})
-        targets = dungeon_root.setdefault("targets", {})
-        self.cfg = targets.setdefault(
-            key,
-            {"A": True, "B": True, "images": {}},
-        )
-        self.cfg.setdefault("images", {})
-
-        self.a_var = tk.BooleanVar(value=bool(self.cfg.get("A", True)))
-        self.b_var = tk.BooleanVar(value=bool(self.cfg.get("B", True)))
-        self.a_status = tk.StringVar(value="이용가능")
-        self.b_status = tk.StringVar(value="이용가능")
-        self.image_vars: dict[str, tk.StringVar] = {}
-
-        outer = ttk.Frame(self, padding=16)
-        outer.pack(fill="both", expand=True)
-
-        title_row = ttk.Frame(outer)
-        title_row.pack(fill="x", pady=(0, 12))
-
-        ttk.Label(
-            title_row,
-            text=f"{app.targets[key][0]} - 매일 던전",
-            font=("Segoe UI Semibold", 14),
-        ).pack(side="left")
-
-        ttk.Button(
-            title_row,
-            text="오늘 상태 새로고침",
-            command=self.refresh_statuses,
-        ).pack(side="right")
-
-        use_box = ttk.LabelFrame(outer, text="실행할 던전", padding=12)
-        use_box.pack(fill="x", pady=(0, 12))
-
-        ttk.Checkbutton(
-            use_box,
-            text="Dungeon A 입장",
-            variable=self.a_var,
-        ).grid(row=0, column=0, sticky="w", padx=(0, 12))
-
-        ttk.Label(
-            use_box,
-            textvariable=self.a_status,
-            width=12,
-            anchor="center",
-        ).grid(row=0, column=1, padx=(0, 30))
-
-        ttk.Checkbutton(
-            use_box,
-            text="Dungeon B 입장",
-            variable=self.b_var,
-        ).grid(row=0, column=2, sticky="w", padx=(0, 12))
-
-        ttk.Label(
-            use_box,
-            textvariable=self.b_status,
-            width=12,
-            anchor="center",
-        ).grid(row=0, column=3)
-
-        ttk.Label(
-            outer,
-            text=(
-                "이미지는 이 분면 전용으로 저장됩니다. "
-                "모니터 해상도/배율이 다르면 각 분면에서 따로 캡처하세요."
-            ),
-        ).pack(anchor="w", pady=(0, 8))
-
-        image_box = ttk.LabelFrame(
-            outer,
-            text="분면 전용 던전 이미지",
-            padding=10,
-        )
-        image_box.pack(fill="both", expand=True)
-
-        headers = ("구분", "현재 적용 이미지", "파일", "캡처")
-        for col, title in enumerate(headers):
-            ttk.Label(
-                image_box,
-                text=title,
-                font=("Segoe UI Semibold", 10),
-                anchor="center",
-            ).grid(row=0, column=col, padx=4, pady=(0, 8), sticky="ew")
-
-        image_box.columnconfigure(1, weight=1)
-
-        saved_images = self.cfg.setdefault("images", {})
-
-        for row, (image_id, label, default_name) in enumerate(
-            self.IMAGE_ITEMS,
-            1,
-        ):
-            default_path = self.default_image_path(default_name)
-            value = saved_images.get(image_id, "") or default_path
-            var = tk.StringVar(value=value)
-            self.image_vars[image_id] = var
-
-            ttk.Label(
-                image_box,
-                text=label,
-                width=18,
-                anchor="w",
-            ).grid(row=row, column=0, padx=4, pady=4, sticky="w")
-
-            ttk.Entry(
-                image_box,
-                textvariable=var,
-                width=68,
-            ).grid(row=row, column=1, padx=4, pady=4, sticky="ew")
-
-            ttk.Button(
-                image_box,
-                text="파일",
-                width=7,
-                command=lambda v=var: self.choose_image(v),
-            ).grid(row=row, column=2, padx=3, pady=4)
-
-            ttk.Button(
-                image_box,
-                text="캡처",
-                width=7,
-                command=lambda iid=image_id, v=var: self.capture_image(
-                    iid,
-                    v,
-                ),
-            ).grid(row=row, column=3, padx=3, pady=4)
-
-        footer = ttk.Frame(outer)
-        footer.pack(fill="x", pady=(14, 0))
-
-        ttk.Button(
-            footer,
-            text="닫기",
-            command=self.destroy,
-        ).pack(side="right", padx=(6, 0))
-
-        ttk.Button(
-            footer,
-            text="저장",
-            style="Primary.TButton",
-            command=self.save,
-        ).pack(side="right")
-
-        self.refresh_statuses()
-
-    def default_image_path(self, filename: str) -> str:
-        test_path = BASE_DIR / "images" / "test" / filename
-        normal_path = BASE_DIR / "images" / filename
-
-        if test_path.exists():
-            return str(test_path)
-        if normal_path.exists():
-            return str(normal_path)
-        return ""
-
-    def choose_image(self, variable: tk.StringVar) -> None:
-        path = filedialog.askopenfilename(
-            parent=self,
-            initialdir=BASE_DIR / "images",
-            filetypes=[
-                ("이미지", "*.png *.jpg *.jpeg *.bmp"),
-                ("모든 파일", "*.*"),
-            ],
-        )
-        if path:
-            variable.set(path)
-
-    def capture_image(
-        self,
-        image_id: str,
-        variable: tk.StringVar,
-    ) -> None:
-        destination = CAPTURE_DIR / "dungeon" / self.key
-
-        path = self.app.capture_and_crop(
-            self.key,
-            f"dungeon_{image_id}",
-            destination_dir=destination,
-            parent=self,
-            suggested_filename=f"dungeon_{image_id}.png",
-        )
-
-        if path:
-            variable.set(path)
-
-    def dungeon_status_db_path(self) -> Path:
-        return BASE_DIR / "dungeon_status.db"
-
-    def read_today_status(self, dungeon: str) -> str:
-        db_path = self.dungeon_status_db_path()
-        if not db_path.exists():
-            return "이용가능"
-
-        try:
-            today = time.strftime("%Y-%m-%d")
-            with sqlite3.connect(db_path) as conn:
-                row = conn.execute(
-                    "SELECT status FROM dungeon_usage "
-                    "WHERE target_key = ? AND dungeon = ? AND usage_date = ?",
-                    (self.key, dungeon, today),
-                ).fetchone()
-
-            if row and str(row[0]).upper() == "COMPLETED":
-                return "만료"
-            return "이용가능"
-        except Exception:
-            logging.exception(
-                "던전 상태 DB 읽기 실패: %s / %s",
-                self.key,
-                dungeon,
-            )
-            return "확인 실패"
-
-    def refresh_statuses(self) -> None:
-        self.a_status.set(self.read_today_status("A"))
-        self.b_status.set(self.read_today_status("B"))
-
-    def save(self) -> None:
-        self.cfg["A"] = bool(self.a_var.get())
-        self.cfg["B"] = bool(self.b_var.get())
-
-        images = self.cfg.setdefault("images", {})
-        for image_id, variable in self.image_vars.items():
-            value = variable.get().strip()
-            if value:
-                images[image_id] = value
-            else:
-                images.pop(image_id, None)
-
-        self.app.persist()
-        self.app.global_status.set(
-            f"{self.app.targets[self.key][0]} 던전 설정 저장 완료"
-        )
-        self.destroy()
-
 class MacroManager:
     COPY_HOTKEY = 1
     CLICK_HOTKEY = 2
@@ -2951,6 +2171,11 @@ class MacroManager:
         ttk.Button(top, text="감시 시작", command=self.start).pack(side="left", padx=3)
         ttk.Button(top, text="감시 중지", command=self.stop).pack(side="left", padx=3)
         ttk.Button(top, text="공용 진입 이미지", command=lambda: CommonRoutineEditor(self)).pack(side="left", padx=12)
+        ttk.Button(
+            top,
+            text="전체 루틴 관리",
+            command=self.open_routine_manager,
+        ).pack(side="left", padx=3)
         ttk.Label(top, text="인식 기준").pack(side="left")
         self.threshold_var = tk.StringVar(value=str(self.config.get("threshold", DEFAULT_THRESHOLD)))
         ttk.Entry(top, textvariable=self.threshold_var, width=7).pack(side="left", padx=3)
@@ -2969,11 +2194,11 @@ class MacroManager:
 
         container = ttk.Frame(self.root, padding=10)
         container.pack(fill="both", expand=True)
-        headers = ("사용", "대상", "상태", "선택 루틴", "루틴 이미지·좌표", "던전", "현재 위치 테스트")
+        headers = ("사용", "대상", "상태", "선택 루틴", "루틴 이미지·좌표", "현재 위치 테스트")
         for col, text in enumerate(headers):
             ttk.Label(container, text=text, font=("Malgun Gothic", 10, "bold")).grid(row=0, column=col, padx=5, pady=5)
         container.columnconfigure(2, weight=0)
-        container.columnconfigure(3, weight=0)
+        container.columnconfigure(3, weight=1)
         for row, (key, (label, _rect)) in enumerate(self.targets.items(), 1):
             target = self.config["targets"].setdefault(key, {"enabled": False, "overrides": {}, "fallbacks": {}})
             enabled = tk.BooleanVar(value=bool(target.get("enabled", False)))
@@ -2983,7 +2208,7 @@ class MacroManager:
             target_label = ttk.Label(
                 container,
                 text=label,
-                width=18,
+                width=23,
                 cursor="hand2",
             )
             target_label.grid(
@@ -3004,7 +2229,7 @@ class MacroManager:
                 container,
                 textvariable=status,
                 relief="sunken",
-                width=18,
+                width=32,
             ).grid(row=row, column=2, sticky="ew", padx=5)
             routine_id = target.get("post_routine_id", "default_hunting")
             routine = self.config.get("post_routines", {}).get(routine_id, {})
@@ -3014,9 +2239,9 @@ class MacroManager:
                 textvariable=routine_var,
                 values=self.routine_names(),
                 state="readonly",
-                width=18,
+                width=24,
             )
-            routine_combo.grid(row=row, column=3, sticky="w", padx=5)
+            routine_combo.grid(row=row, column=3, sticky="ew", padx=5)
             routine_combo.bind(
                 "<<ComboboxSelected>>",
                 lambda _event, target_key=key: self.change_target_routine(target_key),
@@ -3024,8 +2249,7 @@ class MacroManager:
             self.routine_vars[key] = routine_var
             self.routine_combos[key] = routine_combo
             ttk.Button(container, text="분면 루틴 설정", command=lambda k=key: TargetEditor(self, k)).grid(row=row, column=4, padx=5)
-            ttk.Button(container, text="던전", command=lambda k=key: TargetDungeonSettingsWindow(self, k)).grid(row=row, column=5, padx=5)
-            ttk.Button(container, text="분면 중앙 클릭", command=lambda k=key: self.test_target(k)).grid(row=row, column=6, padx=5)
+            ttk.Button(container, text="분면 중앙 클릭", command=lambda k=key: self.test_target(k)).grid(row=row, column=5, padx=5)
 
     def routine_names(self) -> list[str]:
         return [
@@ -3069,7 +2293,6 @@ class MacroManager:
         self.root.wait_window(manager)
         self.refresh_main_routine_choices()
 
-
     def config_snapshot(self) -> dict:
         with self.config_lock:
             return json.loads(json.dumps(self.config))
@@ -3109,11 +2332,7 @@ class MacroManager:
         self.global_status.set("감시 중지")
 
     def set_row_status(self, key: str, text: str) -> None:
-        clean_text = str(text)
-        clean_text = clean_text.replace(" (fallback 없음)", "")
-        clean_text = clean_text.replace("(fallback 없음)", "")
-        clean_text = clean_text.replace(" / fallback 없음", "")
-        self.root.after(0, self.status_vars[key].set, clean_text)
+        self.root.after(0, self.status_vars[key].set, text)
 
     def set_global_status(self, text: str) -> None:
         self.root.after(0, self.global_status.set, text)
