@@ -305,6 +305,141 @@ def apply_unified_ui(root) -> None:
     _apply()
 
 
+
+def show_target_image_preview(parent, image_path: str, title: str = "적용 이미지") -> None:
+    path_text = str(image_path or "").strip()
+
+    if not path_text:
+        messagebox.showinfo(
+            "이미지 없음",
+            "현재 단계에 적용된 이미지가 없습니다.",
+            parent=parent,
+        )
+        return
+
+    path = Path(path_text)
+
+    if not path.is_absolute():
+        candidates = [
+            BASE_DIR / path,
+            BASE_DIR / "images" / path,
+            CAPTURE_DIR / path,
+        ]
+        for candidate in candidates:
+            if candidate.exists():
+                path = candidate
+                break
+
+    if not path.exists():
+        messagebox.showerror(
+            "이미지 없음",
+            f"이미지 파일을 찾을 수 없습니다.\n\n{path}",
+            parent=parent,
+        )
+        return
+
+    encoded = np.fromfile(str(path), dtype=np.uint8)
+    image = cv2.imdecode(encoded, cv2.IMREAD_COLOR)
+
+    if image is None:
+        messagebox.showerror(
+            "이미지 오류",
+            f"이미지를 읽을 수 없습니다.\n\n{path}",
+            parent=parent,
+        )
+        return
+
+    original_h, original_w = image.shape[:2]
+    max_w = 1200
+    max_h = 800
+
+    fit_scale = min(
+        max_w / max(1, original_w),
+        max_h / max(1, original_h),
+    )
+
+    if original_w <= 500 and original_h <= 350:
+        scale = min(8.0, fit_scale)
+    else:
+        scale = min(2.0, fit_scale)
+
+    if original_w > max_w or original_h > max_h:
+        scale = fit_scale
+
+    scale = max(0.1, scale)
+
+    display_w = max(1, int(round(original_w * scale)))
+    display_h = max(1, int(round(original_h * scale)))
+
+    if (display_w, display_h) != (original_w, original_h):
+        interpolation = cv2.INTER_NEAREST if scale > 1.0 else cv2.INTER_AREA
+        display = cv2.resize(
+            image,
+            (display_w, display_h),
+            interpolation=interpolation,
+        )
+    else:
+        display = image
+
+    ok, encoded_preview = cv2.imencode(".png", display)
+    if not ok:
+        messagebox.showerror(
+            "이미지 오류",
+            "미리보기 생성에 실패했습니다.",
+            parent=parent,
+        )
+        return
+
+    png_data = base64.b64encode(encoded_preview.tobytes()).decode("ascii")
+
+    window = tk.Toplevel(parent)
+    window.title(title)
+    window.transient(parent)
+    window.resizable(True, True)
+
+    ttk.Label(
+        window,
+        text=(
+            f"{path.name}    "
+            f"원본 {original_w} x {original_h}    "
+            f"표시 {display_w} x {display_h}"
+        ),
+        font=("Segoe UI Semibold", 11),
+        padding=(12, 10),
+    ).pack(fill="x")
+
+    frame = ttk.Frame(window, padding=(12, 0, 12, 12))
+    frame.pack(fill="both", expand=True)
+    frame.rowconfigure(0, weight=1)
+    frame.columnconfigure(0, weight=1)
+
+    canvas = tk.Canvas(
+        frame,
+        background="#202020",
+        highlightthickness=0,
+    )
+    xbar = ttk.Scrollbar(frame, orient="horizontal", command=canvas.xview)
+    ybar = ttk.Scrollbar(frame, orient="vertical", command=canvas.yview)
+
+    canvas.configure(
+        xscrollcommand=xbar.set,
+        yscrollcommand=ybar.set,
+    )
+    canvas.grid(row=0, column=0, sticky="nsew")
+    ybar.grid(row=0, column=1, sticky="ns")
+    xbar.grid(row=1, column=0, sticky="ew")
+
+    photo = tk.PhotoImage(data=png_data)
+    canvas._preview_photo = photo
+    canvas.create_image(0, 0, anchor="nw", image=photo)
+    canvas.configure(scrollregion=(0, 0, display_w, display_h))
+
+    window.bind("<Escape>", lambda _event: window.destroy())
+
+    width = max(700, min(1260, display_w + 60))
+    height = max(520, min(920, display_h + 110))
+    center_on_parent(window, parent, width, height)
+
 class CropDialog(tk.Toplevel):
     def __init__(self, parent: tk.Misc, image: np.ndarray) -> None:
         super().__init__(parent)
@@ -444,6 +579,22 @@ class TargetEditor(tk.Toplevel):
     """분면별 루틴 선택 + 루틴 생성/삭제 + 단계 편집을 한 화면에서 처리합니다."""
 
     DEFAULT_ROUTINE_ID = "default_hunting"
+
+    def target_image_dir(self) -> Path:
+        match = re.fullmatch(r"m(\d+)q(\d+)", self.key)
+        if not match:
+            raise ValueError(f"알 수 없는 대상 키: {self.key}")
+
+        monitor_number, quadrant_number = match.groups()
+
+        directory = (
+            CAPTURE_DIR
+            / f"monitor_{monitor_number}"
+            / f"quadrant_{quadrant_number}"
+        )
+        directory.mkdir(parents=True, exist_ok=True)
+        return directory
+
 
     def __init__(self, app: "MacroManager", key: str) -> None:
         super().__init__(app.root)
@@ -953,7 +1104,7 @@ class TargetEditor(tk.Toplevel):
                 self.body,
                 textvariable=name_var,
                 width=23,
-                state="disabled" if is_default else "normal",
+                state="readonly" if is_default else "normal",
             )
             name_entry.grid(
                 row=row_num,
@@ -961,6 +1112,19 @@ class TargetEditor(tk.Toplevel):
                 sticky="ew",
                 padx=3,
                 pady=3,
+            )
+            name_entry.configure(cursor="hand2")
+            name_entry.bind(
+                "<Button-1>",
+                lambda _event, v=image_var, a=action_var, n=name_var: (
+                    show_target_image_preview(
+                        self,
+                        v.get(),
+                        f"{n.get()} - 적용 이미지",
+                    )
+                    if a.get() == "이미지 클릭" else None
+                ),
+                add="+",
             )
 
             action_combo = ttk.Combobox(
@@ -1145,7 +1309,7 @@ class TargetEditor(tk.Toplevel):
     ) -> None:
         path = filedialog.askopenfilename(
             parent=self,
-            initialdir=BASE_DIR / "images",
+            initialdir=self.target_image_dir(),
             filetypes=[
                 ("이미지", "*.png *.jpg *.bmp"),
                 ("모든 파일", "*.*"),
@@ -1165,10 +1329,12 @@ class TargetEditor(tk.Toplevel):
         name_var: tk.StringVar,
     ) -> None:
         step_id = step.get("id", f"step_{order}")
-        routine_dir = CAPTURE_DIR / "common_routines" / (
-            self.current_routine_id or self.DEFAULT_ROUTINE_ID
-        )
+        key_match = re.fullmatch(r"m(\d+)q(\d+)", self.key)
+        if not key_match:
+            raise ValueError(f"알 수 없는 대상 키: {self.key}")
 
+        monitor_number, quadrant_number = key_match.groups()
+        routine_dir = self.target_image_dir()
         path = self.app.capture_and_crop(
             self.key,
             step_id,
@@ -2919,6 +3085,800 @@ class TargetDungeonSettingsWindow(tk.Toplevel):
         )
         self.destroy()
 
+
+class RangeTestRunner:
+    """기본 전체 루틴의 일부 구간을 모든 모니터/분면에서 테스트합니다."""
+
+    def __init__(self, app: "MacroManager") -> None:
+        self.app = app
+        self.stop_event = threading.Event()
+        self.threads: list[threading.Thread] = []
+        self._remaining = 0
+        self._lock = threading.Lock()
+        self.running = False
+
+    def stop(self) -> None:
+        self.stop_event.set()
+
+    def start(self, test_range: dict) -> None:
+        if self.running:
+            return
+
+        config = self.app.config_snapshot()
+        routine = (
+            config.get("post_routines", {})
+            .get("default_hunting", {})
+        )
+        all_steps = list(routine.get("steps", []))
+
+        start_id = test_range.get("start_id")
+        end_id = test_range.get("end_id")
+
+        start_index = next(
+            (
+                i
+                for i, step in enumerate(all_steps)
+                if step.get("id") == start_id
+            ),
+            None,
+        )
+        end_index = next(
+            (
+                i
+                for i, step in enumerate(all_steps)
+                if step.get("id") == end_id
+            ),
+            None,
+        )
+
+        if start_index is None or end_index is None:
+            raise ValueError(
+                "테스트 시작/종료 단계를 현재 기본 루틴에서 찾을 수 없습니다."
+            )
+
+        if start_index > end_index:
+            raise ValueError(
+                "테스트 시작 단계가 종료 단계보다 뒤에 있습니다."
+            )
+
+        steps = all_steps[start_index:end_index + 1]
+        if not steps:
+            raise ValueError("테스트할 단계가 없습니다.")
+
+        self.stop_event.clear()
+        self.running = True
+        self.threads = []
+
+        targets = list(self.app.targets.items())
+
+        with self._lock:
+            self._remaining = len(targets)
+
+        if not targets:
+            self.running = False
+            return
+
+        for key, (label, rect) in targets:
+            thread = threading.Thread(
+                target=self._run_target,
+                args=(
+                    key,
+                    label,
+                    rect,
+                    steps,
+                    config,
+                ),
+                name=f"range-test-{key}",
+                daemon=True,
+            )
+            self.threads.append(thread)
+            thread.start()
+
+    def _wait(self, seconds: float) -> bool:
+        return self.stop_event.wait(max(0.0, float(seconds)))
+
+    def _finish_target(self) -> None:
+        done = False
+
+        with self._lock:
+            self._remaining -= 1
+            done = self._remaining <= 0
+
+        if done:
+            self.running = False
+            try:
+                self.app.root.after(
+                    0,
+                    self.app.on_range_test_completed,
+                )
+            except tk.TclError:
+                pass
+
+    def _capture_gray(
+        self,
+        capture: mss.MSS,
+        rect: Rect,
+    ) -> np.ndarray:
+        frame = np.asarray(
+            capture.grab(rect.as_mss())
+        )
+        return cv2.cvtColor(
+            frame,
+            cv2.COLOR_BGRA2GRAY,
+        )
+
+    def _run_target(
+        self,
+        key: str,
+        label: str,
+        rect: Rect,
+        steps: list[dict],
+        config: dict,
+    ) -> None:
+        try:
+            target = (
+                config.get("targets", {})
+                .get(key, {})
+            )
+
+            overrides, fallbacks = target_step_settings(
+                target,
+                "default_hunting",
+            )
+
+            with mss.MSS() as capture:
+                for range_index, step in enumerate(
+                    steps,
+                    1,
+                ):
+                    if self.stop_event.is_set():
+                        return
+
+                    if not self._execute_step(
+                        capture,
+                        key,
+                        rect,
+                        step,
+                        overrides,
+                        fallbacks,
+                        range_index,
+                        len(steps),
+                    ):
+                        return
+
+            self.app.set_row_status(
+                key,
+                "구간 테스트 완료",
+            )
+
+        except Exception as exc:
+            logging.exception(
+                "%s 구간 테스트 오류",
+                label,
+            )
+            self.app.set_row_status(
+                key,
+                f"테스트 오류: {exc}",
+            )
+        finally:
+            self._finish_target()
+
+    def _execute_step(
+        self,
+        capture: mss.MSS,
+        key: str,
+        rect: Rect,
+        step: dict,
+        overrides: dict,
+        fallbacks: dict,
+        range_index: int,
+        range_count: int,
+    ) -> bool:
+        step_id = step.get("id", "")
+        step_name = step.get("name", step_id)
+
+        fallback = fallbacks.get(step_id)
+        if fallback is None:
+            fallback = step.get("fallback")
+
+        coordinate_only = (
+            step.get("fallback") is not None
+            or bool(step.get("coordinate_from_target"))
+        )
+
+        if coordinate_only:
+            if not fallback or len(fallback) != 2:
+                self.app.set_row_status(
+                    key,
+                    f"테스트 {range_index}/{range_count} "
+                    f"{step_name}: 좌표 없음",
+                )
+                return False
+
+            if self._wait(
+                float(
+                    step.get(
+                        "pre_click_delay",
+                        PRE_CLICK_DELAY,
+                    )
+                )
+            ):
+                return False
+
+            x = rect.left + int(fallback[0])
+            y = rect.top + int(fallback[1])
+
+            held_left_click(x, y)
+
+            self.app.set_row_status(
+                key,
+                f"테스트 {range_index}/{range_count} "
+                f"{step_name} 좌표 클릭",
+            )
+
+            if self._wait(
+                float(
+                    step.get(
+                        "after_click_delay",
+                        0.0,
+                    )
+                )
+            ):
+                return False
+
+            return True
+
+        image_path = (
+            overrides.get(step_id)
+            or step.get("image", "")
+        )
+
+        if not image_path:
+            if step.get("skip_if_no_image"):
+                self.app.set_row_status(
+                    key,
+                    f"테스트 {range_index}/{range_count} "
+                    f"{step_name}: 이미지 없음 → 건너뜀",
+                )
+                return True
+
+            self.app.set_row_status(
+                key,
+                f"테스트 {range_index}/{range_count} "
+                f"{step_name}: 이미지 없음",
+            )
+            return False
+
+        delay_before = float(
+            step.get("delay_before", 0.0)
+        )
+
+        if self._wait(delay_before):
+            return False
+
+        timeout = max(
+            0.0,
+            float(
+                step.get(
+                    "timeout",
+                    10.0,
+                )
+            ),
+        )
+        deadline = time.monotonic() + timeout
+
+        while not self.stop_event.is_set():
+            gray = self._capture_gray(
+                capture,
+                rect,
+            )
+
+            match = self.app.engine.find(
+                gray,
+                image_path,
+                rect,
+            )
+
+            if match:
+                pre_delay = float(
+                    step.get(
+                        "pre_click_delay",
+                        PRE_CLICK_DELAY,
+                    )
+                )
+
+                self.app.set_row_status(
+                    key,
+                    f"테스트 {range_index}/{range_count} "
+                    f"{step_name} 감지 → {pre_delay:g}초 후 클릭",
+                )
+
+                if self._wait(pre_delay):
+                    return False
+
+                fresh_gray = self._capture_gray(
+                    capture,
+                    rect,
+                )
+                confirmed = self.app.engine.find(
+                    fresh_gray,
+                    image_path,
+                    rect,
+                )
+
+                if confirmed is None:
+                    continue
+
+                click_x = confirmed[0]
+                click_y = confirmed[1]
+
+                # 기본 루틴 17 몬스터의 기존 특수 클릭 규칙.
+                if step_id == "17_monster":
+                    click_x += 20
+
+                held_left_click(
+                    click_x,
+                    click_y,
+                )
+
+                self.app.set_row_status(
+                    key,
+                    f"테스트 {range_index}/{range_count} "
+                    f"{step_name} 클릭",
+                )
+
+                if self._wait(
+                    float(
+                        step.get(
+                            "after_click_delay",
+                            0.0,
+                        )
+                    )
+                ):
+                    return False
+
+                return True
+
+            if time.monotonic() >= deadline:
+                if fallback and len(fallback) == 2:
+                    pre_delay = float(
+                        step.get(
+                            "pre_click_delay",
+                            PRE_CLICK_DELAY,
+                        )
+                    )
+
+                    if self._wait(pre_delay):
+                        return False
+
+                    x = rect.left + int(fallback[0])
+                    y = rect.top + int(fallback[1])
+
+                    held_left_click(x, y)
+
+                    self.app.set_row_status(
+                        key,
+                        f"테스트 {range_index}/{range_count} "
+                        f"{step_name}: 미검출 → 좌표 클릭",
+                    )
+                    return True
+
+                if step.get("on_timeout") == "skip":
+                    self.app.set_row_status(
+                        key,
+                        f"테스트 {range_index}/{range_count} "
+                        f"{step_name}: timeout → 건너뜀",
+                    )
+                    return True
+
+                if step.get("on_timeout") == "click_current":
+                    if self._wait(
+                        float(
+                            step.get(
+                                "pre_click_delay",
+                                PRE_CLICK_DELAY,
+                            )
+                        )
+                    ):
+                        return False
+
+                    held_left_click()
+
+                    self.app.set_row_status(
+                        key,
+                        f"테스트 {range_index}/{range_count} "
+                        f"{step_name}: timeout → 현재 위치 클릭",
+                    )
+                    return True
+
+                self.app.set_row_status(
+                    key,
+                    f"테스트 {range_index}/{range_count} "
+                    f"{step_name}: timeout",
+                )
+                return False
+
+            self._wait(SCAN_INTERVAL)
+
+        return False
+
+
+class TestRangeManager(tk.Toplevel):
+    """공유 테스트 구간을 추가/삭제합니다."""
+
+    def __init__(self, app: "MacroManager") -> None:
+        super().__init__(app.root)
+        self.app = app
+        self.title("구간 테스트 관리")
+        self.transient(app.root)
+        self.resizable(False, False)
+        center_on_parent(
+            self,
+            app.root,
+            720,
+            500,
+        )
+
+        frame = ttk.Frame(
+            self,
+            padding=16,
+        )
+        frame.pack(
+            fill="both",
+            expand=True,
+        )
+
+        ttk.Label(
+            frame,
+            text="모든 모니터/분면이 공유하는 테스트 구간",
+            font=("Segoe UI Semibold", 13),
+        ).pack(
+            anchor="w",
+            pady=(0, 10),
+        )
+
+        self.listbox = tk.Listbox(
+            frame,
+            width=80,
+            height=14,
+            exportselection=False,
+        )
+        self.listbox.pack(
+            fill="both",
+            expand=True,
+        )
+
+        buttons = ttk.Frame(frame)
+        buttons.pack(
+            fill="x",
+            pady=(12, 0),
+        )
+
+        ttk.Button(
+            buttons,
+            text="새 테스트 추가",
+            command=self.add_test,
+        ).pack(
+            side="left",
+        )
+
+        ttk.Button(
+            buttons,
+            text="선택 테스트 삭제",
+            command=self.delete_test,
+        ).pack(
+            side="left",
+            padx=6,
+        )
+
+        ttk.Button(
+            buttons,
+            text="닫기",
+            command=self.destroy,
+        ).pack(
+            side="right",
+        )
+
+        self.refresh()
+
+    def test_ranges(self) -> list[dict]:
+        return self.app.config.setdefault(
+            "test_ranges",
+            [],
+        )
+
+    def default_steps(self) -> list[dict]:
+        return list(
+            self.app.config.get(
+                "post_routines",
+                {},
+            )
+            .get(
+                "default_hunting",
+                {},
+            )
+            .get(
+                "steps",
+                [],
+            )
+        )
+
+    def step_display(self, step: dict) -> str:
+        return step.get(
+            "name",
+            step.get("id", ""),
+        )
+
+    def refresh(self) -> None:
+        self.listbox.delete(
+            0,
+            "end",
+        )
+
+        steps = {
+            step.get("id"): self.step_display(step)
+            for step in self.default_steps()
+        }
+
+        for item in self.test_ranges():
+            start_name = steps.get(
+                item.get("start_id"),
+                item.get("start_id", "?"),
+            )
+            end_name = steps.get(
+                item.get("end_id"),
+                item.get("end_id", "?"),
+            )
+
+            self.listbox.insert(
+                "end",
+                f"{item.get('name', '테스트')}  |  "
+                f"{start_name} → {end_name}",
+            )
+
+    def add_test(self) -> None:
+        steps = self.default_steps()
+
+        if not steps:
+            messagebox.showerror(
+                "기본 루틴 없음",
+                "기본 전체 루틴 단계가 없습니다.",
+                parent=self,
+            )
+            return
+
+        dialog = tk.Toplevel(self)
+        dialog.title("새 구간 테스트")
+        dialog.transient(self)
+        dialog.resizable(False, False)
+        center_on_parent(
+            dialog,
+            self,
+            620,
+            310,
+        )
+
+        body = ttk.Frame(
+            dialog,
+            padding=18,
+        )
+        body.pack(
+            fill="both",
+            expand=True,
+        )
+
+        displays = [
+            self.step_display(step)
+            for step in steps
+        ]
+        display_to_id = {
+            self.step_display(step): step.get("id")
+            for step in steps
+        }
+
+        name_var = tk.StringVar(
+            value="새 구간 테스트"
+        )
+        start_var = tk.StringVar(
+            value=displays[0]
+        )
+        end_var = tk.StringVar(
+            value=displays[-1]
+        )
+
+        ttk.Label(
+            body,
+            text="테스트 이름",
+        ).grid(
+            row=0,
+            column=0,
+            sticky="w",
+            pady=7,
+        )
+
+        ttk.Entry(
+            body,
+            textvariable=name_var,
+            width=42,
+        ).grid(
+            row=0,
+            column=1,
+            sticky="ew",
+            pady=7,
+        )
+
+        ttk.Label(
+            body,
+            text="시작 단계",
+        ).grid(
+            row=1,
+            column=0,
+            sticky="w",
+            pady=7,
+        )
+
+        ttk.Combobox(
+            body,
+            textvariable=start_var,
+            values=displays,
+            state="readonly",
+            width=38,
+        ).grid(
+            row=1,
+            column=1,
+            sticky="ew",
+            pady=7,
+        )
+
+        ttk.Label(
+            body,
+            text="종료 단계",
+        ).grid(
+            row=2,
+            column=0,
+            sticky="w",
+            pady=7,
+        )
+
+        ttk.Combobox(
+            body,
+            textvariable=end_var,
+            values=displays,
+            state="readonly",
+            width=38,
+        ).grid(
+            row=2,
+            column=1,
+            sticky="ew",
+            pady=7,
+        )
+
+        body.columnconfigure(
+            1,
+            weight=1,
+        )
+
+        button_row = ttk.Frame(body)
+        button_row.grid(
+            row=3,
+            column=0,
+            columnspan=2,
+            sticky="e",
+            pady=(18, 0),
+        )
+
+        def save_test() -> None:
+            name = name_var.get().strip()
+            start_id = display_to_id.get(
+                start_var.get()
+            )
+            end_id = display_to_id.get(
+                end_var.get()
+            )
+
+            if not name:
+                messagebox.showerror(
+                    "이름 필요",
+                    "테스트 이름을 입력하세요.",
+                    parent=dialog,
+                )
+                return
+
+            ids = [
+                step.get("id")
+                for step in steps
+            ]
+
+            try:
+                start_index = ids.index(start_id)
+                end_index = ids.index(end_id)
+            except ValueError:
+                messagebox.showerror(
+                    "단계 오류",
+                    "시작/종료 단계를 다시 선택하세요.",
+                    parent=dialog,
+                )
+                return
+
+            if start_index > end_index:
+                messagebox.showerror(
+                    "구간 오류",
+                    "시작 단계는 종료 단계보다 앞이어야 합니다.",
+                    parent=dialog,
+                )
+                return
+
+            self.test_ranges().append(
+                {
+                    "id": f"test_{time.time_ns()}",
+                    "name": name,
+                    "start_id": start_id,
+                    "end_id": end_id,
+                }
+            )
+
+            self.app.persist()
+            self.app.refresh_test_ranges()
+            self.refresh()
+            dialog.destroy()
+
+        ttk.Button(
+            button_row,
+            text="취소",
+            command=dialog.destroy,
+        ).pack(
+            side="right",
+            padx=(6, 0),
+        )
+
+        ttk.Button(
+            button_row,
+            text="추가",
+            command=save_test,
+        ).pack(
+            side="right",
+        )
+
+        dialog.bind(
+            "<Return>",
+            lambda _event: save_test(),
+        )
+        dialog.bind(
+            "<Escape>",
+            lambda _event: dialog.destroy(),
+        )
+
+    def delete_test(self) -> None:
+        selected = self.listbox.curselection()
+
+        if not selected:
+            return
+
+        index = selected[0]
+        items = self.test_ranges()
+
+        if index >= len(items):
+            return
+
+        name = items[index].get(
+            "name",
+            "선택 테스트",
+        )
+
+        if not messagebox.askyesno(
+            "테스트 삭제",
+            f"'{name}' 테스트를 삭제할까요?",
+            parent=self,
+        ):
+            return
+
+        del items[index]
+
+        self.app.persist()
+        self.app.refresh_test_ranges()
+        self.refresh()
+
+
 class MacroManager:
     COPY_HOTKEY = 1
     CLICK_HOTKEY = 2
@@ -2938,6 +3898,12 @@ class MacroManager:
         self.routine_combos: dict[str, ttk.Combobox] = {}
         self.hotkey_thread_id: int | None = None
         self.engine = MacroEngine(self)
+        self.test_runner = RangeTestRunner(self)
+        self.test_range_var = tk.StringVar(value="")
+        self.test_range_combo: ttk.Combobox | None = None
+        self._test_mode = False
+        self._test_resume_normal = False
+        self._pending_test_range: dict | None = None
         self.global_status = tk.StringVar(value="준비")
         self.build_ui()
         self.root.protocol("WM_DELETE_WINDOW", self.close)
@@ -2965,6 +3931,53 @@ class MacroManager:
         ).pack(side="left", padx=3)
         ttk.Button(top, text="설정 저장", command=self.save_threshold).pack(side="left")
         ttk.Label(top, text="F5 테스트 클릭 / Ctrl+Shift+C 좌표 복사").pack(side="right")
+
+        test_bar = ttk.LabelFrame(
+            self.root,
+            text="구간 테스트",
+            padding=(10, 7),
+        )
+        test_bar.pack(fill="x", padx=10, pady=(0, 6))
+
+        ttk.Label(
+            test_bar,
+            text="공유 테스트",
+        ).pack(side="left")
+
+        self.test_range_combo = ttk.Combobox(
+            test_bar,
+            textvariable=self.test_range_var,
+            state="readonly",
+            width=30,
+        )
+        self.test_range_combo.pack(side="left", padx=6)
+
+        ttk.Button(
+            test_bar,
+            text="테스트 관리",
+            command=self.open_test_range_manager,
+        ).pack(side="left", padx=3)
+
+        ttk.Button(
+            test_bar,
+            text="테스트 실행",
+            style="Primary.TButton",
+            command=self.start_range_test,
+        ).pack(side="left", padx=3)
+
+        ttk.Button(
+            test_bar,
+            text="테스트 중지",
+            command=self.stop_range_test,
+        ).pack(side="left", padx=3)
+
+        ttk.Label(
+            test_bar,
+            text="실행 시 기존 감시 일시중지 · 모든 모니터/모든 분면 테스트",
+        ).pack(side="left", padx=(12, 0))
+
+        self.refresh_test_ranges()
+
         ttk.Label(self.root, textvariable=self.global_status, relief="groove", padding=8).pack(fill="x", padx=10)
 
         container = ttk.Frame(self.root, padding=10)
@@ -3026,6 +4039,188 @@ class MacroManager:
             ttk.Button(container, text="분면 루틴 설정", command=lambda k=key: TargetEditor(self, k)).grid(row=row, column=4, padx=5)
             ttk.Button(container, text="던전", command=lambda k=key: TargetDungeonSettingsWindow(self, k)).grid(row=row, column=5, padx=5)
             ttk.Button(container, text="분면 중앙 클릭", command=lambda k=key: self.test_target(k)).grid(row=row, column=6, padx=5)
+
+
+    def test_ranges(self) -> list[dict]:
+        return self.config.setdefault(
+            "test_ranges",
+            [],
+        )
+
+    def refresh_test_ranges(self) -> None:
+        names = [
+            item.get("name", item.get("id", "테스트"))
+            for item in self.test_ranges()
+        ]
+
+        if hasattr(self, "test_range_combo"):
+            self.test_range_combo.configure(
+                values=names,
+            )
+
+        current = self.test_range_var.get()
+
+        if current not in names:
+            self.test_range_var.set(
+                names[0] if names else ""
+            )
+
+    def selected_test_range(self) -> dict | None:
+        name = self.test_range_var.get()
+
+        return next(
+            (
+                item
+                for item in self.test_ranges()
+                if item.get("name") == name
+            ),
+            None,
+        )
+
+    def open_test_range_manager(self) -> None:
+        TestRangeManager(self)
+
+    def start_range_test(self) -> None:
+        if self.test_runner.running or self._test_mode:
+            messagebox.showinfo(
+                "테스트 실행 중",
+                "이미 구간 테스트가 실행 중입니다.",
+                parent=self.root,
+            )
+            return
+
+        test_range = self.selected_test_range()
+
+        if not test_range:
+            messagebox.showinfo(
+                "테스트 없음",
+                "먼저 구간 테스트를 추가하거나 선택하세요.",
+                parent=self.root,
+            )
+            return
+
+        self._test_resume_normal = bool(
+            self.engine.thread
+            and self.engine.thread.is_alive()
+            and not self.engine.stop_event.is_set()
+        )
+
+        self._test_mode = True
+        self._pending_test_range = dict(test_range)
+
+        self.engine.stop()
+
+        self.global_status.set(
+            f"기존 감시 중지 중 → 테스트 준비: "
+            f"{test_range.get('name', '구간 테스트')}"
+        )
+
+        self._wait_normal_engine_for_test()
+
+    def _wait_normal_engine_for_test(self) -> None:
+        thread = self.engine.thread
+
+        if thread and thread.is_alive():
+            self.root.after(
+                100,
+                self._wait_normal_engine_for_test,
+            )
+            return
+
+        test_range = self._pending_test_range
+
+        if not self._test_mode or not test_range:
+            return
+
+        try:
+            self.test_runner.start(
+                test_range
+            )
+        except Exception as exc:
+            self._test_mode = False
+            self._pending_test_range = None
+
+            messagebox.showerror(
+                "테스트 시작 실패",
+                str(exc),
+                parent=self.root,
+            )
+
+            self._resume_normal_after_test()
+            return
+
+        self.global_status.set(
+            f"구간 테스트 실행 중: "
+            f"{test_range.get('name', '테스트')} "
+            f"(모든 모니터 / 모든 분면)"
+        )
+
+    def stop_range_test(self) -> None:
+        if not self._test_mode:
+            return
+
+        self.global_status.set(
+            "구간 테스트 중지 중"
+        )
+
+        self.test_runner.stop()
+        self._wait_test_threads_then_resume()
+
+    def _wait_test_threads_then_resume(self) -> None:
+        alive = any(
+            thread.is_alive()
+            for thread in self.test_runner.threads
+        )
+
+        if alive:
+            self.root.after(
+                100,
+                self._wait_test_threads_then_resume,
+            )
+            return
+
+        self.test_runner.running = False
+        self._finish_test_mode(
+            "구간 테스트 중지"
+        )
+
+    def on_range_test_completed(self) -> None:
+        if not self._test_mode:
+            return
+
+        self._finish_test_mode(
+            "구간 테스트 완료"
+        )
+
+    def _finish_test_mode(
+        self,
+        reason: str,
+    ) -> None:
+        self._test_mode = False
+        self._pending_test_range = None
+
+        should_resume = self._test_resume_normal
+        self._test_resume_normal = False
+
+        if should_resume:
+            self.engine.start()
+            self.global_status.set(
+                f"{reason} → 기존 감시 재개"
+            )
+        else:
+            self.global_status.set(
+                f"{reason} → 기존 감시는 중지 상태 유지"
+            )
+
+    def _resume_normal_after_test(self) -> None:
+        should_resume = self._test_resume_normal
+        self._test_resume_normal = False
+
+        if should_resume:
+            self.engine.start()
+            self.global_status.set(
+                "테스트 시작 실패 → 기존 감시 재개"
+            )
 
     def routine_names(self) -> list[str]:
         return [
@@ -3217,6 +4412,7 @@ class MacroManager:
             user32.UnregisterHotKey(None, self.CLICK_HOTKEY)
 
     def close(self) -> None:
+        self.test_runner.stop()
         self.engine.stop()
         if self.hotkey_thread_id:
             ctypes.windll.user32.PostThreadMessageW(self.hotkey_thread_id, 0x0012, 0, 0)

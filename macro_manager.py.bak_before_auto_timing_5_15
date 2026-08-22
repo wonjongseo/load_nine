@@ -431,8 +431,6 @@ def migrate_default_hunting_v4(config: dict) -> None:
             ),
             "timeout": 15.0,
             "pre_click_delay": 0.0,
-
-            "after_click_delay": 5.0,
         },
         {
             "id": "20_auto",
@@ -443,7 +441,7 @@ def migrate_default_hunting_v4(config: dict) -> None:
                 "22_auto",
             ),
             "timeout": 30.0,
-            "pre_click_delay": 15.0,
+            "pre_click_delay": 0.0,
         },
     ]
 
@@ -1262,7 +1260,7 @@ class MacroEngine:
                                 logging.info("%s 루틴 진행 시작", key)
                                 click_x, click_y = confirmed_match[0], confirmed_match[1]
                                 if step_id == "17_monster":
-                                    click_x += 20
+                                    click_x += 10
                                 held_left_click(click_x, click_y)
                                 self.app.set_row_status(
                                     key,

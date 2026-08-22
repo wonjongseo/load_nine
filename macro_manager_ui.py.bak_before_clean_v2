@@ -305,6 +305,141 @@ def apply_unified_ui(root) -> None:
     _apply()
 
 
+
+def show_target_image_preview(parent, image_path: str, title: str = "적용 이미지") -> None:
+    path_text = str(image_path or "").strip()
+
+    if not path_text:
+        messagebox.showinfo(
+            "이미지 없음",
+            "현재 단계에 적용된 이미지가 없습니다.",
+            parent=parent,
+        )
+        return
+
+    path = Path(path_text)
+
+    if not path.is_absolute():
+        candidates = [
+            BASE_DIR / path,
+            BASE_DIR / "images" / path,
+            CAPTURE_DIR / path,
+        ]
+        for candidate in candidates:
+            if candidate.exists():
+                path = candidate
+                break
+
+    if not path.exists():
+        messagebox.showerror(
+            "이미지 없음",
+            f"이미지 파일을 찾을 수 없습니다.\n\n{path}",
+            parent=parent,
+        )
+        return
+
+    encoded = np.fromfile(str(path), dtype=np.uint8)
+    image = cv2.imdecode(encoded, cv2.IMREAD_COLOR)
+
+    if image is None:
+        messagebox.showerror(
+            "이미지 오류",
+            f"이미지를 읽을 수 없습니다.\n\n{path}",
+            parent=parent,
+        )
+        return
+
+    original_h, original_w = image.shape[:2]
+    max_w = 1200
+    max_h = 800
+
+    fit_scale = min(
+        max_w / max(1, original_w),
+        max_h / max(1, original_h),
+    )
+
+    if original_w <= 500 and original_h <= 350:
+        scale = min(8.0, fit_scale)
+    else:
+        scale = min(2.0, fit_scale)
+
+    if original_w > max_w or original_h > max_h:
+        scale = fit_scale
+
+    scale = max(0.1, scale)
+
+    display_w = max(1, int(round(original_w * scale)))
+    display_h = max(1, int(round(original_h * scale)))
+
+    if (display_w, display_h) != (original_w, original_h):
+        interpolation = cv2.INTER_NEAREST if scale > 1.0 else cv2.INTER_AREA
+        display = cv2.resize(
+            image,
+            (display_w, display_h),
+            interpolation=interpolation,
+        )
+    else:
+        display = image
+
+    ok, encoded_preview = cv2.imencode(".png", display)
+    if not ok:
+        messagebox.showerror(
+            "이미지 오류",
+            "미리보기 생성에 실패했습니다.",
+            parent=parent,
+        )
+        return
+
+    png_data = base64.b64encode(encoded_preview.tobytes()).decode("ascii")
+
+    window = tk.Toplevel(parent)
+    window.title(title)
+    window.transient(parent)
+    window.resizable(True, True)
+
+    ttk.Label(
+        window,
+        text=(
+            f"{path.name}    "
+            f"원본 {original_w} x {original_h}    "
+            f"표시 {display_w} x {display_h}"
+        ),
+        font=("Segoe UI Semibold", 11),
+        padding=(12, 10),
+    ).pack(fill="x")
+
+    frame = ttk.Frame(window, padding=(12, 0, 12, 12))
+    frame.pack(fill="both", expand=True)
+    frame.rowconfigure(0, weight=1)
+    frame.columnconfigure(0, weight=1)
+
+    canvas = tk.Canvas(
+        frame,
+        background="#202020",
+        highlightthickness=0,
+    )
+    xbar = ttk.Scrollbar(frame, orient="horizontal", command=canvas.xview)
+    ybar = ttk.Scrollbar(frame, orient="vertical", command=canvas.yview)
+
+    canvas.configure(
+        xscrollcommand=xbar.set,
+        yscrollcommand=ybar.set,
+    )
+    canvas.grid(row=0, column=0, sticky="nsew")
+    ybar.grid(row=0, column=1, sticky="ns")
+    xbar.grid(row=1, column=0, sticky="ew")
+
+    photo = tk.PhotoImage(data=png_data)
+    canvas._preview_photo = photo
+    canvas.create_image(0, 0, anchor="nw", image=photo)
+    canvas.configure(scrollregion=(0, 0, display_w, display_h))
+
+    window.bind("<Escape>", lambda _event: window.destroy())
+
+    width = max(700, min(1260, display_w + 60))
+    height = max(520, min(920, display_h + 110))
+    center_on_parent(window, parent, width, height)
+
 class CropDialog(tk.Toplevel):
     def __init__(self, parent: tk.Misc, image: np.ndarray) -> None:
         super().__init__(parent)
@@ -521,6 +656,11 @@ class TargetEditor(tk.Toplevel):
             xscrollcommand=xbar.set,
         )
 
+        self.canvas.bind("<Enter>", self._bind_mousewheel)
+        self.canvas.bind("<Leave>", self._unbind_mousewheel)
+        self.body.bind("<Enter>", self._bind_mousewheel)
+        self.body.bind("<Leave>", self._unbind_mousewheel)
+
         self.canvas.grid(row=0, column=0, sticky="nsew")
         ybar.grid(row=0, column=1, sticky="ns")
         xbar.grid(row=1, column=0, sticky="ew")
@@ -552,6 +692,31 @@ class TargetEditor(tk.Toplevel):
         ).pack(side="right")
 
         self.refresh_routine_choices(current_id)
+
+    def _bind_mousewheel(self, _event=None) -> None:
+        self.bind_all("<MouseWheel>", self._on_mousewheel)
+        self.bind_all("<Shift-MouseWheel>", self._on_shift_mousewheel)
+
+    def _unbind_mousewheel(self, _event=None) -> None:
+        try:
+            self.unbind_all("<MouseWheel>")
+            self.unbind_all("<Shift-MouseWheel>")
+        except tk.TclError:
+            pass
+
+    def _on_mousewheel(self, event) -> str:
+        delta = int(-event.delta / 120)
+        if delta == 0:
+            delta = -1 if event.delta > 0 else 1
+        self.canvas.yview_scroll(delta, "units")
+        return "break"
+
+    def _on_shift_mousewheel(self, event) -> str:
+        delta = int(-event.delta / 120)
+        if delta == 0:
+            delta = -1 if event.delta > 0 else 1
+        self.canvas.xview_scroll(delta, "units")
+        return "break"
 
     def refresh_routine_choices(self, select_id: str | None = None) -> None:
         routines = self.app.config.setdefault("post_routines", {})
@@ -923,7 +1088,7 @@ class TargetEditor(tk.Toplevel):
                 self.body,
                 textvariable=name_var,
                 width=23,
-                state="disabled" if is_default else "normal",
+                state="readonly" if is_default else "normal",
             )
             name_entry.grid(
                 row=row_num,
@@ -931,6 +1096,19 @@ class TargetEditor(tk.Toplevel):
                 sticky="ew",
                 padx=3,
                 pady=3,
+            )
+            name_entry.configure(cursor="hand2")
+            name_entry.bind(
+                "<Button-1>",
+                lambda _event, v=image_var, a=action_var, n=name_var: (
+                    show_target_image_preview(
+                        self,
+                        v.get(),
+                        f"{n.get()} - 적용 이미지",
+                    )
+                    if a.get() == "이미지 클릭" else None
+                ),
+                add="+",
             )
 
             action_combo = ttk.Combobox(
@@ -1135,10 +1313,16 @@ class TargetEditor(tk.Toplevel):
         name_var: tk.StringVar,
     ) -> None:
         step_id = step.get("id", f"step_{order}")
-        routine_dir = CAPTURE_DIR / "common_routines" / (
-            self.current_routine_id or self.DEFAULT_ROUTINE_ID
-        )
+        key_match = re.fullmatch(r"m(\d+)q(\d+)", self.key)
+        if not key_match:
+            raise ValueError(f"알 수 없는 대상 키: {self.key}")
 
+        monitor_number, quadrant_number = key_match.groups()
+        routine_dir = (
+            CAPTURE_DIR
+            / f"monitor_{monitor_number}"
+            / f"quadrant_{quadrant_number}"
+        )
         path = self.app.capture_and_crop(
             self.key,
             step_id,
@@ -2632,18 +2816,40 @@ class EditableRoutineManager(tk.Toplevel):
 
 
 
-class DungeonSettingsWindow(tk.Toplevel):
-    def __init__(self, app: "MacroManager") -> None:
+class TargetDungeonSettingsWindow(tk.Toplevel):
+    IMAGE_ITEMS = (
+        ("menu", "메뉴", "02_menu.png"),
+        ("dungeon", "던전 메뉴", "dungeon.png"),
+        ("dungeon_A", "던전 A", "dungeon_A.png"),
+        ("dungeon_B", "던전 B", "dungeon_B.png"),
+        ("enter", "입장", "enter.png"),
+        ("auto", "AUTO", "21_auto.png"),
+        ("in_dungeon", "던전 내부 확인", "in_dungeon.png"),
+        ("exit", "나가기", "exit.png"),
+    )
+
+    def __init__(self, app: "MacroManager", key: str) -> None:
         super().__init__(app.root)
         self.app = app
-        self.title("매일 던전 설정")
+        self.key = key
+        self.title(f"던전 설정 - {app.targets[key][0]}")
         self.transient(app.root)
-        self.resizable(True, True)
-        self.minsize(720, 420)
-        center_on_parent(self, app.root, 820, 520)
+        self.minsize(980, 680)
+        center_on_parent(self, app.root, 1080, 760)
 
-        self.vars: dict[str, dict[str, tk.BooleanVar]] = {}
-        self.status_vars: dict[str, dict[str, tk.StringVar]] = {}
+        dungeon_root = self.app.config.setdefault("dungeon_daily", {})
+        targets = dungeon_root.setdefault("targets", {})
+        self.cfg = targets.setdefault(
+            key,
+            {"A": True, "B": True, "images": {}},
+        )
+        self.cfg.setdefault("images", {})
+
+        self.a_var = tk.BooleanVar(value=bool(self.cfg.get("A", True)))
+        self.b_var = tk.BooleanVar(value=bool(self.cfg.get("B", True)))
+        self.a_status = tk.StringVar(value="이용가능")
+        self.b_status = tk.StringVar(value="이용가능")
+        self.image_vars: dict[str, tk.StringVar] = {}
 
         outer = ttk.Frame(self, padding=16)
         outer.pack(fill="both", expand=True)
@@ -2653,7 +2859,7 @@ class DungeonSettingsWindow(tk.Toplevel):
 
         ttk.Label(
             title_row,
-            text="매일 던전",
+            text=f"{app.targets[key][0]} - 매일 던전",
             font=("Segoe UI Semibold", 14),
         ).pack(side="left")
 
@@ -2663,83 +2869,113 @@ class DungeonSettingsWindow(tk.Toplevel):
             command=self.refresh_statuses,
         ).pack(side="right")
 
+        use_box = ttk.LabelFrame(outer, text="실행할 던전", padding=12)
+        use_box.pack(fill="x", pady=(0, 12))
+
+        ttk.Checkbutton(
+            use_box,
+            text="Dungeon A 입장",
+            variable=self.a_var,
+        ).grid(row=0, column=0, sticky="w", padx=(0, 12))
+
+        ttk.Label(
+            use_box,
+            textvariable=self.a_status,
+            width=12,
+            anchor="center",
+        ).grid(row=0, column=1, padx=(0, 30))
+
+        ttk.Checkbutton(
+            use_box,
+            text="Dungeon B 입장",
+            variable=self.b_var,
+        ).grid(row=0, column=2, sticky="w", padx=(0, 12))
+
+        ttk.Label(
+            use_box,
+            textvariable=self.b_status,
+            width=12,
+            anchor="center",
+        ).grid(row=0, column=3)
+
         ttk.Label(
             outer,
-            text="체크된 던전만 매일 입장 대상으로 사용합니다. 오늘 상태는 dungeon_status.db를 기준으로 표시합니다.",
-        ).pack(anchor="w", pady=(0, 12))
+            text=(
+                "이미지는 이 분면 전용으로 저장됩니다. "
+                "모니터 해상도/배율이 다르면 각 분면에서 따로 캡처하세요."
+            ),
+        ).pack(anchor="w", pady=(0, 8))
 
-        table = ttk.Frame(outer)
-        table.pack(fill="both", expand=True)
+        image_box = ttk.LabelFrame(
+            outer,
+            text="분면 전용 던전 이미지",
+            padding=10,
+        )
+        image_box.pack(fill="both", expand=True)
 
-        headers = ("대상", "Dungeon A", "오늘 상태", "Dungeon B", "오늘 상태")
-        widths = (22, 14, 13, 14, 13)
-        for col, (header, width) in enumerate(zip(headers, widths)):
+        headers = ("구분", "현재 적용 이미지", "파일", "캡처")
+        for col, title in enumerate(headers):
             ttk.Label(
-                table,
-                text=header,
-                width=width,
+                image_box,
+                text=title,
                 font=("Segoe UI Semibold", 10),
                 anchor="center",
-            ).grid(row=0, column=col, padx=5, pady=(0, 8), sticky="ew")
+            ).grid(row=0, column=col, padx=4, pady=(0, 8), sticky="ew")
 
-        dungeon_cfg = app.config.setdefault("dungeon_daily", {})
-        target_cfg = dungeon_cfg.setdefault("targets", {})
+        image_box.columnconfigure(1, weight=1)
 
-        for row, (key, (label, _rect)) in enumerate(app.targets.items(), 1):
-            saved = target_cfg.setdefault(key, {})
+        saved_images = self.cfg.setdefault("images", {})
 
-            a_var = tk.BooleanVar(value=bool(saved.get("A", False)))
-            b_var = tk.BooleanVar(value=bool(saved.get("B", False)))
-            a_status = tk.StringVar(value="이용가능")
-            b_status = tk.StringVar(value="이용가능")
-
-            self.vars[key] = {"A": a_var, "B": b_var}
-            self.status_vars[key] = {"A": a_status, "B": b_status}
+        for row, (image_id, label, default_name) in enumerate(
+            self.IMAGE_ITEMS,
+            1,
+        ):
+            default_path = self.default_image_path(default_name)
+            value = saved_images.get(image_id, "") or default_path
+            var = tk.StringVar(value=value)
+            self.image_vars[image_id] = var
 
             ttk.Label(
-                table,
+                image_box,
                 text=label,
-                width=22,
+                width=18,
                 anchor="w",
-            ).grid(row=row, column=0, sticky="w", padx=5, pady=4)
+            ).grid(row=row, column=0, padx=4, pady=4, sticky="w")
 
-            ttk.Checkbutton(
-                table,
-                text="입장",
-                variable=a_var,
-            ).grid(row=row, column=1, padx=5)
+            ttk.Entry(
+                image_box,
+                textvariable=var,
+                width=68,
+            ).grid(row=row, column=1, padx=4, pady=4, sticky="ew")
 
-            ttk.Label(
-                table,
-                textvariable=a_status,
-                width=13,
-                anchor="center",
-            ).grid(row=row, column=2, padx=5)
+            ttk.Button(
+                image_box,
+                text="파일",
+                width=7,
+                command=lambda v=var: self.choose_image(v),
+            ).grid(row=row, column=2, padx=3, pady=4)
 
-            ttk.Checkbutton(
-                table,
-                text="입장",
-                variable=b_var,
-            ).grid(row=row, column=3, padx=5)
+            ttk.Button(
+                image_box,
+                text="캡처",
+                width=7,
+                command=lambda iid=image_id, v=var: self.capture_image(
+                    iid,
+                    v,
+                ),
+            ).grid(row=row, column=3, padx=3, pady=4)
 
-            ttk.Label(
-                table,
-                textvariable=b_status,
-                width=13,
-                anchor="center",
-            ).grid(row=row, column=4, padx=5)
-
-        buttons = ttk.Frame(outer)
-        buttons.pack(fill="x", pady=(16, 0))
+        footer = ttk.Frame(outer)
+        footer.pack(fill="x", pady=(14, 0))
 
         ttk.Button(
-            buttons,
+            footer,
             text="닫기",
             command=self.destroy,
         ).pack(side="right", padx=(6, 0))
 
         ttk.Button(
-            buttons,
+            footer,
             text="저장",
             style="Primary.TButton",
             command=self.save,
@@ -2747,10 +2983,50 @@ class DungeonSettingsWindow(tk.Toplevel):
 
         self.refresh_statuses()
 
+    def default_image_path(self, filename: str) -> str:
+        test_path = BASE_DIR / "images" / "test" / filename
+        normal_path = BASE_DIR / "images" / filename
+
+        if test_path.exists():
+            return str(test_path)
+        if normal_path.exists():
+            return str(normal_path)
+        return ""
+
+    def choose_image(self, variable: tk.StringVar) -> None:
+        path = filedialog.askopenfilename(
+            parent=self,
+            initialdir=BASE_DIR / "images",
+            filetypes=[
+                ("이미지", "*.png *.jpg *.jpeg *.bmp"),
+                ("모든 파일", "*.*"),
+            ],
+        )
+        if path:
+            variable.set(path)
+
+    def capture_image(
+        self,
+        image_id: str,
+        variable: tk.StringVar,
+    ) -> None:
+        destination = CAPTURE_DIR / "dungeon" / self.key
+
+        path = self.app.capture_and_crop(
+            self.key,
+            f"dungeon_{image_id}",
+            destination_dir=destination,
+            parent=self,
+            suggested_filename=f"dungeon_{image_id}.png",
+        )
+
+        if path:
+            variable.set(path)
+
     def dungeon_status_db_path(self) -> Path:
         return BASE_DIR / "dungeon_status.db"
 
-    def read_today_status(self, target_key: str, dungeon: str) -> str:
+    def read_today_status(self, dungeon: str) -> str:
         db_path = self.dungeon_status_db_path()
         if not db_path.exists():
             return "이용가능"
@@ -2761,7 +3037,7 @@ class DungeonSettingsWindow(tk.Toplevel):
                 row = conn.execute(
                     "SELECT status FROM dungeon_usage "
                     "WHERE target_key = ? AND dungeon = ? AND usage_date = ?",
-                    (target_key, dungeon, today),
+                    (self.key, dungeon, today),
                 ).fetchone()
 
             if row and str(row[0]).upper() == "COMPLETED":
@@ -2769,30 +3045,32 @@ class DungeonSettingsWindow(tk.Toplevel):
             return "이용가능"
         except Exception:
             logging.exception(
-                "던전 상태 DB 읽기 실패: target=%s dungeon=%s",
-                target_key,
+                "던전 상태 DB 읽기 실패: %s / %s",
+                self.key,
                 dungeon,
             )
             return "확인 실패"
 
     def refresh_statuses(self) -> None:
-        for target_key, dungeon_vars in self.status_vars.items():
-            for dungeon in ("A", "B"):
-                dungeon_vars[dungeon].set(
-                    self.read_today_status(target_key, dungeon)
-                )
+        self.a_status.set(self.read_today_status("A"))
+        self.b_status.set(self.read_today_status("B"))
 
     def save(self) -> None:
-        dungeon_cfg = self.app.config.setdefault("dungeon_daily", {})
-        target_cfg = dungeon_cfg.setdefault("targets", {})
+        self.cfg["A"] = bool(self.a_var.get())
+        self.cfg["B"] = bool(self.b_var.get())
 
-        for target_key, dungeon_vars in self.vars.items():
-            saved = target_cfg.setdefault(target_key, {})
-            saved["A"] = bool(dungeon_vars["A"].get())
-            saved["B"] = bool(dungeon_vars["B"].get())
+        images = self.cfg.setdefault("images", {})
+        for image_id, variable in self.image_vars.items():
+            value = variable.get().strip()
+            if value:
+                images[image_id] = value
+            else:
+                images.pop(image_id, None)
 
         self.app.persist()
-        self.app.global_status.set("매일 던전 설정 저장 완료")
+        self.app.global_status.set(
+            f"{self.app.targets[self.key][0]} 던전 설정 저장 완료"
+        )
         self.destroy()
 
 class MacroManager:
@@ -2827,11 +3105,6 @@ class MacroManager:
         ttk.Button(top, text="감시 시작", command=self.start).pack(side="left", padx=3)
         ttk.Button(top, text="감시 중지", command=self.stop).pack(side="left", padx=3)
         ttk.Button(top, text="공용 진입 이미지", command=lambda: CommonRoutineEditor(self)).pack(side="left", padx=12)
-        ttk.Button(
-            top,
-            text="던전",
-            command=self.open_dungeon_settings,
-        ).pack(side="left", padx=3)
         ttk.Label(top, text="인식 기준").pack(side="left")
         self.threshold_var = tk.StringVar(value=str(self.config.get("threshold", DEFAULT_THRESHOLD)))
         ttk.Entry(top, textvariable=self.threshold_var, width=7).pack(side="left", padx=3)
@@ -2850,7 +3123,7 @@ class MacroManager:
 
         container = ttk.Frame(self.root, padding=10)
         container.pack(fill="both", expand=True)
-        headers = ("사용", "대상", "상태", "선택 루틴", "루틴 이미지·좌표", "현재 위치 테스트")
+        headers = ("사용", "대상", "상태", "선택 루틴", "루틴 이미지·좌표", "던전", "현재 위치 테스트")
         for col, text in enumerate(headers):
             ttk.Label(container, text=text, font=("Malgun Gothic", 10, "bold")).grid(row=0, column=col, padx=5, pady=5)
         container.columnconfigure(2, weight=0)
@@ -2905,7 +3178,8 @@ class MacroManager:
             self.routine_vars[key] = routine_var
             self.routine_combos[key] = routine_combo
             ttk.Button(container, text="분면 루틴 설정", command=lambda k=key: TargetEditor(self, k)).grid(row=row, column=4, padx=5)
-            ttk.Button(container, text="분면 중앙 클릭", command=lambda k=key: self.test_target(k)).grid(row=row, column=5, padx=5)
+            ttk.Button(container, text="던전", command=lambda k=key: TargetDungeonSettingsWindow(self, k)).grid(row=row, column=5, padx=5)
+            ttk.Button(container, text="분면 중앙 클릭", command=lambda k=key: self.test_target(k)).grid(row=row, column=6, padx=5)
 
     def routine_names(self) -> list[str]:
         return [
@@ -2949,8 +3223,6 @@ class MacroManager:
         self.root.wait_window(manager)
         self.refresh_main_routine_choices()
 
-    def open_dungeon_settings(self) -> None:
-        DungeonSettingsWindow(self)
 
     def config_snapshot(self) -> dict:
         with self.config_lock:

@@ -46,11 +46,9 @@
       "enabled": true,
       "overrides": {
         "11_potion": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_1/quadrant_1/11_물약_선택.png",
-        "16_region": "C:/Users/Jongseo Won/Desktop/auto/macro_images/common_routines/default_hunting/17_이동할_지역.png",
-        "17_hunting_ground": "C:/Users/Jongseo Won/Desktop/auto/macro_images/common_routines/default_hunting/18_이동할_사냥터.png",
-        "18_monster": "C:/Users/Jongseo Won/Desktop/auto/macro_images/common_routines/default_hunting/19_몬스터.png",
-        "16_world": "C:/Users/Jongseo Won/Desktop/auto/macro_images/common_routines/default_hunting/16_이동할_월드.png",
-        "07_touch_empty_space": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_1/quadrant_1/07_빈_공간_터치.png"
+        "07_touch_empty_space": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_1/quadrant_1/07_빈_공간_터치.png",
+        "17_monster": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_1/quadrant_1/17_몬스터.png",
+        "16_favorite": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_1/quadrant_1/16_즐겨찾기.png"
       },
       "fallbacks": {
         "15_world_map": [
@@ -82,9 +80,8 @@
       "enabled": true,
       "overrides": {
         "11_potion": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_1/quadrant_2/11_potion.png",
-        "16_region": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_1/quadrant_2/16_region.png",
-        "17_hunting_ground": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_1/quadrant_2/17_hunting_ground.png",
-        "18_monster": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_1/quadrant_2/18_monster.png"
+        "17_monster": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_1/quadrant_2/17_몬스터.png",
+        "16_favorite": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_1/quadrant_2/16_즐겨찾기.png"
       },
       "fallbacks": {
         "15_world_map": [
@@ -119,11 +116,9 @@
         "002_sandtimer": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_1/quadrant_3/m1q3_002 모래시계_20260815_173721.png",
         "07_touch_empty_space": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_1/quadrant_3/07_touch_empty_space.png",
         "11_potion": "images/quadrant_3/11_potion.png",
-        "16_region": "images/quadrant_3/16_region.png",
-        "17_hunting_ground": "images/quadrant_3/17_hunting_ground.png",
-        "18_monster": "images/quadrant_3/18_monster.png",
-        "21_auto": "images/quadrant_3/21_auto.png",
-        "16_world": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_1/quadrant_3/16_world.png"
+        "17_monster": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_1/quadrant_3/17_몬스터.png",
+        "20_auto": "images/quadrant_3/21_auto.png",
+        "16_favorite": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_1/quadrant_3/16_즐겨찾기.png"
       },
       "fallbacks": {
         "15_world_map": [
@@ -159,10 +154,8 @@
       "enabled": true,
       "overrides": {
         "11_potion": "images/quadrant_4/11_potion.png",
-        "16_region": "images/quadrant_4/16_region.png",
-        "17_hunting_ground": "images/quadrant_4/17_hunting_ground.png",
-        "18_monster": "images/quadrant_4/18_monster.png",
-        "16_world": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_1/quadrant_4/16_world.png"
+        "17_monster": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_1/quadrant_4/17_몬스터.png",
+        "16_favorite": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_1/quadrant_4/16_즐겨찾기.png"
       },
       "fallbacks": {
         "15_world_map": [
@@ -207,15 +200,13 @@
         "12_100_percent": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/12_100_percent.png",
         "13_buy": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/13_buy.png",
         "14_close_shop": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/14_close_shop.png",
-        "16_region": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_1/16_region.png",
-        "17_hunting_ground": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_1/17_hunting_ground.png",
-        "18_monster": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_1/18_monster.png",
-        "19_quick_move": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/19_quick_move.png",
-        "20_confirm": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/20_confirm.png",
-        "21_auto": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/21_auto.png",
-        "16_world": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_1/16_world.png",
         "001_dyied": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_1/001_dyied.png",
-        "002_sandtimer": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_1/002_sandtimer.png"
+        "002_sandtimer": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_1/002_sandtimer.png",
+        "17_monster": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_1/17_몬스터.png",
+        "18_quick_move": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/19_quick_move.png",
+        "19_confirm": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/20_confirm.png",
+        "20_auto": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/21_auto.png",
+        "16_favorite": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_1/16_즐겨찾기.png"
       },
       "fallbacks": {
         "15_world_map": [
@@ -288,13 +279,11 @@
         "12_100_percent": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/12_100_percent.png",
         "13_buy": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/13_buy.png",
         "14_close_shop": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/14_close_shop.png",
-        "16_region": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/16_region.png",
-        "17_hunting_ground": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/17_hunting_ground.png",
-        "18_monster": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/18_monster.png",
-        "19_quick_move": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/19_quick_move.png",
-        "20_confirm": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/20_confirm.png",
-        "21_auto": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/21_auto.png",
-        "16_world": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/16_world.png"
+        "17_monster": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/17_몬스터.png",
+        "18_quick_move": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/19_quick_move.png",
+        "19_confirm": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/20_confirm.png",
+        "20_auto": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/21_auto.png",
+        "16_favorite": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/16_즐겨찾기.png"
       },
       "fallbacks": {
         "15_world_map": [
@@ -498,57 +487,40 @@
           "coordinate_from_target": true
         },
         {
-          "id": "16_world",
-          "name": "16 이동할 월드",
-          "image": "",
-          "timeout": 5.0,
-          "on_timeout": "skip",
-          "skip_count": 1,
-          "skip_if_no_image": true,
-          "pre_click_delay": 0.5
-        },
-        {
-          "id": "16_region",
-          "name": "17 이동할 지역",
+          "id": "16_favorite",
+          "name": "16 즐겨찾기",
           "image": "",
           "timeout": 20.0,
-          "pre_click_delay": 0.5
+          "pre_click_delay": 0.0
         },
         {
-          "id": "17_hunting_ground",
-          "name": "18 이동할 사냥터",
+          "id": "17_monster",
+          "name": "17 몬스터",
           "image": "",
           "timeout": 20.0,
-          "pre_click_delay": 0.5
+          "pre_click_delay": 0.0
         },
         {
-          "id": "18_monster",
-          "name": "19 몬스터",
-          "image": "",
-          "timeout": 20.0,
-          "pre_click_delay": 0.5
-        },
-        {
-          "id": "19_quick_move",
-          "name": "20 빠른 이동",
+          "id": "18_quick_move",
+          "name": "18 빠른 이동",
           "image": "images/19_quick_move.png",
           "timeout": 15.0,
-          "pre_click_delay": 0.5
+          "pre_click_delay": 0.0
         },
         {
-          "id": "20_confirm",
-          "name": "21 빠른 이동 확인",
+          "id": "19_confirm",
+          "name": "19 빠른 이동 확인",
           "image": "images/20_confirm.png",
           "timeout": 15.0,
-          "pre_click_delay": 0.5
+          "pre_click_delay": 0.0,
+          "after_click_delay": 5.0
         },
         {
-          "id": "21_auto",
-          "name": "22 AUTO",
+          "id": "20_auto",
+          "name": "20 AUTO",
           "image": "images/21_auto.png",
           "timeout": 30.0,
-          "delay_before": 20,
-          "pre_click_delay": 0.5
+          "pre_click_delay": 15.0
         }
       ]
     },
@@ -713,5 +685,14 @@
       "m2q3": {},
       "m2q4": {}
     }
-  }
+  },
+  "default_hunting_v4": true,
+  "test_ranges": [
+    {
+      "id": "test_1787385785199789600",
+      "name": "새 구간 테스트",
+      "start_id": "02_menu",
+      "end_id": "20_auto"
+    }
+  ]
 }

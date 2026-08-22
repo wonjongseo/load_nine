@@ -77,14 +77,11 @@ QUADRANT_IMAGE_OVERRIDES: dict[int, dict[str, str]] = {
         "13_buy.png": "quadrant_1/13_buy_pc.png",
         "14_close_shop.png": "quadrant_1/14_close_shop_pc.png",
         "15_world_map.png": "quadrant_1/15_world_map_pc.png",
-        "quadrant_1/16_region.png": "quadrant_1/16_region_pc.png",
-        "quadrant_1/17_hunting_ground.png": (
-            "quadrant_1/17_hunting_ground_pc.png"
-        ),
-        "quadrant_1/18_monster.png": "quadrant_1/18_monster_pc.png",
-        "19_quick_move.png": "quadrant_1/19_quick_move_pc.png",
-        "20_confirm.png": "quadrant_1/20_confirm_pc.png",
-        "21_auto.png": "quadrant_1/21_auto_pc.png",
+        "quadrant_1/16_favorite.png": "quadrant_1/16_favorite_pc.png",
+        "quadrant_1/17_monster.png": "quadrant_1/17_monster_pc.png",
+        "18_quick_move.png": "quadrant_1/18_quick_move_pc.png",
+        "19_confirm.png": "quadrant_1/19_confirm_pc.png",
+        "20_auto.png": "quadrant_1/20_auto_pc.png",
     },
     2: {},
     3: {},
@@ -94,34 +91,29 @@ QUADRANT_IMAGE_OVERRIDES: dict[int, dict[str, str]] = {
 QUADRANT_CONFIG = {
     1: {
         "potion": "quadrant_1/11_potion.png",
-        "region": "quadrant_1/16_region.png",
-        "hunting_ground": "quadrant_1/17_hunting_ground.png",
-        "monster": "quadrant_1/18_monster.png",
-        "auto": "21_auto.png",
+        "favorite": "quadrant_1/16_favorite.png",
+        "monster": "quadrant_1/17_monster.png",
+        "auto": "20_auto.png",
     },
     2: {
         "potion": "quadrant_2/11_potion.png",
-        "region": "quadrant_2/16_region.png",
-        "hunting_ground": "quadrant_2/17_hunting_ground.png",
-        "monster": "quadrant_2/18_monster.png",
-        "auto": "21_auto.png",
+        "favorite": "quadrant_2/16_favorite.png",
+        "monster": "quadrant_2/17_monster.png",
+        "auto": "20_auto.png",
     },
     3: {
         "potion": "quadrant_3/11_potion.png",
-        "region": "quadrant_3/16_region.png",
-        "hunting_ground": "quadrant_3/17_hunting_ground.png",
-        "monster": "quadrant_3/18_monster.png",
-        "auto": "quadrant_3/21_auto.png",
+        "favorite": "quadrant_3/16_favorite.png",
+        "monster": "quadrant_3/17_monster.png",
+        "auto": "quadrant_3/20_auto.png",
     },
     4: {
         "potion": "quadrant_4/11_potion.png",
-        "region": "quadrant_4/16_region.png",
-        "hunting_ground": "quadrant_4/17_hunting_ground.png",
-        "monster": "quadrant_4/18_monster.png",
-        "auto": "21_auto.png",
+        "favorite": "quadrant_4/16_favorite.png",
+        "monster": "quadrant_4/17_monster.png",
+        "auto": "20_auto.png",
     },
 }
-
 
 @dataclass(frozen=True)
 class Rect:
@@ -354,9 +346,9 @@ class GameMacro:
             "12_100_percent.png",
             "13_buy.png",
             "14_close_shop.png",
-            "19_quick_move.png",
-            "20_confirm.png",
-            "21_auto.png",
+            "18_quick_move.png",
+            "19_confirm.png",
+            "20_auto.png",
         }
         for config in QUADRANT_CONFIG.values():
             names.update(config.values())
@@ -510,6 +502,7 @@ class GameMacro:
         timeout: float,
         after_delay: float,
         required: bool = True,
+        click_offset_x: int = 0,
     ) -> bool:
         rect = self.quadrants[quadrant]
         match = self.wait_for_image(image_name, rect, timeout)
@@ -540,6 +533,8 @@ class GameMacro:
             return False
 
         click_x, click_y = match.center
+        click_x += click_offset_x
+
         time.sleep(PRE_CLICK_DELAY_SECONDS)
         click_screen(click_x, click_y)
         logging.info(
@@ -692,24 +687,48 @@ class GameMacro:
         )
 
         self.click_world_map(quadrant)
+
+        # 16. 즐겨찾기
         self.click_image_step(
-            quadrant, config["region"], "이동할 지역", 20, 1.0
+            quadrant,
+            config["favorite"],
+            "즐겨찾기",
+            20,
+            1.0,
         )
+
+        # 17. 몬스터 - 정중앙보다 오른쪽 10px
         self.click_image_step(
-            quadrant, config["hunting_ground"], "이동할 사냥터", 20, 1.0
+            quadrant,
+            config["monster"],
+            "몬스터",
+            20,
+            0.8,
+            click_offset_x=10,
         )
+
+        # 18. 빠른 이동
         self.click_image_step(
-            quadrant, config["monster"], "몬스터", 20, 0.8
+            quadrant,
+            "18_quick_move.png",
+            "빠른 이동",
+            15,
+            0.8,
         )
+
+        # 19. 빠른 이동 확인
         self.click_image_step(
-            quadrant, "19_quick_move.png", "빠른 이동", 15, 0.8
-        )
-        self.click_image_step(
-            quadrant, "20_confirm.png", "빠른 이동 확인", 15, 1.0
+            quadrant,
+            "19_confirm.png",
+            "빠른 이동 확인",
+            15,
+            1.0,
         )
 
         logging.info("%d분면 이동 대기 시작", quadrant)
         time.sleep(20)
+
+        # 20. AUTO
         self.click_image_step(
             quadrant,
             config["auto"],
