@@ -440,6 +440,7 @@ def initialize_routine_target_settings(config: dict) -> None:
             settings_by_routine[routine_id] = {
                 "overrides": overrides,
                 "fallbacks": fallbacks,
+                "click_offsets": {},
             }
 
 
@@ -452,7 +453,7 @@ def target_step_settings(target: dict, routine_id: str) -> tuple[dict, dict]:
 
     settings = target.setdefault("routine_settings", {}).setdefault(
         routine_id,
-        {"overrides": {}, "fallbacks": {}},
+        {"overrides": {}, "fallbacks": {}, "click_offsets": {}},
     )
 
     return (
@@ -460,6 +461,22 @@ def target_step_settings(target: dict, routine_id: str) -> tuple[dict, dict]:
         settings.setdefault("fallbacks", {}),
     )
 
+
+def target_legacy_click_offsets(target: dict) -> dict:
+    # 사망 전/사망 후 진입 단계의 분면별 클릭 보정값
+    return target.setdefault("legacy_click_offsets", {})
+
+
+def target_click_offsets(target: dict, routine_id: str) -> dict:
+    if routine_id == "default_hunting":
+        return target.setdefault("click_offsets", {})
+
+    settings = target.setdefault("routine_settings", {}).setdefault(
+        routine_id,
+        {"overrides": {}, "fallbacks": {}, "click_offsets": {}},
+    )
+
+    return settings.setdefault("click_offsets", {})
 
 
 def save_config(config: dict) -> None:
@@ -662,6 +679,20 @@ class MacroEngine:
         fresh_gray = cv2.cvtColor(fresh_frame, cv2.COLOR_BGRA2GRAY)
         return self.find(fresh_gray, image_path, rect)
 
+    def configured_image_click_point(
+        self,
+        match: tuple[int, int, float],
+        image_path: str,
+        step: dict,
+    ) -> tuple[int, int]:
+        """찾은 이미지 중심에 픽셀 보정값을 더해 클릭 좌표를 만듭니다."""
+        offset = step.get("image_click_offset", [0, 0])
+        try:
+            x_offset = int(float(offset[0]))
+            y_offset = int(float(offset[1]))
+        except (TypeError, ValueError, IndexError):
+            x_offset, y_offset = 0, 0
+        return match[0] + x_offset, match[1] + y_offset
 
     def advance(self, key: str, step_count: int, amount: int = 1) -> None:
         next_index = (
@@ -699,6 +730,11 @@ class MacroEngine:
                         routine_overrides, routine_fallbacks = (
                             target_step_settings(target, routine_id)
                         )
+                        routine_click_offsets = target_click_offsets(
+                            target,
+                            routine_id,
+                        )
+                        legacy_click_offsets = target_legacy_click_offsets(target)
                         index = self.step_indexes.get(key, 0) % len(steps)
                         step = steps[index]
                         step_id = step["id"]
@@ -830,7 +866,17 @@ class MacroEngine:
                                             )
                                         )
                                     )
-                                    click_x, click_y = sandtimer_match[0], sandtimer_match[1]
+                                    click_x, click_y = self.configured_image_click_point(
+                                        sandtimer_match,
+                                        sandtimer_path,
+                                        {
+                                            **sandtimer,
+                                            "image_click_offset": legacy_click_offsets.get(
+                                                "002_sandtimer",
+                                                [0, 0],
+                                            ),
+                                        },
+                                    )
                                     held_left_click(click_x, click_y)
                                     self.pre_death_stages[key] = "back_button"
                                     self.pre_death_deadlines.pop(key, None)
@@ -919,7 +965,17 @@ class MacroEngine:
                                             )
                                         )
                                     )
-                                    click_x, click_y = action_match[0], action_match[1]
+                                    click_x, click_y = self.configured_image_click_point(
+                                        action_match,
+                                        action_path,
+                                        {
+                                            **action_step,
+                                            "image_click_offset": legacy_click_offsets.get(
+                                                pre_death_stage,
+                                                [0, 0],
+                                            ),
+                                        },
+                                    )
                                     held_left_click(click_x, click_y)
                                     if pre_death_stage == "back_button":
                                         self.pre_death_stages[key] = "home_icon"
@@ -1152,7 +1208,17 @@ class MacroEngine:
                                 if index == 0:
                                     self.mark_routine_started(key)
                                 logging.info("%s 루틴 진행 시작", key)
-                                click_x, click_y = confirmed_match[0], confirmed_match[1]
+                                click_x, click_y = self.configured_image_click_point(
+                                    confirmed_match,
+                                    image_path,
+                                    {
+                                        **step,
+                                        "image_click_offset": routine_click_offsets.get(
+                                            step_id,
+                                            [0, 0],
+                                        ),
+                                    },
+                                )
                                 held_left_click(click_x, click_y)
                                 self.app.set_row_status(
                                     key,
