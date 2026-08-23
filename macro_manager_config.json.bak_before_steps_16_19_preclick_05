@@ -512,14 +512,15 @@
           "name": "19 빠른 이동 확인",
           "image": "images/20_confirm.png",
           "timeout": 15.0,
-          "pre_click_delay": 0.0
+          "pre_click_delay": 0.0,
+          "after_click_delay": 5.0
         },
         {
           "id": "20_auto",
           "name": "20 AUTO",
           "image": "images/21_auto.png",
           "timeout": 30.0,
-          "pre_click_delay": 0.0
+          "pre_click_delay": 15.0
         }
       ]
     },
@@ -685,5 +686,13 @@
       "m2q4": {}
     }
   },
-  "default_hunting_v4": true
+  "default_hunting_v4": true,
+  "test_ranges": [
+    {
+      "id": "test_1787385785199789600",
+      "name": "새 구간 테스트",
+      "start_id": "02_menu",
+      "end_id": "20_auto"
+    }
+  ]
 }

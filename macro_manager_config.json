@@ -293,6 +293,10 @@
         "02_menu": [
           1854,
           85
+        ],
+        "16_favorite": [
+          62,
+          209
         ]
       },
       "post_routine_id": "default_hunting",
@@ -491,28 +495,28 @@
           "name": "16 즐겨찾기",
           "image": "",
           "timeout": 20.0,
-          "pre_click_delay": 0.0
+          "pre_click_delay": 0.5
         },
         {
           "id": "17_monster",
           "name": "17 몬스터",
           "image": "",
           "timeout": 20.0,
-          "pre_click_delay": 0.0
+          "pre_click_delay": 0.5
         },
         {
           "id": "18_quick_move",
           "name": "18 빠른 이동",
           "image": "images/19_quick_move.png",
           "timeout": 15.0,
-          "pre_click_delay": 0.0
+          "pre_click_delay": 0.5
         },
         {
           "id": "19_confirm",
           "name": "19 빠른 이동 확인",
           "image": "images/20_confirm.png",
           "timeout": 15.0,
-          "pre_click_delay": 0.0,
+          "pre_click_delay": 0.5,
           "after_click_delay": 5.0
         },
         {
@@ -681,7 +685,9 @@
       "m1q3": {},
       "m1q4": {},
       "m2q1": {},
-      "m2q2": {},
+      "m2q2": {
+        "images": {}
+      },
       "m2q3": {},
       "m2q4": {}
     }
