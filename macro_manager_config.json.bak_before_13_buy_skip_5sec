@@ -210,8 +210,8 @@
       },
       "fallbacks": {
         "15_world_map": [
-          241,
-          271
+          213,
+          310
         ],
         "02_menu": [
           1852,
@@ -287,8 +287,8 @@
       },
       "fallbacks": {
         "15_world_map": [
-          227,
-          276
+          224,
+          269
         ],
         "02_menu": [
           1854,
@@ -472,10 +472,8 @@
           "id": "13_buy",
           "name": "13 구매",
           "image": "images/13_buy.png",
-          "timeout": 5.0,
-          "pre_click_delay": 0.5,
-          "on_timeout": "skip",
-          "skip_count": 1
+          "timeout": 15.0,
+          "pre_click_delay": 0.5
         },
         {
           "id": "14_close_shop",

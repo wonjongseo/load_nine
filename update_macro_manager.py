@@ -1,21 +1,11 @@
 from __future__ import annotations
 
 import json
-import re
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent
 MACRO = BASE_DIR / "macro_manager.py"
 CONFIG = BASE_DIR / "macro_manager_config.json"
-
-TARGET_IDS = (
-    "16_favorite",
-    "17_monster",
-    "18_quick_move",
-    "19_confirm",
-)
-
-NEW_DELAY = 0.5
 
 
 def backup(path: Path, suffix: str) -> None:
@@ -23,49 +13,12 @@ def backup(path: Path, suffix: str) -> None:
         return
 
     dst = path.with_name(path.name + suffix)
+
     if not dst.exists():
         dst.write_text(
             path.read_text(encoding="utf-8"),
             encoding="utf-8",
         )
-
-
-def patch_step_block(text: str, step_id: str) -> tuple[str, bool]:
-    pattern = re.compile(
-        r'(?P<block>\{\s*'
-        + rf'"id"\s*:\s*"{re.escape(step_id)}"\s*,'
-        + r'.*?'
-        + r'\})',
-        re.S,
-    )
-
-    match = pattern.search(text)
-    if not match:
-        return text, False
-
-    block = match.group("block")
-
-    delay_pattern = re.compile(
-        r'"pre_click_delay"\s*:\s*[-0-9.]+'
-    )
-
-    if not delay_pattern.search(block):
-        raise RuntimeError(
-            f'{step_id} 블록에 pre_click_delay가 없습니다.'
-        )
-
-    new_block = delay_pattern.sub(
-        f'"pre_click_delay": {NEW_DELAY}',
-        block,
-        count=1,
-    )
-
-    return (
-        text[:match.start()]
-        + new_block
-        + text[match.end():],
-        True,
-    )
 
 
 def patch_macro_manager() -> None:
@@ -77,25 +30,39 @@ def patch_macro_manager() -> None:
     text = MACRO.read_text(encoding="utf-8")
     original = text
 
-    changed_ids = []
+    marker = '    config["default_hunting_v4"] = True\n'
 
-    for step_id in TARGET_IDS:
-        text, changed = patch_step_block(text, step_id)
-        if changed:
-            changed_ids.append(step_id)
-
-    missing = [step_id for step_id in TARGET_IDS if step_id not in changed_ids]
-    if missing:
+    if marker not in text:
         raise RuntimeError(
-            "macro_manager.py에서 다음 단계를 찾지 못했습니다: "
-            + ", ".join(missing)
+            "migrate_default_hunting_v4() 끝 위치를 찾지 못했습니다."
         )
 
-    compile(text, str(MACRO), "exec")
+    rule_code = '''    # 13 구매는 최대 5초만 찾고, 못 찾으면 클릭 없이 14단계로 넘어갑니다.
+    for step in routine.get("steps", []):
+        if step.get("id") == "13_buy":
+            step["timeout"] = 5.0
+            step["on_timeout"] = "skip"
+            step["skip_count"] = 1
+            break
+
+'''
+
+    if 'if step.get("id") == "13_buy":' not in text:
+        text = text.replace(
+            marker,
+            rule_code + marker,
+            1,
+        )
+
+    compile(
+        text,
+        str(MACRO),
+        "exec",
+    )
 
     backup(
         MACRO,
-        ".bak_before_steps_16_19_preclick_05",
+        ".bak_before_13_buy_skip_5sec",
     )
 
     MACRO.write_text(
@@ -104,15 +71,16 @@ def patch_macro_manager() -> None:
     )
 
     print("[OK] macro_manager.py")
-    for step_id in TARGET_IDS:
-        print(f"     {step_id}.pre_click_delay = {NEW_DELAY}")
+    print("     13_buy.timeout = 5.0")
+    print('     13_buy.on_timeout = "skip"')
+    print("     13_buy.skip_count = 1")
 
 
 def patch_config() -> None:
     if not CONFIG.exists():
         print(
             "[INFO] macro_manager_config.json 없음 "
-            "- 다음 실행 시 macro_manager.py 값 사용"
+            "- 다음 프로그램 실행 때 자동 적용됩니다."
         )
         return
 
@@ -130,25 +98,24 @@ def patch_config() -> None:
             "macro_manager_config.json에 default_hunting이 없습니다."
         )
 
-    found = set()
+    found = False
 
     for step in routine.get("steps", []):
-        step_id = step.get("id")
+        if step.get("id") == "13_buy":
+            step["timeout"] = 5.0
+            step["on_timeout"] = "skip"
+            step["skip_count"] = 1
+            found = True
+            break
 
-        if step_id in TARGET_IDS:
-            step["pre_click_delay"] = NEW_DELAY
-            found.add(step_id)
-
-    missing = [step_id for step_id in TARGET_IDS if step_id not in found]
-    if missing:
+    if not found:
         raise RuntimeError(
-            "macro_manager_config.json에서 다음 단계를 찾지 못했습니다: "
-            + ", ".join(missing)
+            'macro_manager_config.json의 기본 루틴에서 id="13_buy"를 찾지 못했습니다.'
         )
 
     backup(
         CONFIG,
-        ".bak_before_steps_16_19_preclick_05",
+        ".bak_before_13_buy_skip_5sec",
     )
 
     CONFIG.write_text(
@@ -161,8 +128,9 @@ def patch_config() -> None:
     )
 
     print("[OK] macro_manager_config.json")
-    for step_id in TARGET_IDS:
-        print(f"     {step_id}.pre_click_delay = {NEW_DELAY}")
+    print("     13_buy.timeout = 5.0")
+    print('     13_buy.on_timeout = "skip"')
+    print("     13_buy.skip_count = 1")
 
 
 if __name__ == "__main__":
@@ -171,14 +139,18 @@ if __name__ == "__main__":
 
     print()
     print("=" * 72)
-    print("수정 완료")
+    print("13 구매 timeout 처리 수정 완료")
     print("=" * 72)
-    print("16 즐겨찾기       클릭 전 대기: 0.5초")
-    print("17 몬스터         클릭 전 대기: 0.5초")
-    print("18 빠른 이동      클릭 전 대기: 0.5초")
-    print("19 빠른 이동 확인 클릭 전 대기: 0.5초")
+    print("12 100% 수량")
+    print("→ 13 구매 이미지 검색 시작")
+    print("→ 최대 5초 검색")
     print()
-    print("기존 동작 유지:")
-    print("19 빠른 이동 확인 클릭 후 5초 대기")
-    print("20 AUTO 감지 후 15초 대기 뒤 클릭")
+    print("13 구매 발견:")
+    print("→ 기존처럼 13 구매 클릭")
+    print("→ 14 상점 닫기 검색")
+    print()
+    print("13 구매 5초 동안 미발견:")
+    print("→ 아무 좌표도 클릭하지 않음")
+    print("→ 13 구매 스킵")
+    print("→ 바로 14 상점 닫기 검색")
     print("=" * 72)

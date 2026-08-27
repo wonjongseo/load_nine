@@ -488,14 +488,6 @@ def migrate_default_hunting_v4(config: dict) -> None:
             overrides.pop(old_id, None)
             fallbacks.pop(old_id, None)
 
-    # 13 구매는 최대 5초만 찾고, 못 찾으면 클릭 없이 14단계로 넘어갑니다.
-    for step in routine.get("steps", []):
-        if step.get("id") == "13_buy":
-            step["timeout"] = 5.0
-            step["on_timeout"] = "skip"
-            step["skip_count"] = 1
-            break
-
     config["default_hunting_v4"] = True
 
 
