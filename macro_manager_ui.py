@@ -648,7 +648,7 @@ class TargetEditor(tk.Toplevel):
 
         ttk.Label(
             header,
-            text="기본 루틴은 단계 구조가 잠겨 있으며 이미지/좌표와 클릭 전 대기만 변경할 수 있습니다.",
+            text="진입 001/002는 분면별 이미지로 저장됩니다. 기본 루틴은 단계 구조가 잠겨 있습니다.",
         ).pack(side="left", padx=(16, 0))
 
         outer = ttk.Frame(self, padding=(10, 4, 10, 4))
@@ -1014,6 +1014,7 @@ class TargetEditor(tk.Toplevel):
             target,
             routine_id or self.DEFAULT_ROUTINE_ID,
         )
+        entry_overrides = target.setdefault("overrides", {})
 
         headers = (
             "순서",
@@ -1046,18 +1047,34 @@ class TargetEditor(tk.Toplevel):
         self.body.columnconfigure(1, weight=1)
         self.body.columnconfigure(3, weight=2)
 
-        for index, step in enumerate(routine.get("steps", [])):
+        entry_steps = [
+            step
+            for step in self.app.config.get("entry_steps", [])
+            if step.get("id") in {"001_dyied", "002_sandtimer"}
+        ]
+        displayed_steps = [
+            *[(step, True, -1) for step in entry_steps],
+            *[
+                (step, False, routine_index)
+                for routine_index, step in enumerate(routine.get("steps", []))
+            ],
+        ]
+
+        for index, (step, is_entry_step, routine_index) in enumerate(displayed_steps):
             row_num = index + 1
             step_id = step.get("id", "")
             base_fallback = step.get("fallback")
             from_target = bool(step.get("coordinate_from_target"))
 
-            applied_fallback = target_fallbacks.get(step_id)
+            row_overrides = entry_overrides if is_entry_step else target_overrides
+            row_fallbacks = {} if is_entry_step else target_fallbacks
+
+            applied_fallback = row_fallbacks.get(step_id)
             if applied_fallback is None:
                 applied_fallback = base_fallback
 
             common_image = step.get("image", "")
-            applied_image = target_overrides.get(step_id) or common_image
+            applied_image = row_overrides.get(step_id) or common_image
 
             coordinate_step = (
                 base_fallback is not None
@@ -1104,7 +1121,7 @@ class TargetEditor(tk.Toplevel):
                 self.body,
                 textvariable=name_var,
                 width=23,
-                state="readonly" if is_default else "normal",
+                state="readonly" if is_default or is_entry_step else "normal",
             )
             name_entry.grid(
                 row=row_num,
@@ -1131,7 +1148,7 @@ class TargetEditor(tk.Toplevel):
                 self.body,
                 textvariable=action_var,
                 values=("이미지 클릭", "좌표 클릭"),
-                state="disabled" if is_default else "readonly",
+                state="disabled" if is_default or is_entry_step else "readonly",
                 width=12,
             )
             action_combo.grid(
@@ -1176,11 +1193,13 @@ class TargetEditor(tk.Toplevel):
                 width=11,
             ).pack(side="left")
 
-            ttk.Entry(
+            delay_entry = ttk.Entry(
                 self.body,
                 textvariable=delay_var,
                 width=9,
-            ).grid(
+                state="disabled" if is_entry_step else "normal",
+            )
+            delay_entry.grid(
                 row=row_num,
                 column=4,
                 padx=3,
@@ -1222,14 +1241,16 @@ class TargetEditor(tk.Toplevel):
                 pady=3,
             )
 
-            structure_state = "disabled" if is_default else "normal"
+            structure_state = (
+                "disabled" if is_default or is_entry_step else "normal"
+            )
 
             ttk.Button(
                 self.body,
                 text="아래+",
                 width=6,
                 state=structure_state,
-                command=lambda i=index: self.add_below(i),
+                command=lambda i=routine_index: self.add_below(i),
             ).grid(row=row_num, column=7, padx=2, pady=3)
 
             ttk.Button(
@@ -1237,7 +1258,7 @@ class TargetEditor(tk.Toplevel):
                 text="삭제",
                 width=6,
                 state=structure_state,
-                command=lambda i=index: self.delete_row(i),
+                command=lambda i=routine_index: self.delete_row(i),
             ).grid(row=row_num, column=8, padx=2, pady=3)
 
             ttk.Button(
@@ -1245,7 +1266,7 @@ class TargetEditor(tk.Toplevel):
                 text="↑",
                 width=4,
                 state=structure_state,
-                command=lambda i=index: self.move_row(i, -1),
+                command=lambda i=routine_index: self.move_row(i, -1),
             ).grid(row=row_num, column=9, padx=2, pady=3)
 
             ttk.Button(
@@ -1253,7 +1274,7 @@ class TargetEditor(tk.Toplevel):
                 text="↓",
                 width=4,
                 state=structure_state,
-                command=lambda i=index: self.move_row(i, 1),
+                command=lambda i=routine_index: self.move_row(i, 1),
             ).grid(row=row_num, column=10, padx=2, pady=3)
 
             def toggle_value_cell(
@@ -1294,6 +1315,7 @@ class TargetEditor(tk.Toplevel):
                     "common_image": common_image,
                     "base_fallback": base_fallback,
                     "is_default": is_default,
+                    "is_entry_step": is_entry_step,
                 }
             )
 
@@ -1445,12 +1467,14 @@ class TargetEditor(tk.Toplevel):
             target,
             routine_id,
         )
+        entry_overrides = target.setdefault("overrides", {})
 
         try:
             for row in self.rows:
                 step = row["step"]
+                is_entry_step = bool(row.get("is_entry_step"))
 
-                if not is_default:
+                if not is_default and not is_entry_step:
                     name = row["name"].get().strip()
                     if not name:
                         raise ValueError(
@@ -1458,17 +1482,22 @@ class TargetEditor(tk.Toplevel):
                         )
                     step["name"] = name
 
-                delay = float(row["delay"].get())
-                if delay < 0:
-                    raise ValueError(
-                        "클릭 전 대기는 0 이상이어야 합니다."
-                    )
-                step["pre_click_delay"] = delay
+                if not is_entry_step:
+                    delay = float(row["delay"].get())
+                    if delay < 0:
+                        raise ValueError(
+                            "클릭 전 대기는 0 이상이어야 합니다."
+                        )
+                    step["pre_click_delay"] = delay
 
                 step_id = row["id"]
                 action = row["action"].get()
 
                 if action == "좌표 클릭":
+                    if is_entry_step:
+                        raise ValueError(
+                            "진입 001/002 단계는 이미지 클릭만 사용할 수 있습니다."
+                        )
                     x_text = row["x"].get().strip()
                     y_text = row["y"].get().strip()
 
@@ -1491,13 +1520,16 @@ class TargetEditor(tk.Toplevel):
                 else:
                     image = row["image"].get().strip()
                     common_image = row.get("common_image", "")
+                    override_store = (
+                        entry_overrides if is_entry_step else routine_overrides
+                    )
 
                     if image and image != common_image:
-                        routine_overrides[step_id] = image
+                        override_store[step_id] = image
                     else:
-                        routine_overrides.pop(step_id, None)
+                        override_store.pop(step_id, None)
 
-                    if not is_default:
+                    if not is_default and not is_entry_step:
                         step.pop("coordinate_from_target", None)
                         step.pop("fallback", None)
 
@@ -3904,6 +3936,9 @@ class MacroManager:
         self._test_mode = False
         self._test_resume_normal = False
         self._pending_test_range: dict | None = None
+        self._todo_test_running = False
+        self._todo_test_resume_normal = False
+        self._todo_test_stop_event = threading.Event()
         self.global_status = tk.StringVar(value="준비")
         self.build_ui()
         self.root.protocol("WM_DELETE_WINDOW", self.close)
@@ -3970,6 +4005,12 @@ class MacroManager:
             text="테스트 중지",
             command=self.stop_range_test,
         ).pack(side="left", padx=3)
+
+        ttk.Button(
+            test_bar,
+            text="TODO 버튼 테스트",
+            command=self.start_todo_test,
+        ).pack(side="left", padx=(12, 3))
 
         ttk.Label(
             test_bar,
@@ -4317,6 +4358,113 @@ class MacroManager:
         rect = self.targets[key][1]
         threading.Thread(target=held_left_click, args=(rect.left + rect.width // 2, rect.top + rect.height // 2), daemon=True).start()
 
+    def start_todo_test(self) -> None:
+        if self._todo_test_running or self._test_mode:
+            messagebox.showwarning(
+                "테스트 실행 중",
+                "다른 테스트가 이미 실행 중입니다.",
+                parent=self.root,
+            )
+            return
+
+        monitor = simpledialog.askinteger(
+            "TODO 버튼 테스트",
+            "테스트할 모니터 번호를 입력하세요. (1~2)",
+            parent=self.root,
+            minvalue=1,
+            maxvalue=2,
+        )
+        if monitor is None:
+            return
+        quadrant = simpledialog.askinteger(
+            "TODO 버튼 테스트",
+            f"모니터 {monitor}에서 테스트할 분면을 입력하세요. (1~4)",
+            parent=self.root,
+            minvalue=1,
+            maxvalue=4,
+        )
+        if quadrant is None:
+            return
+
+        self._todo_test_running = True
+        self._todo_test_stop_event.clear()
+        self._todo_test_resume_normal = bool(
+            self.engine.thread and self.engine.thread.is_alive()
+        )
+        self.engine.stop()
+        self.global_status.set(
+            f"TODO 버튼 테스트 준비 중: 모니터 {monitor} / {quadrant}분면"
+        )
+        threading.Thread(
+            target=self._run_todo_test,
+            args=(monitor, quadrant),
+            name=f"todo-test-m{monitor}q{quadrant}",
+            daemon=True,
+        ).start()
+
+    def _run_todo_test(self, monitor: int, quadrant: int) -> None:
+        error: Exception | None = None
+        stopped = False
+        try:
+            if self.engine.thread and self.engine.thread.is_alive():
+                self.engine.thread.join()
+            if self._todo_test_stop_event.is_set():
+                stopped = True
+            else:
+                from day_todo_test import TodoTest
+
+                self.set_global_status(
+                    f"TODO 버튼 테스트 실행 중: 모니터 {monitor} / {quadrant}분면"
+                )
+                TodoTest(
+                    monitor,
+                    quadrant,
+                    stop_event=self._todo_test_stop_event,
+                ).run()
+        except KeyboardInterrupt:
+            stopped = True
+        except Exception as exc:
+            logging.exception("TODO 버튼 테스트 실패")
+            error = exc
+        finally:
+            self.root.after(
+                0,
+                lambda: self._finish_todo_test(
+                    monitor, quadrant, stopped, error
+                ),
+            )
+
+    def _finish_todo_test(
+        self,
+        monitor: int,
+        quadrant: int,
+        stopped: bool,
+        error: Exception | None,
+    ) -> None:
+        self._todo_test_running = False
+        should_resume = self._todo_test_resume_normal
+        self._todo_test_resume_normal = False
+        if error is not None:
+            self.global_status.set("TODO 버튼 테스트 실패")
+            messagebox.showerror(
+                "TODO 버튼 테스트 실패",
+                str(error),
+                parent=self.root,
+            )
+        elif stopped:
+            self.global_status.set("TODO 버튼 테스트 중지")
+        else:
+            self.global_status.set(
+                f"TODO 버튼 테스트 완료: 모니터 {monitor} / {quadrant}분면"
+            )
+            messagebox.showinfo(
+                "TODO 버튼 테스트",
+                f"모니터 {monitor} / {quadrant}분면 테스트가 완료되었습니다.",
+                parent=self.root,
+            )
+        if should_resume:
+            self.engine.start()
+
     def capture_and_crop(
         self,
         key: str,
@@ -4412,6 +4560,7 @@ class MacroManager:
             user32.UnregisterHotKey(None, self.CLICK_HOTKEY)
 
     def close(self) -> None:
+        self._todo_test_stop_event.set()
         self.test_runner.stop()
         self.engine.stop()
         if self.hotkey_thread_id:

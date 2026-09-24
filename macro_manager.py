@@ -44,7 +44,7 @@ SCAN_INTERVAL = 0.15
 
 # 이미지를 발견한 후 실제 클릭을 보내기 전에 기다리는 시간(초)입니다.
 # 화면 전환이나 버튼 표시가 안정될 시간을 확보합니다.
-PRE_CLICK_DELAY = 0.5
+PRE_CLICK_DELAY = 0.3
 
 # 마우스 왼쪽 버튼을 누른 상태로 유지하는 시간(초)입니다.
 # 게임이 너무 짧은 합성 클릭을 놓치지 않도록 0.08초(80ms) 동안 유지한 뒤 뗍니다.
@@ -310,6 +310,7 @@ def load_config() -> dict:
 
 def migrate_post_routines(config: dict) -> None:
     """기존 설정을 선택 가능한 01~21 전체 루틴 구조로 변환합니다."""
+    migrate_pre_click_delay_default(config)
     if config.get("full_routines_v2"):
         migrate_default_hunting_v4(config)
         mark_target_coordinate_steps(config)
@@ -343,6 +344,28 @@ def migrate_post_routines(config: dict) -> None:
     mark_target_coordinate_steps(config)
     for target in config.get("targets", {}).values():
         target.setdefault("post_routine_id", "default_hunting")
+
+
+def migrate_pre_click_delay_default(config: dict) -> None:
+    """기존 0.5초 기본값을 새 0.3초 기본값으로 한 번만 갱신합니다."""
+    if config.get("pre_click_delay_default_v2"):
+        return
+
+    step_groups = [
+        config.get("pre_death_steps", []),
+        config.get("entry_steps", []),
+        config.get("steps", []),
+    ]
+    step_groups.extend(
+        routine.get("steps", [])
+        for routine in config.get("post_routines", {}).values()
+    )
+    for steps in step_groups:
+        for step in steps:
+            if float(step.get("pre_click_delay", PRE_CLICK_DELAY)) == 0.5:
+                step["pre_click_delay"] = PRE_CLICK_DELAY
+
+    config["pre_click_delay_default_v2"] = True
 
 
 def migrate_default_hunting_v4(config: dict) -> None:
@@ -399,7 +422,7 @@ def migrate_default_hunting_v4(config: dict) -> None:
             "name": "16 즐겨찾기",
             "image": image_of("16_favorite"),
             "timeout": 20.0,
-            "pre_click_delay": 0.5,
+            "pre_click_delay": PRE_CLICK_DELAY,
         },
         {
             "id": "17_monster",
@@ -410,7 +433,7 @@ def migrate_default_hunting_v4(config: dict) -> None:
                 "19_monster",
             ),
             "timeout": 20.0,
-            "pre_click_delay": 0.5,
+            "pre_click_delay": PRE_CLICK_DELAY,
         },
         {
             "id": "18_quick_move",
@@ -420,7 +443,7 @@ def migrate_default_hunting_v4(config: dict) -> None:
                 "19_quick_move",
             ),
             "timeout": 15.0,
-            "pre_click_delay": 0.5,
+            "pre_click_delay": PRE_CLICK_DELAY,
         },
         {
             "id": "19_confirm",
@@ -430,7 +453,7 @@ def migrate_default_hunting_v4(config: dict) -> None:
                 "20_confirm",
             ),
             "timeout": 15.0,
-            "pre_click_delay": 0.5,
+            "pre_click_delay": PRE_CLICK_DELAY,
 
             "after_click_delay": 5.0,
         },
@@ -487,6 +510,15 @@ def migrate_default_hunting_v4(config: dict) -> None:
         for old_id in obsolete_ids:
             overrides.pop(old_id, None)
             fallbacks.pop(old_id, None)
+
+    # 12가 5초 안에 보이지 않으면 구매를 건너뛰고 14 뒤로가기부터 재개합니다.
+    for configured_routine in routines.values():
+        for step in configured_routine.get("steps", []):
+            if step.get("id") == "12_100_percent":
+                step["timeout"] = 5.0
+                step["on_timeout"] = "skip"
+                step["skip_count"] = 2
+                break
 
     # 13 구매는 최대 5초만 찾고, 못 찾으면 클릭 없이 14단계로 넘어갑니다.
     for step in routine.get("steps", []):

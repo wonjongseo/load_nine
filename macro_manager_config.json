@@ -14,14 +14,14 @@
       "name": "사망 전 뒤로가기",
       "image": "",
       "timeout": 15.0,
-      "pre_click_delay": 0.5
+      "pre_click_delay": 0.3
     },
     {
       "id": "home_icon",
       "name": "사망 전 집으로",
       "image": "",
       "timeout": 15.0,
-      "pre_click_delay": 0.5
+      "pre_click_delay": 0.3
     }
   ],
   "entry_steps": [
@@ -30,14 +30,14 @@
       "name": "001 사망 화면",
       "image": "images/001_dyied.png",
       "timeout": 10.0,
-      "pre_click_delay": 0.5
+      "pre_click_delay": 0.3
     },
     {
       "id": "002_sandtimer",
       "name": "002 모래시계",
       "image": "images/002_sandtimer.png",
       "timeout": 3.0,
-      "pre_click_delay": 0.5
+      "pre_click_delay": 0.3
     }
   ],
   "steps": [],
@@ -275,7 +275,7 @@
         "08_close_appraisal": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/08_close_appraisal.png",
         "09_close_menu": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/09_close_menu.png",
         "10_general_store": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/10_general_store.png",
-        "11_potion": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/11_potion.png",
+        "11_potion": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_1/11_potion.png",
         "12_100_percent": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/12_100_percent.png",
         "13_buy": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/13_buy.png",
         "14_close_shop": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/14_close_shop.png",
@@ -283,7 +283,9 @@
         "18_quick_move": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/19_quick_move.png",
         "19_confirm": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/20_confirm.png",
         "20_auto": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/21_auto.png",
-        "16_favorite": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/16_즐겨찾기.png"
+        "16_favorite": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/16_즐겨찾기.png",
+        "001_dyied": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/001_사망_화면.png",
+        "002_sandtimer": "C:/Users/Jongseo Won/Desktop/auto/macro_images/monitor_2/quadrant_2/002_모래시계.png"
       },
       "fallbacks": {
         "15_world_map": [
@@ -385,7 +387,7 @@
           "name": "01 부활하기",
           "image": "images/01_revive.png",
           "timeout": 30.0,
-          "pre_click_delay": 0.5,
+          "pre_click_delay": 0.3,
           "after_click_delay": 1.5
         },
         {
@@ -407,14 +409,14 @@
           "name": "04 분해 메뉴",
           "image": "images/04_dismantle_menu.png",
           "timeout": 15.0,
-          "pre_click_delay": 0.5
+          "pre_click_delay": 0.3
         },
         {
           "id": "05_auto_register",
           "name": "05 자동 등록",
           "image": "images/05_auto_register.png",
           "timeout": 15.0,
-          "pre_click_delay": 0.5
+          "pre_click_delay": 0.3
         },
         {
           "id": "06_dismantle_execute",
@@ -423,7 +425,7 @@
           "timeout": 5.0,
           "on_timeout": "skip",
           "skip_count": 3,
-          "pre_click_delay": 0.5
+          "pre_click_delay": 0.3
         },
         {
           "id": "07_touch_empty_space",
@@ -431,49 +433,51 @@
           "image": "images/07_touch_empty_space.png",
           "timeout": 5.0,
           "on_timeout": "click_current",
-          "pre_click_delay": 0.5
+          "pre_click_delay": 0.3
         },
         {
           "id": "08_close_appraisal",
           "name": "08 감정 창 닫기",
           "image": "images/08_close_appraisal.png",
           "timeout": 15.0,
-          "pre_click_delay": 0.5
+          "pre_click_delay": 0.3
         },
         {
           "id": "09_close_menu",
           "name": "09 메뉴 창 닫기",
           "image": "images/09_close_menu.png",
           "timeout": 15.0,
-          "pre_click_delay": 0.5
+          "pre_click_delay": 0.3
         },
         {
           "id": "10_general_store",
           "name": "10 잡화 상인",
           "image": "images/10_general_store.png",
           "timeout": 20.0,
-          "pre_click_delay": 0.5
+          "pre_click_delay": 0.3
         },
         {
           "id": "11_potion",
           "name": "11 물약 선택",
           "image": "",
           "timeout": 15.0,
-          "pre_click_delay": 0.5
+          "pre_click_delay": 0.3
         },
         {
           "id": "12_100_percent",
           "name": "12 100% 수량",
           "image": "images/12_100_percent.png",
-          "timeout": 15.0,
-          "pre_click_delay": 0.5
+          "timeout": 5.0,
+          "pre_click_delay": 0.3,
+          "on_timeout": "skip",
+          "skip_count": 2
         },
         {
           "id": "13_buy",
           "name": "13 구매",
           "image": "images/13_buy.png",
           "timeout": 5.0,
-          "pre_click_delay": 0.5,
+          "pre_click_delay": 0.3,
           "on_timeout": "skip",
           "skip_count": 1
         },
@@ -482,14 +486,14 @@
           "name": "14 상점 나가기",
           "image": "images/14_close_shop.png",
           "timeout": 15.0,
-          "pre_click_delay": 0.5
+          "pre_click_delay": 0.3
         },
         {
           "id": "15_world_map",
           "name": "15 월드맵 고정좌표",
           "image": "",
           "timeout": 0.1,
-          "pre_click_delay": 0.5,
+          "pre_click_delay": 0.3,
           "coordinate_from_target": true
         },
         {
@@ -497,28 +501,28 @@
           "name": "16 즐겨찾기",
           "image": "",
           "timeout": 20.0,
-          "pre_click_delay": 0.5
+          "pre_click_delay": 0.3
         },
         {
           "id": "17_monster",
           "name": "17 몬스터",
           "image": "",
           "timeout": 20.0,
-          "pre_click_delay": 0.5
+          "pre_click_delay": 0.3
         },
         {
           "id": "18_quick_move",
           "name": "18 빠른 이동",
           "image": "images/19_quick_move.png",
           "timeout": 15.0,
-          "pre_click_delay": 0.5
+          "pre_click_delay": 0.3
         },
         {
           "id": "19_confirm",
           "name": "19 빠른 이동 확인",
           "image": "images/20_confirm.png",
           "timeout": 15.0,
-          "pre_click_delay": 0.5,
+          "pre_click_delay": 0.3,
           "after_click_delay": 5.0
         },
         {
@@ -538,7 +542,7 @@
           "name": "01 부활하기",
           "image": "images/01_revive.png",
           "timeout": 30.0,
-          "pre_click_delay": 0.5,
+          "pre_click_delay": 0.3,
           "after_click_delay": 1.5
         },
         {
@@ -560,14 +564,14 @@
           "name": "04 분해 메뉴",
           "image": "images/04_dismantle_menu.png",
           "timeout": 15.0,
-          "pre_click_delay": 0.5
+          "pre_click_delay": 0.3
         },
         {
           "id": "05_auto_register",
           "name": "05 자동 등록",
           "image": "images/05_auto_register.png",
           "timeout": 15.0,
-          "pre_click_delay": 0.5
+          "pre_click_delay": 0.3
         },
         {
           "id": "06_dismantle_execute",
@@ -576,7 +580,7 @@
           "timeout": 5.0,
           "on_timeout": "skip",
           "skip_count": 3,
-          "pre_click_delay": 0.5
+          "pre_click_delay": 0.3
         },
         {
           "id": "07_touch_empty_space",
@@ -584,84 +588,86 @@
           "image": "images/07_touch_empty_space.png",
           "timeout": 5.0,
           "on_timeout": "click_current",
-          "pre_click_delay": 0.5
+          "pre_click_delay": 0.3
         },
         {
           "id": "08_close_appraisal",
           "name": "08 감정 창 닫기",
           "image": "images/08_close_appraisal.png",
           "timeout": 15.0,
-          "pre_click_delay": 0.5
+          "pre_click_delay": 0.3
         },
         {
           "id": "09_close_menu",
           "name": "09 메뉴 창 닫기",
           "image": "images/09_close_menu.png",
           "timeout": 15.0,
-          "pre_click_delay": 0.5
+          "pre_click_delay": 0.3
         },
         {
           "id": "10_general_store",
           "name": "10 잡화 상인",
           "image": "images/10_general_store.png",
           "timeout": 20.0,
-          "pre_click_delay": 0.5
+          "pre_click_delay": 0.3
         },
         {
           "id": "11_potion",
           "name": "11 물약 선택",
           "image": "",
           "timeout": 15.0,
-          "pre_click_delay": 0.5
+          "pre_click_delay": 0.3
         },
         {
           "id": "12_100_percent",
           "name": "12 100% 수량",
           "image": "images/12_100_percent.png",
-          "timeout": 15.0,
-          "pre_click_delay": 0.5
+          "timeout": 5.0,
+          "pre_click_delay": 0.3,
+          "on_timeout": "skip",
+          "skip_count": 2
         },
         {
           "id": "13_buy",
           "name": "13 구매",
           "image": "images/13_buy.png",
           "timeout": 15.0,
-          "pre_click_delay": 0.5
+          "pre_click_delay": 0.3
         },
         {
           "id": "14_close_shop",
           "name": "14 상점 나가기",
           "image": "images/14_close_shop.png",
           "timeout": 15.0,
-          "pre_click_delay": 0.5
+          "pre_click_delay": 0.3
         },
         {
           "id": "15_world_map",
           "name": "15 던전 아이템",
           "image": "C:/Users/Jongseo Won/Desktop/auto/macro_images/common_routines/routine_1786798529717159800/15_던전_아이템.png",
           "timeout": 0.1,
-          "pre_click_delay": 0.5
+          "pre_click_delay": 0.3
         },
         {
           "id": "16_region",
           "name": "16 던전 이동처 선택",
           "image": "C:/Users/Jongseo Won/Desktop/auto/macro_images/common_routines/routine_1786798529717159800/16_던전_이동처_선택.png",
           "timeout": 20.0,
-          "pre_click_delay": 0.5
+          "pre_click_delay": 0.3
         },
         {
           "id": "17_hunting_ground",
           "name": "17 빠른 이동",
           "image": "C:/Users/Jongseo Won/Desktop/auto/macro_images/common_routines/routine_1786798529717159800/17_빠른_이동.png",
           "timeout": 20.0,
-          "pre_click_delay": 0.5
+          "pre_click_delay": 0.3
         },
         {
           "id": "18_monster",
           "name": "18 빠른 이동 확인",
           "image": "C:/Users/Jongseo Won/Desktop/auto/macro_images/common_routines/routine_1786798529717159800/18_빠른_이동_확인.png",
           "timeout": 20.0,
-          "pre_click_delay": 0.5
+          "pre_click_delay": 0.3
         },
         {
           "id": "21_auto",
@@ -669,7 +675,7 @@
           "image": "images/21_auto.png",
           "timeout": 20.0,
           "delay_before": 20,
-          "pre_click_delay": 0.5
+          "pre_click_delay": 0.3
         }
       ]
     }
@@ -702,5 +708,6 @@
       "start_id": "02_menu",
       "end_id": "20_auto"
     }
-  ]
+  ],
+  "pre_click_delay_default_v2": true
 }
